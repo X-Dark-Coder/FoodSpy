@@ -1,0 +1,34 @@
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+}
+
+.onboarding-pagination-bullet-active {
+    background-color: white !important;
+}
+
+.onboarding-pagination-bullet {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #C45029;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #F26333;
+    }
+
+    .onboarding-pagination-bullet {
+        width: 6px;
+        height: 6px;
+    }
+
+    .onboarding-pagination-bullet-active {
+        background-color: #F26333 !important;
+    }
+}
