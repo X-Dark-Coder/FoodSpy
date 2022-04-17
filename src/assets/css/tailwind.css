@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .navbar-desktop-item-icon-active {
+        stroke: white;
+    }
+
+    .navbar-desktop-item-icon-active path {
+        fill: white;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+}
