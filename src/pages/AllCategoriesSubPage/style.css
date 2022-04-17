@@ -1,0 +1,7 @@
+.test-style {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 157px);
+    gap: 20px;
+    padding: 0.5rem 1rem;
+    justify-content: space-evenly;
+}
