@@ -4,6 +4,9 @@ import SlidingModal from "./SlidingModal/sliding-modal";
 import Modal from "./Modal/modal";
 import SeeAll from "./SeeAll/see-all";
 import Avatar from "./Avatar/avatar";
+import SearchInput from "./SearchInpiut/search-input";
+import Rate from "./Rate/rate";
+import OrderTime from "./OrderTime/order-time";
 
 export {
     Button,
@@ -11,5 +14,8 @@ export {
     SlidingModal,
     Modal,
     SeeAll,
-    Avatar
+    Avatar,
+    SearchInput,
+    Rate,
+    OrderTime
 }
