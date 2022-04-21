@@ -5,7 +5,7 @@ module.exports = {
     theme: {
         extend: {
             boxShadow: {
-                test : "0 4px 8px 0 #F2633318,0 0 2px 0 #F2633312,0 0 1px 0 #00000004",
+                main : "0 4px 8px 0 rgba(0,0,0,0.04), 0 0 2px 0 rgba(0,0,0,0.06), 0 0 1px 0 rgba(0,0,0,0.04)",
             }
         },
         fontSize: {
