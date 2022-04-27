@@ -1,3 +1,3 @@
-export type SeeAllProps = {
+export type TSeeAllProps = {
     link : string;
 };

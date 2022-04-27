@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { FoodProps } from "./types";
+import { TFoodProps } from "./types";
 import { OrderTime, Rate } from "components/shared";
 
-const Food: React.FC<FoodProps> = ({ variant = "column", name, orderTime, price, rate, discount, picture }) => {
+const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price, rate, discount, picture }) => {
     const calculateDiscount = () => {
         return price - (price / 100) * discount!;
     };

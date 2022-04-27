@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { SlidingModalProps } from "./types";
+import { TSlidingModalProps } from "./types";
 
-const SlidingModal: React.FC<SlidingModalProps> = ({ show, onClose, children }) => {
+const SlidingModal: React.FC<TSlidingModalProps> = ({ show, onClose, children }) => {
     const overlayVariants: Variants = {
         hide: {
             opacity: 0,

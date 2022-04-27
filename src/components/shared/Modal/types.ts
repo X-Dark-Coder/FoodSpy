@@ -1,4 +1,4 @@
-export type ModalProps = {
+export type TModalProps = {
     show: boolean;
     children: any;
     onClose: () => void;

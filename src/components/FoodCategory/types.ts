@@ -1,4 +1,4 @@
-export type FoodCategoryProps = {
+export type TFoodCategoryProps = {
     variant: "small" | "big";
     title: string;
     menuCount: number;

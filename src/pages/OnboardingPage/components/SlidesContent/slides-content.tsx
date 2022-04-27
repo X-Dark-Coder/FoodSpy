@@ -1,8 +1,8 @@
 import { AnimatePresence } from "framer-motion";
-import { SlidesContentProps } from "./types";
+import { TSlidesContentProps } from "./types";
 import SlideContent from "./slide-content";
 
-const SlidesContent: React.FC<SlidesContentProps> = ({ activeSlideIndex }) => {
+const SlidesContent: React.FC<TSlidesContentProps> = ({ activeSlideIndex }) => {
     console.log("content rerendered");
 
     return (

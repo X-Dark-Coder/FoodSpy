@@ -60,7 +60,7 @@ const NearbyRestaurant: React.FC = () => {
     return (
         <section className="w-full mt-8">
             <div className="w-full flex justify-between items-center px-5">
-                <h3 className="text-mono-ink text-title-3 font-bold">Popular Food</h3>
+                <h3 className="text-mono-ink text-title-3 font-bold">Nearby Restaurant</h3>
                 <MediaQuery minWidth={728}>
                     <SeeAll link="/nearby-restaurant" />
                 </MediaQuery>

@@ -1,3 +1,3 @@
-export type AppLayoutProps = {
+export type TAppLayoutProps = {
     children : any
 };

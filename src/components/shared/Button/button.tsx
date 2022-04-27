@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { ButtonProps } from "./button.type";
+import React, { useState } from "react";
+import { TButtonProps } from "./button.type";
 import classNames from "classnames";
 import { ReactComponent as ChevronRight } from "assets/icons/Chevron/RightWhite.svg";
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<TButtonProps> = ({
     variant,
     price,
     icon: Icon,
@@ -46,9 +46,9 @@ const Button: React.FC<ButtonProps> = ({
     const classes = classNames(
         buttonClasses.base,
         disabled ? buttonClasses.disabled : buttonClasses[variant],
-        fullWidth ? "w-full" : null,
         { "scale-[0.95]": isMouseDown },
-        className
+        className,
+        fullWidth ? "w-[100%_!important]" : null
     );
 
     const onMouseDownHandler = () => setIsMouseDown(true);

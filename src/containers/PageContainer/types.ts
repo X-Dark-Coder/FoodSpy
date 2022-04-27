@@ -1,3 +1,3 @@
-export type PageContainerProps = {
+export type TPageContainerProps = {
     children : any;
 }

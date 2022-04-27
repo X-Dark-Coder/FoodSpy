@@ -1,9 +1,9 @@
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { ModalProps } from "./types";
+import { TModalProps } from "./types";
 import classNames from "classnames";
 
-const Modal: React.FC<ModalProps> = ({ show, onClose, children, containerClassName }) => {
+const Modal: React.FC<TModalProps> = ({ show, onClose, children, containerClassName }) => {
     const overlayVariants: Variants = {
         hide: {
             opacity: 0,
@@ -59,7 +59,7 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children, containerClassNa
                         initial="hide"
                         animate="show"
                         exit="hide"
-                        className="z-[1000] min-w-[250px] max-w-[450px] mx-5 rounded-3xl bg-white absolute"
+                        className="z-[1000] min-w-[250px] mx-5 rounded-3xl bg-white absolute"
                     >
                         <div className={classNames("flex justify-center items-center", containerClassName)}>
                             {children}

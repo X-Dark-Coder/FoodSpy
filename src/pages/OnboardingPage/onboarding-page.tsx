@@ -1,17 +1,24 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { Swiper } from "swiper";
 import { motion, Variants } from "framer-motion";
 import { Button, Modal, SlidingModal } from "components/shared";
 import { OnboardingSlider, SlidesContent } from "./components";
 import LeftSideWallpaper from "assets/img/dopolnitelnye-ingridenty.jpg";
-import useMediaQuery from "hooks/useMediaQuery";
-import classNames from "classnames";
+import { useMediaQuery } from "react-responsive";
 import { Input } from "components/shared";
+import { useNavigate } from "react-router-dom";
 
 const OnboardingPage: React.FC = () => {
+    const navigate = useNavigate();
     const [currentActiveSlide, setCurrentActiveSlide] = useState(0);
-    const isMobile = window.innerWidth <= 1024;
+    const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
     const [isOpen, setIsOpen] = useState(false);
+
+    let containerVariants: Variants = {
+        exit: {
+            opacity : 0
+        }
+    };
 
     let leftSideWallpaperVariants: Variants = {
         hide: {
@@ -66,6 +73,8 @@ const OnboardingPage: React.FC = () => {
         setCurrentActiveSlide(swiper.activeIndex);
     }, []);
 
+    const redirectToHomePage = () => navigate("/");
+
     const registerModalContent = (
         <div className="pt-[35px] mx-5 pb-[30px]">
             <h2 className="text-title-2 text-mono-ink font-bold">Register</h2>
@@ -83,7 +92,7 @@ const OnboardingPage: React.FC = () => {
     );
 
     return (
-        <main className="h-screen w-full flex justify-center items-center overflow-hidden fixed top-0 left-0">
+        <motion.main variants={containerVariants} exit="exit" className="h-screen w-full flex justify-center items-center overflow-hidden fixed top-0 left-0 z-[999]">
             {isMobile ? (
                 <SlidingModal show={isOpen} onClose={() => setIsOpen(false)}>
                     {registerModalContent}
@@ -112,7 +121,9 @@ const OnboardingPage: React.FC = () => {
                 <OnboardingSlider onSlideChange={onSlideChange} onSwiperInit={onSwiperInit} />
                 <motion.div variants={childVariants} className="flex justify-center items-center flex-col mt-8">
                     <SlidesContent activeSlideIndex={currentActiveSlide} />
-                    <Button variant={isMobile ? "wide-primary" : "wide-primary-white"}>Get Started</Button>
+                    <Button variant={isMobile ? "wide-primary" : "wide-primary-white"} onClick={redirectToHomePage}>
+                        Get Started
+                    </Button>
                     <Button
                         onClick={() => setIsOpen(!isOpen)}
                         variant={isMobile ? "wide-secondary" : "wide-secondary-white"}
@@ -122,7 +133,7 @@ const OnboardingPage: React.FC = () => {
                     </Button>
                 </motion.div>
             </motion.div>
-        </main>
+        </motion.main>
     );
 };
 

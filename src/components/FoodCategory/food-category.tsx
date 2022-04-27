@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { FoodCategoryProps } from "./types";
+import { TFoodCategoryProps } from "./types";
 import { Button } from "components/shared";
 
-const FoodCategory: React.FC<FoodCategoryProps> = ({ variant, title, menuCount, from, className, picture }) => {
+const FoodCategory: React.FC<TFoodCategoryProps> = ({ variant, title, menuCount, from, className, picture }) => {
     const containerClasses = classNames(
         "flex justify-end items-center flex-col relative",
         {
@@ -18,7 +18,7 @@ const FoodCategory: React.FC<FoodCategoryProps> = ({ variant, title, menuCount, 
     });
 
     const boxClasses = classNames(
-        `w-full rounded-lg bg-white shadow-[0_4px_8px_0_rgba(0,0,0,0.04),_0_0_2px_0_rgba(0,0,0,0.06),_0_0_1px_0_rgba(0,0,0,0.04)]`,
+        `w-full rounded-lg bg-white shadow-main`,
         {
             "h-[150px]": variant === "small",
             "h-[160px]": variant === "big",

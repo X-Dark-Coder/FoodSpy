@@ -69,7 +69,7 @@ const AllCategories: React.FC = () => {
                 <h3 className="text-mono-ink text-title-3 font-bold">All Categories</h3>
                 <SeeAll link="/all-categories"/>
             </div>
-            <div className="w-full flex gap-4 justify-start items-center px-5 py-3 mt-3 overflow-x-scroll">
+            <div className="w-full flex gap-4 justify-start items-center px-5 py-3 mt-3 overflow-x-scroll hide-scrollbar">
                 {categories.map((category) => (
                     <FoodCategory
                         key={category.id}

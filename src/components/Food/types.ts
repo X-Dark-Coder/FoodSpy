@@ -1,4 +1,5 @@
-export type FoodProps = {
+export type TFood = {
+    id: number;
     variant?: "column" | "row",
     discount?: number;
     price: number;
@@ -7,3 +8,5 @@ export type FoodProps = {
     orderTime : number;
     picture : string;
 };
+
+export type TFoodProps = Omit<TFood,"id">;

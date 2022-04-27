@@ -1,8 +1,9 @@
 import React from "react";
 
-export type InputProps = {
+export type TInputProps = {
     variant: "simple" | "white";
     disableFocusEffect?: boolean;
-    errorEffect?: boolean,
-    fullWidth?: boolean
+    errorEffect?: boolean;
+    fullWidth?: boolean;
+    filledEffect?: boolean;
 } & React.ComponentProps<"input">;

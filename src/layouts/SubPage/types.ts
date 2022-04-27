@@ -1,3 +1,3 @@
-export type SubPageProps = {
+export type TSubPageProps = {
     children : any;
 };

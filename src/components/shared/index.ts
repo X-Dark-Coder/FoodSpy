@@ -7,6 +7,7 @@ import Avatar from "./Avatar/avatar";
 import SearchInput from "./SearchInpiut/search-input";
 import Rate from "./Rate/rate";
 import OrderTime from "./OrderTime/order-time";
+import FoodType from "./FoodType/food-type";
 
 export {
     Button,
@@ -17,5 +18,6 @@ export {
     Avatar,
     SearchInput,
     Rate,
-    OrderTime
+    OrderTime,
+    FoodType
 }

@@ -1,9 +1,11 @@
 import MediaQuery from "react-responsive";
-import { Avatar } from "components/shared";
-import { CartItems, DeliverTo, Profile, SearchBox, WalletBalance } from "./components";
-import AvatarImage from "assets/img/avatar.png";
+import { CartItems, DeliverTo, Profile, WalletBalance } from "./components";
+import { ReactComponent as SearchIcon } from "assets/icons/Search.svg";
+import { useNavigate } from "react-router-dom";
 
 const TopNavbar = () => {
+    const navigate = useNavigate();
+
     return (
         <nav className="py-3 px-5 md:py-2 md:pl-6 md:pr-4 flex md:bg-white md:shadow-[0_-4px_24px_0_#00000008] w-full md:w-[calc(100%_-_230px)] md:fixed top-0 z-[850] justify-between items-center">
             <div className="flex justify-between items-center gap-5">
@@ -12,7 +14,9 @@ const TopNavbar = () => {
                     <CartItems />
                 </MediaQuery>
                 <MediaQuery minWidth={500}>
-                    <SearchBox />
+                    <button className="ml-1 flex justify-start items-center" onClick={() => navigate('/search')}>
+                        <SearchIcon />
+                    </button>
                 </MediaQuery>
             </div>
             <div className="flex justify-between items-center gap-3">

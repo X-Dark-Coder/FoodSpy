@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import { AvatarProps } from "./types";
+import { TAvatarProps } from "./types";
 
-const Avatar: React.FC<AvatarProps> = ({ variant, picture, name, abbr }) => {
+const Avatar: React.FC<TAvatarProps> = ({ variant, picture, name, abbr }) => {
     const containerVariants = {
         xs: "w-[32px] h-[32px]",
         sm: "w-[36px] h-[36px]",

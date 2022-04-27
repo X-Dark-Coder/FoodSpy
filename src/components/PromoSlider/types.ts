@@ -1,7 +1,7 @@
-export type PromoSliderProps = {
+export type TPromoSliderProps = {
     
 };
 
-export type PromoSlideProps = {
+export type TPromoSlideProps = {
     
 }

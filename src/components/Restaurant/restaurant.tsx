@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { Rate } from "components/shared";
-import { RestaurantProps } from "./types";
+import { TRestaurantProps } from "./types";
 
-const Restaurant: React.FC<RestaurantProps> = ({ categories, closed, distance, name, openAt, rate, picture }) => {
+const Restaurant: React.FC<TRestaurantProps> = ({ categories, closed, distance, name, openAt, rate, picture }) => {
     const renderCategories = () => {
         return categories.map((category,index) => {
             if(index + 1 !== categories.length) return category + ", ";
@@ -15,7 +15,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ categories, closed, distance, n
     })
 
     return (
-        <div className="min-w-[335px] max-w-[335px] h-[170px] shadow-main rounded-lg">
+        <div className="min-w-[335px] max-w-[335px] h-[170px] shadow-main rounded-lg bg-white">
             <div className="w-full h-[100px] relative rounded-t-lg">
                 <img src={picture} alt="restaurant" className={pictureClasses} />
                 <div className="bg-mono-sky-lightest w-[50px] h-[20px] rounded-[4px] absolute bottom-[9px] left-[9px] flex justify-center items-center">

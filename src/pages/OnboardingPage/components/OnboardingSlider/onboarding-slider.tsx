@@ -2,7 +2,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Navigation } from "swiper";
-import { OnboardingSliderProps } from "./types";
+import { TOnboardingSliderProps } from "./types";
 import SafeDeliveryIllustration from "assets/img/Frame 213.svg";
 import FastDeliveryIllustration from "assets/img/Frame 214.svg";
 import OrderFoodIllustration from "assets/img/Frame 215.svg";
@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./style.css";
 
-const OnboardingSlider: React.FC<OnboardingSliderProps> = ({ onSlideChange, onSwiperInit }) => {
+const OnboardingSlider: React.FC<TOnboardingSliderProps> = ({ onSlideChange, onSwiperInit }) => {
     const isMobile = window.innerWidth <= 1024;
 
     const childVariants: Variants = {

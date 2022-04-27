@@ -1,7 +1,11 @@
 import { motion, Variants } from "framer-motion";
-import { PageContainerProps } from "./types";
+import { TPageContainerProps } from "./types";
+import classNames from "classnames";
+import { useMediaQuery } from "react-responsive";
 
-const PageContainer: React.FC<PageContainerProps> = ({ children }) => {
+const PageContainer: React.FC<TPageContainerProps> = ({ children }) => {
+    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
     const containerVariants: Variants = {
         initial: {
             y: 10,
@@ -19,13 +23,17 @@ const PageContainer: React.FC<PageContainerProps> = ({ children }) => {
         },
     };
 
+    const containerClasses = classNames("w-full h-full", {
+        "pb-[110px]": isMobile,
+    });
+
     return (
         <motion.div
             variants={containerVariants}
             initial="initial"
             animate="fadeIn"
             exit="initial"
-            className="w-full h-full"
+            className={containerClasses}
         >
             {children}
         </motion.div>

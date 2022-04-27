@@ -1,5 +1,5 @@
 import React from "react";
-import { PromoSliderProps } from "./types";
+import { TPromoSliderProps } from "./types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Navigation } from "swiper";
 import PromoSlide from "./promo-slide";
@@ -9,7 +9,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const PromoSlider: React.FC<PromoSliderProps> = () => {
+const PromoSlider: React.FC<TPromoSliderProps> = () => {
     const isMobile = window.innerWidth <= 1024;
 
     return (

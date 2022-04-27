@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { NavbarItemProps } from "./types";
+import { TNavbarItemProps } from "./types";
 import { useLocation, NavLink } from "react-router-dom";
 
-const NavbarItem: React.FC<NavbarItemProps> = ({
+const NavbarItem: React.FC<TNavbarItemProps> = ({
     activeIcon: ActiveIcon,
     disableIcon: DisabledIcon,
     children,
