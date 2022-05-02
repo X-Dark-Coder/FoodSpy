@@ -7,6 +7,8 @@ export type TFood = {
     rate: number;
     orderTime : number;
     picture : string;
+    fullWidth ?: boolean;
+    onClick?: () => void
 };
 
 export type TFoodProps = Omit<TFood,"id">;

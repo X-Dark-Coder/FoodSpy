@@ -26,7 +26,7 @@ const SearchInput: React.FC<TSearchInputProps> = ({
 
     const inputContainerClasses = {
         base: `h-[48px] w-full rounded-md placeholder:text-mono-ink-lightest
-        text-medium font-medium text-mono-ink-light flex
+        text-medium text-mono-ink-light flex
         justify-between items-center p-1`,
         default: "bg-mono-sky-lighter",
         white: "bg-white",

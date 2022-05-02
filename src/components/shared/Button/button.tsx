@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TButtonProps } from "./button.type";
 import classNames from "classnames";
 import { ReactComponent as ChevronRight } from "assets/icons/Chevron/RightWhite.svg";
+import { motion, Variants } from "framer-motion";
 
 const Button: React.FC<TButtonProps> = ({
     variant,
@@ -15,8 +16,6 @@ const Button: React.FC<TButtonProps> = ({
     fullWidth,
     ...rest
 }) => {
-    const [isMouseDown, setIsMouseDown] = useState(false);
-
     const buttonClasses = {
         base: `text-large font-semibold rounded-lg flex justify-center items-center 
         transition duration-100`,
@@ -46,29 +45,28 @@ const Button: React.FC<TButtonProps> = ({
     const classes = classNames(
         buttonClasses.base,
         disabled ? buttonClasses.disabled : buttonClasses[variant],
-        { "scale-[0.95]": isMouseDown },
         className,
         fullWidth ? "w-[100%_!important]" : null
     );
 
-    const onMouseDownHandler = () => setIsMouseDown(true);
-
-    const onMouseUpHandler = () => setIsMouseDown(false);
+    const buttonVariants: Variants = {
+        tap: {
+            scale: 0.95,
+            transition : {
+                type : "tween",
+                duration : 0.1
+            }
+        },
+    };
 
     return (
-        <button
-            className={classes}
-            onMouseDown={onMouseDownHandler}
-            onMouseUp={onMouseUpHandler}
-            onMouseOut={onMouseUpHandler}
-            {...rest}
-        >
+        <motion.button variants={buttonVariants} whileTap="tap" className={classes} {...rest}>
             {variant === "expand-small" && <ChevronRight width="15px" />}
             {variant === "expand-medium" && <ChevronRight width="18px" />}
 
             {Icon && <Icon style={{ marginRight: "8px" }} width="16px" />}
             {children}
-        </button>
+        </motion.button>
     );
 };
 

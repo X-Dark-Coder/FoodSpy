@@ -24,7 +24,7 @@ const Restaurant: React.FC<TRestaurantProps> = ({ categories, closed, distance, 
             </div>
             <div className="p-3">
                 <div className="flex justify-between items-center">
-                    <h3 className="text-medium-16 font-medium text-mono-ink">{name}</h3>
+                    <h3 className="text-medium-16 text-mono-ink">{name}</h3>
                     <Rate stars={rate} />
                 </div>
                 <div className="flex justify-between items-center mt-1">

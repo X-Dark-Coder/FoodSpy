@@ -2,7 +2,17 @@ import classNames from "classnames";
 import { TFoodProps } from "./types";
 import { OrderTime, Rate } from "components/shared";
 
-const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price, rate, discount, picture }) => {
+const Food: React.FC<TFoodProps> = ({
+    variant = "column",
+    name,
+    orderTime,
+    price,
+    rate,
+    discount,
+    picture,
+    fullWidth,
+    onClick
+}) => {
     const calculateDiscount = () => {
         return price - (price / 100) * discount!;
     };
@@ -10,6 +20,7 @@ const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price
     const additionalInfoContainerClasses = classNames("flex flex-col justify-between", {
         "p-3": variant === "column",
         "h-full py-[10px] pr-4 pl-2": variant === "row",
+        "w-[calc(100%_-_120px)]": fullWidth
     });
 
     const additionalInfoWrapperClasses = classNames("flex", {
@@ -23,9 +34,17 @@ const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price
         "ml-4": !discount,
     });
 
+    const rowTemplateContainerClasses = classNames(
+        "h-[120px] bg-white rounded-md shadow-main flex justify-start items-center",
+        {
+            "min-w-[335px] max-w-[335px]": !fullWidth,
+            "w-full": fullWidth,
+        }
+    );
+
     const columnVariantTemplate = (
-        <div className="min-w-[160px] h-[270px] bg-white rounded-md shadow-main">
-            <div className="h-[129px] w-full relative">
+        <div className="min-w-[160px] max-w-[160px] h-[270px] bg-white rounded-md shadow-main">
+            <div className="h-[129px] w-full relative cursor-pointer" onClick={onClick}>
                 <img src={picture} alt="salad" className="w-full h-full rounded-t-md" />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-4 bg-accent-redd rounded-r-[2px] flex justify-center items-center">
@@ -35,7 +54,7 @@ const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price
             </div>
             <div className={additionalInfoContainerClasses}>
                 <div>
-                    <h3 className="text-mono-ink-light text-medium-16 font-medium">{name}</h3>
+                    <h3 className="text-mono-ink-light text-medium-16">{name}</h3>
                     <div className="flex justify-start items-center gap-5 mt-[6px]">
                         <Rate stars={rate} />
                         <OrderTime time={orderTime} />
@@ -57,7 +76,7 @@ const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price
     );
 
     const rowVariantTemplate = (
-        <div className="min-w-[335px] h-[120px] bg-white rounded-md shadow-main flex justify-center items-center">
+        <div className={rowTemplateContainerClasses}>
             <div className="h-full w-[120px] relative">
                 <img
                     src={picture}
@@ -83,7 +102,7 @@ const Food: React.FC<TFoodProps> = ({ variant = "column", name, orderTime, price
                         </div>
                         <Rate stars={rate} />
                     </div>
-                    <h3 className="text-mono-ink-light text-medium-16 font-medium mt-[6px]">{name}</h3>
+                    <h3 className="text-mono-ink-light text-medium-16 mt-[6px]">{name}</h3>
                 </div>
                 <div>
                     <div className="flex justify-start items-center gap-5 mt-[6px]">

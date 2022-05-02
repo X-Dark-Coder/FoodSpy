@@ -8,6 +8,7 @@ import SearchInput from "./SearchInpiut/search-input";
 import Rate from "./Rate/rate";
 import OrderTime from "./OrderTime/order-time";
 import FoodType from "./FoodType/food-type";
+import Badge from "./Badge/badge";
 
 export {
     Button,
@@ -19,5 +20,6 @@ export {
     SearchInput,
     Rate,
     OrderTime,
-    FoodType
+    FoodType,
+    Badge
 }

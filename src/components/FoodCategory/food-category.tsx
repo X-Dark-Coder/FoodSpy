@@ -35,7 +35,7 @@ const FoodCategory: React.FC<TFoodCategoryProps> = ({ variant, title, menuCount,
             <img className={imageClasses} src={picture} alt="salad" />
             <div className={boxClasses}>
                 <div className="flex justify-center items-start flex-col mt-[50px] pl-3">
-                    <span className="text-mono-ink-light text-medium-16 font-medium">{title}</span>
+                    <span className="text-mono-ink-light text-medium-16">{title}</span>
                     <span className="text-mono-ink-lightest text-small mt-1">{menuCount}+ menu</span>
                 </div>
                 <div className={bottomDivClasses}>

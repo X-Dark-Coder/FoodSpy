@@ -11,11 +11,11 @@ const SelectRangeCalories: React.FC<TSelectRangeCaloriesProps> = ({ calorieRange
         setCalorieRange([calorieRange[0], Number(e.target.value)]);
     };
 
-    console.log("Select Price Re Rendered")
+    console.log("Select Calorie Re Rendered");
 
     return (
         <div className="w-full sm:w-[500px] mt-[24px]">
-            <h3 className="mb-4 text-large font-semibold text-mono-ink">Range Price</h3>
+            <h3 className="mb-4 text-large font-semibold text-mono-ink">Range Calorie</h3>
             <div className="flex justify-center items-center gap-5">
                 <Input
                     filledEffect
@@ -24,8 +24,9 @@ const SelectRangeCalories: React.FC<TSelectRangeCaloriesProps> = ({ calorieRange
                     variant="simple"
                     type="number"
                     placeholder="Min Calorie"
-                    className="w-1/2"
+                    containerClassName="w-1/2"
                     min={1}
+                    showLabel
                 />
                 <Input
                     filledEffect
@@ -34,8 +35,9 @@ const SelectRangeCalories: React.FC<TSelectRangeCaloriesProps> = ({ calorieRange
                     variant="simple"
                     type="number"
                     placeholder="Max Calorie"
-                    className="w-1/2"
+                    containerClassName="w-1/2"
                     min={1}
+                    showLabel
                 />
             </div>
         </div>

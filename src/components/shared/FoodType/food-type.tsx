@@ -8,7 +8,7 @@ const FoodType: React.FC<TFoodTypeProps> = ({ icon: Icon, text, active, onClick 
         "bg-mono-sky-lightest border-mono-ink-lighter": !active,
     });
 
-    const textClasses = classNames("text-medium-16 font-medium translate-y-px", {
+    const textClasses = classNames("text-medium-16 translate-y-px", {
         "text-primary": active,
         "text-mono-ink-light": !active,
     });

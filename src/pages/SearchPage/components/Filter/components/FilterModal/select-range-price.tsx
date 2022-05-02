@@ -11,8 +11,6 @@ const SelectRangePrice: React.FC<TSelectRangePriceProps> = ({ priceRange, setPri
         setPriceRange([priceRange[0], Number(e.target.value)]);
     };
 
-    console.log("Select Calories Re Rendered")
-
     return (
         <div className="w-full sm:w-[500px] mt-[24px]">
             <h3 className="mb-4 text-large font-semibold text-mono-ink">Range Price</h3>
@@ -24,8 +22,9 @@ const SelectRangePrice: React.FC<TSelectRangePriceProps> = ({ priceRange, setPri
                     variant="simple"
                     type="number"
                     placeholder="Min Price"
-                    className="w-1/2"
+                    containerClassName="w-1/2"
                     min={1}
+                    showLabel
                 />
                 <Input
                     filledEffect
@@ -34,8 +33,9 @@ const SelectRangePrice: React.FC<TSelectRangePriceProps> = ({ priceRange, setPri
                     variant="simple"
                     type="number"
                     placeholder="Max Price"
-                    className="w-1/2"
+                    containerClassName="w-1/2"
                     min={1}
+                    showLabel
                 />
             </div>
         </div>

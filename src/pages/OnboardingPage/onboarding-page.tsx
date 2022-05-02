@@ -82,7 +82,7 @@ const OnboardingPage: React.FC = () => {
                 We use this information to facilitate transactions on this application
             </p>
             <div className="mt-7">
-                <Input variant="simple" type="text" placeholder="Name" fullWidth />
+                <Input variant="simple" type="text" placeholder="Name" fullWidth showLabel/>
                 <Input variant="simple" type="text" placeholder="Name" className="mt-3" fullWidth />
                 <Button variant="wide-primary" onClick={() => {}} className="mt-16" fullWidth>
                     Register

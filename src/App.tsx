@@ -6,10 +6,12 @@ import {
     NearbyRestaurantSubPage,
     OnboardingPage,
     PopularFoodSubPage,
+    RestaurantPage,
     SearchPage,
 } from "pages";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { FoodDetail } from "pages/RestaurantPage/components";
 
 const App = () => {
     const location = useLocation();
@@ -20,7 +22,7 @@ const App = () => {
     }, []);
 
     const routes = (
-        <Routes location={location} key={location.pathname.split("/")[0]}>
+        <Routes location={location} key={location.pathname.split("/")[1]}>
             <Route path="/" element={<HomePage />} />
             <Route path="/all-categories" element={<AllCategoriesSubPage />} />
             <Route path="/popular-food" element={<PopularFoodSubPage />} />
@@ -28,6 +30,10 @@ const App = () => {
             <Route path="/search">
                 <Route path=":search" element={<SearchPage />} />
                 <Route path="" element={<SearchPage />} />
+            </Route>
+            <Route path="/restaurant">
+                <Route path=":restaurantId/product/:productId" element={<RestaurantPage />} />
+                <Route path=":restaurantId" element={<RestaurantPage />} />
             </Route>
             <Route path="/welcome" element={<OnboardingPage />} />
             <Route path="/*" element={<HomePage />} />

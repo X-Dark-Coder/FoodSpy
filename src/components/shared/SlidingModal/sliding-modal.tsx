@@ -54,7 +54,7 @@ const SlidingModal: React.FC<TSlidingModalProps> = ({ show, onClose, children })
                         <div className="w-full py-2 flex justify-center items-center cursor-grab">
                             <div className="h-[5px] w-[50px] rounded-sm bg-mono-sky"></div>
                         </div>
-                        <div className="flex justify-center items-center">{children}</div>
+                        <div className="flex justify-center items-start max-h-[80vh] overflow-y-scroll">{children}</div>
                     </motion.div>
                     <motion.div
                         variants={overlayVariants}
