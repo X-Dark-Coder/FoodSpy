@@ -2,8 +2,14 @@ import { Button } from "components/shared";
 import { ReactComponent as PlusIcon } from "assets/icons/Plus.svg";
 import { ReactComponent as MinusIcon } from "assets/icons/Minus.svg";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "store/actions/shopping-cart.actions";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddToCart: React.FC = () => {
+    const { restaurantId } = useParams<{ restaurantId: string }>();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [foodCount, setFoodCount] = useState(1);
 
     const increaseFoodCount = () => {
@@ -12,6 +18,11 @@ const AddToCart: React.FC = () => {
 
     const decreaseFoodCount = () => {
         if (foodCount !== 1) setFoodCount(foodCount - 1);
+    };
+
+    const addProductToCart = () => {
+        dispatch(addProduct({ id: 3, count: foodCount }));
+        navigate("/restaurant/" + restaurantId);
     };
 
     return (
@@ -34,7 +45,7 @@ const AddToCart: React.FC = () => {
                     </button>
                 </div>
                 <div className="w-[200px]">
-                    <Button variant="wide-primary" fullWidth>
+                    <Button variant="wide-primary" fullWidth onClick={addProductToCart}>
                         Add To Cart
                     </Button>
                 </div>
