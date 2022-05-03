@@ -60,15 +60,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
     ];
 
     return (
-        <SubPage>
-            <div className="w-full px-4 py-3 flex justify-between items-center">
-                <NavLink to="/home">
-                    <BackIcon style={{ width: 24 }} />
-                </NavLink>
-                <h3 className="text-large font-semibold text-mono-ink">Nearby Restaurant</h3>
-                <SearchIcon style={{ width: 24 }} />
-            </div>
-
+        <SubPage backLink="/home" title="Nearby Restaurant">
             <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 justify-evenly px-4 py-2">
                 {restaurants.map((restaurant) => (
                     <Restaurant

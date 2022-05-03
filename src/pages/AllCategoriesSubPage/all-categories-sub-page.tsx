@@ -123,15 +123,7 @@ const AllCategoriesSubPage: React.FC = () => {
     ];
 
     return (
-        <SubPage>
-            <div className="w-full px-4 py-3 flex justify-between items-center">
-                <NavLink to="/home">
-                    <BackIcon style={{ width: 24 }} />
-                </NavLink>
-                <h3 className="text-large font-semibold text-mono-ink">All Categories</h3>
-                <SearchIcon style={{ width: 24 }} />
-            </div>
-
+        <SubPage backLink="/home" title="All Categories">
             <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_157px)] gap-5 px-4 py-2 justify-evenly">
                 {categories.map((category) => (
                     <FoodCategory

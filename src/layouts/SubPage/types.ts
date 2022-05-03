@@ -1,3 +1,6 @@
 export type TSubPageProps = {
-    children : any;
+    children: any;
+    searchLink?: string;
+    backLink: string;
+    title: string;
 };
