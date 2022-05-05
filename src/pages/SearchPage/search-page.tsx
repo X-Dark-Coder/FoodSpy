@@ -1,5 +1,5 @@
 import { SearchInput } from "components/shared";
-import PageContainer from "containers/PageContainer/page-container";
+import { PageContainer } from "layouts"; 
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -9,7 +9,8 @@ import { TSearchFilter } from "./components/Filter/types";
 import { TTabs } from "./components/ResultTabs/types";
 import { addHistory, getHistory } from "./components/SearchHistory/historyStorage";
 import { TSearchResult } from "./components/ShowSearchResult/types";
-import { restaurants, foods, searchSectionsVariants } from "./search-page.constants";
+import { searchSectionsVariants } from "./search-page.constants";
+import { restaurants, foods } from "api/fakeApi";
 
 const SearchPage: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 639px)" });

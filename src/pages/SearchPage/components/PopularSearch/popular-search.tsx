@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import PopularSearchItem from "./popular-search-item";
 import { TPopularSearchItem, TPopularSearchProps } from "./types";
-import { foods, restaurants } from "pages/SearchPage/search-page.constants";
+import { foods, restaurants } from "api/fakeApi";
 import { addHistory } from "../SearchHistory/historyStorage";
 
 const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistory}) => {

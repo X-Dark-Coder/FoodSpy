@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import HistoryItem from "./history-item";
 import { removeHistory } from "./historyStorage";
 import { TSearchHistoryProps } from "./types";
-import { foods, restaurants } from "pages/SearchPage/search-page.constants";
+import { foods, restaurants } from "api/fakeApi";
 
 const SearchHistory: React.FC<TSearchHistoryProps> = ({ history, setHistory, setSearchResult }) => {
     const navigate = useNavigate();

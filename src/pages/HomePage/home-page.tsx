@@ -1,14 +1,21 @@
 import {useNavigate} from "react-router-dom"
 import PromoSlider from "components/PromoSlider/promo-slider";
-import PageContainer from "containers/PageContainer/page-container";
+import { PageContainer } from "layouts"; 
 import MediaQuery from "react-responsive";
 import { TopNavbar } from "layouts/AppLayout/components";
 import { AllCategories, NearbyRestaurant, PopularFood } from "./components";
 import { SearchInput } from "components/shared";
+import { useEffect } from "react";
+import { toggleBottomNavbar } from "store/actions/app.actions";
+import { useDispatch } from "react-redux";
 
 const HomePage: React.FC = () => {
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        dispatch(toggleBottomNavbar(true));
+    }, []);
 
     return (
         <PageContainer>

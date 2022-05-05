@@ -1,3 +1,3 @@
 export type TPageContainerProps = {
-    children : any;
-}
+    children: any;
+};
