@@ -11,6 +11,11 @@ export type TShoppingCartState = {
     productsCount: number;
 };
 
+export type TAppState = {
+    showBottomNavbar : boolean;
+};
+
 export type TRootState = {
     cart: TShoppingCartState;
+    app: TAppState;
 };

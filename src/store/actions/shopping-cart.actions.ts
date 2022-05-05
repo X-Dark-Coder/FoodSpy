@@ -5,11 +5,21 @@ export const setShoppingCartRestaurant = (id: number) => ({
     payload: id,
 });
 
-export const addProduct = ({ id, count }: { id: number; count: number }) => ({
+export const addProduct = ({ id, count,instructions }: { id: number; count: number,instructions:string }) => ({
     type: ActionType.ADD_PRODUCT,
-    payload: { id, count },
+    payload: { id, count,instructions },
 });
 
 export const removeProduct = (id: number) => ({ type: ActionType.REMOVE_PRODUCT, payload: id });
 
 export const clearShoppingCart = () => ({ type: ActionType.CLEAR_SHOPPING_CART });
+
+export const changeProductCount = ({ id, type }: { id: number; type: "increase" | "decrease" }) => ({
+    type: ActionType.CHANGE_PRODUCT_COUNT,
+    payload: { id, type },
+});
+
+export const changeProductInstructions = ({ id, instructions }: { id: number; instructions: string }) => ({
+    type: ActionType.CHANGE_PRODUCT_INSTRUCTIONS,
+    payload: { id, instructions },
+});
