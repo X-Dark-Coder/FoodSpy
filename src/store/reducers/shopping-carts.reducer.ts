@@ -1,4 +1,5 @@
 import { TShoppingCartState } from "store/types";
+import { foods } from "api/fakeApi";
 import {
     TAction,
     ActionType,
@@ -6,15 +7,16 @@ import {
     TActionSetShoppingCartRestaurant,
     TActionChangeProductCount,
     TActionChangeProductInstructions,
+    TActionRemoveProduct,
+    TActionSetDiscount,
 } from "store/actions/shopping-cart.types";
-import { foods } from "api/fakeApi";
-import { changeProductInstructions } from "store/actions/shopping-cart.actions";
 
 const init: TShoppingCartState = {
     products: [],
     restaurant: null,
     totalPrice: 0,
     productsCount: 0,
+    discount: 0,
 };
 
 export const shoppingCartReducer = (state: TShoppingCartState = init, action: TAction): TShoppingCartState => {
@@ -24,13 +26,17 @@ export const shoppingCartReducer = (state: TShoppingCartState = init, action: TA
         case ActionType.ADD_PRODUCT:
             return addProductReducer(state, action);
         case ActionType.REMOVE_PRODUCT:
-            return { ...state, products: [] };
+            return removeProductReducer(state, action);
         case ActionType.CLEAR_SHOPPING_CART:
-            return clearShoppingCartReducer(state);
+            return clearShoppingCartReducer();
         case ActionType.CHANGE_PRODUCT_COUNT:
             return changeProductCountReducer(state, action);
         case ActionType.CHANGE_PRODUCT_INSTRUCTIONS:
             return changeProductInstructionsReducer(state, action);
+        case ActionType.SET_DISCOUNT:
+            return setDiscountReducer(state, action);
+        case ActionType.REMOVE_DISCOUNT:
+            return removeDiscountReducer(state);
         default:
             return state;
     }
@@ -69,6 +75,18 @@ const addProductReducer = (state: TShoppingCartState, action: TActionAddProduct)
     };
 };
 
+const removeProductReducer = (state: TShoppingCartState, action: TActionRemoveProduct) => {
+    // const originalProduct = foods.find((product) => product.id === action.payload)!;
+    // const targetProduct = state.products.find((product) => product.id === action.payload)!;
+    const lastProductsList = state.products.filter((product) => product.id !== action.payload);
+
+    return {
+        ...state,
+        products: lastProductsList,
+        // totalPrice: state.totalPrice - targetProduct.count * originalProduct.price,
+        // productsCount: state.productsCount - targetProduct.count,
+    };
+};
 /**
  * Set shopping cart restaurant id
  */
@@ -84,12 +102,13 @@ const setShoppingCartRestaurantReducer = (state: TShoppingCartState, action: TAc
  * Clear all added products and set current restaurant to null
  */
 
-const clearShoppingCartReducer = (state: TShoppingCartState) => {
+const clearShoppingCartReducer = () => {
     return {
         restaurant: null,
         products: [],
         totalPrice: 0,
         productsCount: 0,
+        discount: 0,
     };
 };
 
@@ -145,4 +164,21 @@ const changeProductInstructionsReducer = (state: TShoppingCartState, action: TAc
     }
 
     return state;
+};
+
+/**
+ * Calculate discount and apply it
+ */
+
+const setDiscountReducer = (state: TShoppingCartState, action: TActionSetDiscount) => {
+    const priceToReduce = Number(((state.totalPrice / 100) * action.payload).toFixed(1));
+    return { ...state, discount: priceToReduce, totalPrice: state.totalPrice - priceToReduce };
+};
+
+/**
+ * Remove discount and undo previous total price
+ */
+
+const removeDiscountReducer = (state: TShoppingCartState) => {
+    return { ...state, discount: 0, totalPrice: state.totalPrice + state.discount };
 };

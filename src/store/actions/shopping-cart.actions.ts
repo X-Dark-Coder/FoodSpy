@@ -5,9 +5,9 @@ export const setShoppingCartRestaurant = (id: number) => ({
     payload: id,
 });
 
-export const addProduct = ({ id, count,instructions }: { id: number; count: number,instructions:string }) => ({
+export const addProduct = ({ id, count, instructions }: { id: number; count: number; instructions: string }) => ({
     type: ActionType.ADD_PRODUCT,
-    payload: { id, count,instructions },
+    payload: { id, count, instructions },
 });
 
 export const removeProduct = (id: number) => ({ type: ActionType.REMOVE_PRODUCT, payload: id });
@@ -23,3 +23,7 @@ export const changeProductInstructions = ({ id, instructions }: { id: number; in
     type: ActionType.CHANGE_PRODUCT_INSTRUCTIONS,
     payload: { id, instructions },
 });
+
+export const setDiscount = (percent: number) => ({ type: ActionType.SET_DISCOUNT, payload: percent });
+
+export const removeDiscount = () => ({ type: ActionType.REMOVE_DISCOUNT});

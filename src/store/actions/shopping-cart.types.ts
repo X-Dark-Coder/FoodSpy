@@ -5,6 +5,8 @@ export enum ActionType {
     SET_SHOPPING_CART_RESTAURANT = "SET_SHOPPING_CART_RESTAURANT",
     CHANGE_PRODUCT_COUNT = "CHANGE_PRODUCT_COUNT",
     CHANGE_PRODUCT_INSTRUCTIONS = "CHANGE_PRODUCT_INSTRUCTIONS",
+    SET_DISCOUNT = "SET_DISCOUNT",
+    REMOVE_DISCOUNT = "REMOVE_DISCOUNT",
 }
 
 export type TActionSetShoppingCartRestaurant = {
@@ -38,12 +40,21 @@ export type TActionChangeProductCount = {
     };
 };
 
-export type TActionChangeProductInstructions= {
+export type TActionChangeProductInstructions = {
     type: ActionType.CHANGE_PRODUCT_INSTRUCTIONS;
     payload: {
         id: number;
-        instructions : string;
+        instructions: string;
     };
+};
+
+export type TActionSetDiscount = {
+    type: ActionType.SET_DISCOUNT;
+    payload: number;
+};
+
+export type TActionRemoveDiscount = {
+    type: ActionType.REMOVE_DISCOUNT;
 };
 
 export type TAction =
@@ -52,4 +63,6 @@ export type TAction =
     | TActionRemoveProduct
     | TActionClearShoppingCart
     | TActionChangeProductCount
-    | TActionChangeProductInstructions;
+    | TActionChangeProductInstructions
+    | TActionSetDiscount
+    | TActionRemoveDiscount;

@@ -9,6 +9,7 @@ export type TShoppingCartState = {
     products: TShoppingCartFoodItem[];
     totalPrice: number;
     productsCount: number;
+    discount: number;
 };
 
 export type TAppState = {
