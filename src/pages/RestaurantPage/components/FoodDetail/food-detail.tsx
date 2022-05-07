@@ -1,12 +1,13 @@
 import { Modal, OrderTime, Rate, SlidingModal } from "components/shared";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TFoodDetail } from "./types";
 import FoodDetailPicture from "assets/img/food-detail-picture.jpg";
 import { AddToCart, FoodInformations, FoodIngredients, FoodInstructions, LikeButton } from "./components";
 
 const FoodDetail: React.FC<TFoodDetail> = ({ restaurantId, id }) => {
+    const { pathname } = useLocation();
     const navigate = useNavigate();
     const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
     const [foodInstructions, setFoodInstructions] = useState("");
@@ -52,17 +53,17 @@ const FoodDetail: React.FC<TFoodDetail> = ({ restaurantId, id }) => {
                     <FoodInformations />
                     <FoodInstructions foodInstructions={foodInstructions} setFoodInstructions={setFoodInstructions} />
                 </div>
-                <AddToCart />
+                <AddToCart foodInstructions={foodInstructions} />
             </div>
         </div>
     );
 
     return isMobile ? (
-        <SlidingModal show={!!id} onClose={navigateToRestaurantPage}>
+        <SlidingModal show={!!id && pathname.includes("product")} onClose={navigateToRestaurantPage}>
             {modalContent}
         </SlidingModal>
     ) : (
-        <Modal show={!!id} onClose={navigateToRestaurantPage}>
+        <Modal show={!!id && pathname.includes("product")} onClose={navigateToRestaurantPage}>
             {modalContent}
         </Modal>
     );

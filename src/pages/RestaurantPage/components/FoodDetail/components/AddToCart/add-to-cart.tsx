@@ -5,9 +5,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "store/actions/shopping-cart.actions";
 import { useNavigate, useParams } from "react-router-dom";
+import { TAddToCartProps } from "./types";
 
-const AddToCart: React.FC = () => {
-    const { restaurantId } = useParams<{ restaurantId: string }>();
+const AddToCart: React.FC<TAddToCartProps> = ({ foodInstructions }) => {
+    const { restaurantId, productId } = useParams<{ restaurantId: string; productId: string }>();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [foodCount, setFoodCount] = useState(1);
@@ -21,7 +22,7 @@ const AddToCart: React.FC = () => {
     };
 
     const addProductToCart = () => {
-        dispatch(addProduct({ id: 3, count: foodCount }));
+        dispatch(addProduct({ id: Number(productId)!, count: foodCount, instructions: foodInstructions }));
         navigate("/restaurant/" + restaurantId);
     };
 
