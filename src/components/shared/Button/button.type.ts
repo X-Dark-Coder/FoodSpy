@@ -19,6 +19,7 @@ export type TButtonMainProps = TButtonBaseProps & {
     /** Icon for button */
     icon?: any;
     price?: never;
+    rightSideElement?: any;
 };
 
 export type TButtonTabProps = TButtonBaseProps & {
@@ -26,6 +27,7 @@ export type TButtonTabProps = TButtonBaseProps & {
     /** Icon for button */
     icon?: never;
     price?: never;
+    rightSideElement?: never;
 };
 
 export type TButtonPaymentProps = TButtonBaseProps & {
@@ -34,12 +36,14 @@ export type TButtonPaymentProps = TButtonBaseProps & {
     icon?: any;
     /** Price for checkout variant */
     price: number;
+    rightSideElement?: never;
 };
 
 export type TButtonExpandProps = TButtonBaseProps & {
     variant: "expand-small" | "expand-medium";
     icon?: never;
     price?: never;
+    rightSideElement?: never;
 };
 
 export type TButtonProps = TButtonMainProps | TButtonTabProps | TButtonPaymentProps | TButtonExpandProps;

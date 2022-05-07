@@ -14,24 +14,25 @@ const Button: React.FC<TButtonProps> = ({
     onMouseUp,
     className,
     fullWidth,
+    rightSideElement,
     ...rest
 }) => {
     const buttonClasses = {
-        base: `text-large font-semibold rounded-lg flex justify-center items-center 
-        transition duration-100`,
-        "wide-primary": `w-[335px] h-[52px] bg-primary text-white hover:bg-primary-tint-10`,
-        "wide-primary-white": `w-[335px] h-[52px] bg-white text-primary hover:bg-primary-tint-40`,
-        "wide-secondary-white": `w-[335px] h-[52px] border-2 border-white text-white hover:bg-primary-tint-40
+        base: `font-semibold rounded-lg transition duration-100`,
+        "wide-primary": `text-large w-[335px] h-[52px] bg-primary text-white hover:bg-primary-tint-10`,
+        "wide-primary-white": `text-large w-[335px] h-[52px] bg-white text-primary hover:bg-primary-tint-40`,
+        "wide-secondary-white": `text-large  w-[335px] h-[52px] border-2 border-white text-white hover:bg-primary-tint-40
         hover:text-primary hover:border-primary-tint-40`,
-        "wide-secondary": `w-[335px] h-[52px] border-2 border-primary text-primary hover:bg-primary-tint-10
+        "wide-secondary": `text-large w-[335px] h-[52px] border-2 border-primary text-primary hover:bg-primary-tint-10
         hover:text-white hover:border-primary-tint-10`,
         "medium-1-primary": "",
         "medium-1-secondary": "",
         "medium-2-primary": "",
         "medium-2-secondary": "",
         "medium-2-link": "",
-        "small-primary": "",
-        "small-secondary": "",
+        "small-primary": "w-[74px] h-[36px] bg-primary text-white hover:bg-primary-tint-10 text-small",
+        "small-secondary": `w-[74px] h-[36px] border-2 border-primary text-primary hover:bg-primary-tint-10
+        hover:text-white hover:border-primary-tint-10 text-small`,
         "small-white": "",
         "extra-small-primary": "",
         "extra-small-icon": "",
@@ -46,26 +47,37 @@ const Button: React.FC<TButtonProps> = ({
         buttonClasses.base,
         disabled ? buttonClasses.disabled : buttonClasses[variant],
         className,
-        fullWidth ? "w-[100%_!important]" : null
+        fullWidth ? "w-[100%_!important]" : null,
+        rightSideElement ? "flex justify-between items-center px-3" : "flex justify-center items-center"
     );
 
     const buttonVariants: Variants = {
         tap: {
-            scale: 0.95,
-            transition : {
-                type : "tween",
-                duration : 0.1
-            }
+            scale: 0.96,
+            transition: {
+                type: "tween",
+                ease: "linear",
+                duration: 0.01,
+            },
         },
     };
 
     return (
-        <motion.button variants={buttonVariants} whileTap="tap" className={classes} {...rest}>
+        <motion.button
+            variants={buttonVariants}
+            transition={{ duration: 0.01 }}
+            whileTap="tap"
+            className={classes}
+            {...rest}
+        >
             {variant === "expand-small" && <ChevronRight width="15px" />}
             {variant === "expand-medium" && <ChevronRight width="18px" />}
 
-            {Icon && <Icon style={{ marginRight: "8px" }} width="16px" />}
-            {children}
+            <div className="flex justify-center items-center whitespace-nowrap">
+                {Icon && <Icon className="mr-2 w-[22px] h-[22px]" />}
+                {children}
+            </div>
+            {rightSideElement}
         </motion.button>
     );
 };
