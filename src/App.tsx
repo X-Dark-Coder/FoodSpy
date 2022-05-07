@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AppLayout, SplashScreen } from "layouts";
 import {
     AllCategoriesSubPage,
+    CheckoutSubPage,
     HomePage,
     NearbyRestaurantSubPage,
     OnboardingPage,
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path=":restaurantId/product/:productId" element={<RestaurantPage />} />
                 <Route path=":restaurantId" element={<RestaurantPage />} />
             </Route>
+            <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
             <Route path="/welcome" element={<OnboardingPage />} />
             <Route path="/*" element={<HomePage />} />
         </Routes>
