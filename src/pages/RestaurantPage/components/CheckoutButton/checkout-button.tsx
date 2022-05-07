@@ -22,7 +22,7 @@ const CheckoutButton: React.FC = () => {
     const redirectToCheckoutPage = () => navigate("/checkout/" + restaurantId);
 
     const containerVariants: Variants = {
-        hide: { y: 35, opacity: 0 },
+        hide: { y: 25, opacity: 0 },
         show: { y: 0, opacity: 1 },
     };
 
@@ -34,9 +34,14 @@ const CheckoutButton: React.FC = () => {
                     initial="hide"
                     animate="show"
                     exit="hide"
-                    className="fixed bottom-5 right-5"
+                    className="fixed bottom-5 flex justify-center items-center w-full md:w-auto md:block md:right-5"
                 >
-                    <Button variant="wide-primary" rightSideElement={rightSideTotalPrice} icon={ShoppingBag} onClick={redirectToCheckoutPage}>
+                    <Button
+                        variant="wide-primary"
+                        rightSideElement={rightSideTotalPrice}
+                        icon={ShoppingBag}
+                        onClick={redirectToCheckoutPage}
+                    >
                         {buttonText}
                     </Button>
                 </motion.div>

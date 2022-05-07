@@ -1,11 +1,18 @@
-import PageContainer from "containers/PageContainer/page-container";
+import { PageContainer } from "layouts"; 
 import { useEffect } from "react";
-import { Outlet, useParams } from "react-router-dom";
-import { FoodDetail, Header, PopularMenu, RightFromOvensMenu } from "./components";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { toggleBottomNavbar } from "store/actions/app.actions";
+import { CheckoutButton, FoodDetail, Header, PopularMenu, RightFromOvensMenu } from "./components";
 
 const RestaurantPage: React.FC = () => {
+    const dispatch = useDispatch();
     const { restaurantId, productId } = useParams<{ restaurantId: string; productId: string }>();
     
+    useEffect(() => {
+        dispatch(toggleBottomNavbar(false));
+    }, []);
+
     return (
         <PageContainer>
             <main className="w-full">
@@ -16,6 +23,7 @@ const RestaurantPage: React.FC = () => {
                 </div>
             </main>
             <FoodDetail restaurantId={Number(restaurantId)} id={Number(productId)} />
+            <CheckoutButton />
         </PageContainer>
     );
 };

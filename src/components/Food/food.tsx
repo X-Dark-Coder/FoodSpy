@@ -1,8 +1,10 @@
 import classNames from "classnames";
 import { TFoodProps } from "./types";
 import { OrderTime, Rate } from "components/shared";
+import { useNavigate } from "react-router-dom";
 
 const Food: React.FC<TFoodProps> = ({
+    id,
     variant = "column",
     name,
     orderTime,
@@ -11,8 +13,11 @@ const Food: React.FC<TFoodProps> = ({
     discount,
     picture,
     fullWidth,
+    restaurant,
     onClick
 }) => {
+    const navigate = useNavigate();
+
     const calculateDiscount = () => {
         return price - (price / 100) * discount!;
     };
@@ -42,9 +47,14 @@ const Food: React.FC<TFoodProps> = ({
         }
     );
 
+    const onContainerClicked = () => {
+        if(onClick) onClick();
+        navigate(`/restaurant/${restaurant}/product/${id}`)
+    }
+
     const columnVariantTemplate = (
         <div className="min-w-[160px] max-w-[160px] h-[270px] bg-white rounded-md shadow-main">
-            <div className="h-[129px] w-full relative cursor-pointer" onClick={onClick}>
+            <div className="h-[129px] w-full relative cursor-pointer" onClick={onContainerClicked}>
                 <img src={picture} alt="salad" className="w-full h-full rounded-t-md" />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-4 bg-accent-redd rounded-r-[2px] flex justify-center items-center">

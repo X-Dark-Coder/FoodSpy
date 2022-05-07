@@ -5,7 +5,7 @@ import { TSubPageProps } from "./types";
 import { ReactComponent as BackIcon } from "assets/icons/Back.svg";
 import { ReactComponent as SearchIcon } from "assets/icons/Search.svg";
 
-const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink }) => {
+const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink,title}) => {
     let subPageVariants: Variants = {
         hide: {
             y: 10,
@@ -42,7 +42,7 @@ const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink }) =>
                 <NavLink to={backLink}>
                     <BackIcon style={{ width: 24 }} />
                 </NavLink>
-                <h3 className="text-large font-semibold text-mono-ink">All Categories</h3>
+                <h3 className="text-large font-semibold text-mono-ink">{title}</h3>
                 {searchLink ? (
                     <NavLink to={searchLink}>
                         <SearchIcon style={{ width: 24 }} />

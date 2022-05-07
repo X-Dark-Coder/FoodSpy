@@ -5,6 +5,7 @@ import PopularFoodSubPage from "./PopularFoodSubPage/popular-food-sub-page";
 import NearbyRestaurantSubPage from "./NearbyRestaurantSubPage/nearby-restaurant-sub-page";
 import SearchPage from "./SearchPage/search-page";
 import RestaurantPage from "./RestaurantPage/restaurant-page";
+import CheckoutSubPage from "./CheckoutSubPage/checkout-sub-page";
 
 export {
     OnboardingPage,
@@ -13,5 +14,6 @@ export {
     PopularFoodSubPage,
     NearbyRestaurantSubPage,
     SearchPage,
-    RestaurantPage
+    RestaurantPage,
+    CheckoutSubPage
 }

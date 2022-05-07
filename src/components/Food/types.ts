@@ -1,14 +1,12 @@
 export type TFood = {
     id: number;
-    variant?: "column" | "row",
     discount?: number;
     price: number;
-    name : string;
+    name: string;
     rate: number;
-    orderTime : number;
-    picture : string;
-    fullWidth ?: boolean;
-    onClick?: () => void
+    orderTime: number;
+    picture: string;
+    restaurant: number;
 };
 
-export type TFoodProps = Omit<TFood,"id">;
+export type TFoodProps = { fullWidth?: boolean; onClick?: () => void; variant?: "column" | "row" } & TFood;
