@@ -7,6 +7,7 @@ import SearchPage from "./SearchPage/search-page";
 import RestaurantPage from "./RestaurantPage/restaurant-page";
 import CheckoutSubPage from "./CheckoutSubPage/checkout-sub-page";
 import ProfilePage from "./ProfilePage/profile-page";
+import NotFoundPage from "./NotFoundPage/not-found-page";
 
 export {
     OnboardingPage,
@@ -17,5 +18,6 @@ export {
     SearchPage,
     RestaurantPage,
     CheckoutSubPage,
-    ProfilePage
-}
+    ProfilePage,
+    NotFoundPage,
+};

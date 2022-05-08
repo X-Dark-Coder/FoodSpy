@@ -15,7 +15,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         initial="hide"
                         animate="show"
                         exit="hide"
-                        className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 justify-evenly px-4 py-2"
+                        className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 justify-evenly px-4 pb-[100px] pt-2 md:pb-2"
                     >
                         {result.foods.map((food) => {
                             return (
@@ -42,7 +42,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         initial="hide"
                         animate="show"
                         exit="hide"
-                        className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 px-4 py-2 justify-evenly"
+                        className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 px-4 pb-[100px] pt-2 md:pb-2 justify-evenly"
                     >
                         {result.restaurants.map((restaurant) => {
                             return (

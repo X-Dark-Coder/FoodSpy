@@ -1,11 +1,12 @@
 import { Modal, SlidingModal } from "components/shared";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { TFilterModalProps, TFilterRange } from "./types";
 import SelectFoodType from "./select-food-type";
 import SelectRangeCalories from "./select-range-calories";
 import SelectRangePrice from "./select-range-price";
 import { Button } from "components/shared";
+import { useNavigate, useParams } from "react-router-dom";
 
 const FilterModal: React.FC<TFilterModalProps> = ({ isOpen, setIsOpen, searchFilter, setSearchFilter }) => {
     const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
@@ -19,19 +20,15 @@ const FilterModal: React.FC<TFilterModalProps> = ({ isOpen, setIsOpen, searchFil
             calorieRange,
             priceRange,
         });
+        setIsOpen(false);
     };
-    
+
     const modalContent = (
         <div className="flex justify-center items-center w-full flex-col p-5">
             <SelectFoodType selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
             <SelectRangePrice priceRange={priceRange} setPriceRange={setPriceRange} />
             <SelectRangeCalories calorieRange={calorieRange} setCalorieRange={setCalorieRange} />
-            <Button
-                className="mt-[32px]"
-                variant="wide-primary"
-                onClick={saveFilter}
-                fullWidth
-            >
+            <Button className="mt-[32px]" variant="wide-primary" onClick={saveFilter} fullWidth>
                 Filter
             </Button>
         </div>

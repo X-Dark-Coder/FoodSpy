@@ -7,6 +7,7 @@ import {
     CheckoutSubPage,
     HomePage,
     NearbyRestaurantSubPage,
+    NotFoundPage,
     OnboardingPage,
     PopularFoodSubPage,
     ProfilePage,
@@ -24,7 +25,7 @@ const App = () => {
 
     const routes = (
         <Routes location={location} key={location.pathname.split("/")[1]}>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/all-categories" element={<AllCategoriesSubPage />} />
             <Route path="/popular-food" element={<PopularFoodSubPage />} />
             <Route path="/nearby-restaurant" element={<NearbyRestaurantSubPage />} />
@@ -39,7 +40,7 @@ const App = () => {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
             <Route path="/welcome" element={<OnboardingPage />} />
-            <Route path="/*" element={<HomePage />} />
+            <Route path="/*" element={<NotFoundPage />} />
         </Routes>
     );
 
