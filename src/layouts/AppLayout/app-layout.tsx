@@ -4,8 +4,11 @@ import { SideMenu, TopNavbar } from "./components";
 import { TAppLayoutProps } from "./types";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useTypedSelector } from "hooks/useTypedSelector";
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 const AppLayout: React.FC<TAppLayoutProps> = ({ children }) => {
+    const { pathname } = useLocation();
     const showBottomNavbar = useTypedSelector((state) => state.app.showBottomNavbar);
 
     const bottomNavbarVariants: Variants = {
@@ -25,14 +28,24 @@ const AppLayout: React.FC<TAppLayoutProps> = ({ children }) => {
         },
     };
 
+    const container = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setTimeout(() => {
+            container.current?.scrollTo(0, 0);
+        }, 200);
+    }, [pathname]);
+
     return (
         <main className="w-full h-screen bg-mono-sky-lightest flex justify-start items-start">
             <SideMenu />
-            <div className="w-full md:w-[calc(100%_-_230px)] h-full overflow-x-hidden hide-scrollbar">
+            <div className="w-full md:w-[calc(100%_-_230px)] h-screen overflow-hidden">
                 <MediaQuery minWidth={1024}>
                     <TopNavbar />
                 </MediaQuery>
-                <div className="md:mt-14">{children}</div>
+                <div className="h-full md:h-[calc(100vh_-_58px)] overflow-y-scroll hide-scrollbar" ref={container}>
+                    {children}
+                </div>
             </div>
             <AnimatePresence>
                 {showBottomNavbar ? (

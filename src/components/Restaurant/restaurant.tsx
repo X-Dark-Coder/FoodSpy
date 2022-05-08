@@ -1,22 +1,29 @@
 import classNames from "classnames";
 import { Rate } from "components/shared";
+import { useNavigate } from "react-router-dom";
 import { TRestaurantProps } from "./types";
 
-const Restaurant: React.FC<TRestaurantProps> = ({ categories, closed, distance, name, openAt, rate, picture }) => {
+const Restaurant: React.FC<TRestaurantProps> = ({ id, categories, closed, distance, name, openAt, rate, picture }) => {
+    const navigate = useNavigate();
+
     const renderCategories = () => {
-        return categories.map((category,index) => {
-            if(index + 1 !== categories.length) return category + ", ";
+        return categories.map((category, index) => {
+            if (index + 1 !== categories.length) return category + ", ";
             else return category;
         });
     };
 
-    const pictureClasses = classNames("w-full h-full object-cover absolute rounded-t-lg",{
-        "grayscale" : closed
-    })
+    const pictureClasses = classNames("w-full h-full object-cover absolute rounded-t-lg", {
+        grayscale: closed,
+    });
+
+    const onContainerClicked = () => {
+         navigate(`/restaurant/${id}`)
+     }
 
     return (
         <div className="min-w-[335px] max-w-[335px] h-[170px] shadow-main rounded-lg bg-white">
-            <div className="w-full h-[100px] relative rounded-t-lg">
+            <div className="w-full h-[100px] relative rounded-t-lg cursor-pointer" onClick={onContainerClicked}>
                 <img src={picture} alt="restaurant" className={pictureClasses} />
                 <div className="bg-mono-sky-lightest w-[50px] h-[20px] rounded-[4px] absolute bottom-[9px] left-[9px] flex justify-center items-center">
                     <span className="text-mono-ink-light text-[12px] translate-y-px">{distance} km</span>

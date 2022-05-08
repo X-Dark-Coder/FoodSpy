@@ -1,4 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { AppLayout, SplashScreen } from "layouts";
 import {
     AllCategoriesSubPage,
@@ -7,12 +9,10 @@ import {
     NearbyRestaurantSubPage,
     OnboardingPage,
     PopularFoodSubPage,
+    ProfilePage,
     RestaurantPage,
     SearchPage,
 } from "pages";
-import { AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { FoodDetail } from "pages/RestaurantPage/components";
 
 const App = () => {
     const location = useLocation();
@@ -36,6 +36,7 @@ const App = () => {
                 <Route path=":restaurantId/product/:productId" element={<RestaurantPage />} />
                 <Route path=":restaurantId" element={<RestaurantPage />} />
             </Route>
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
             <Route path="/welcome" element={<OnboardingPage />} />
             <Route path="/*" element={<HomePage />} />

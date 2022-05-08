@@ -1,4 +1,4 @@
-import Navbar from "../../../../components/Navbar/navbar";
+import { Navbar } from "components";
 
 const SideMenu: React.FC = () => {
     return (

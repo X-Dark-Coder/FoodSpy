@@ -10,6 +10,7 @@ import {
     TActionRemoveProduct,
     TActionSetDiscount,
 } from "store/actions/shopping-cart.types";
+import { calculateDiscount } from "./utils";
 
 const init: TShoppingCartState = {
     products: [],
@@ -49,11 +50,12 @@ export const shoppingCartReducer = (state: TShoppingCartState = init, action: TA
 const addProductReducer = (state: TShoppingCartState, action: TActionAddProduct) => {
     const originalProduct = foods.find((product) => product.id === action.payload.id)!;
     const productIndex = state.products.findIndex((product) => product.id === action.payload.id);
+    const priceToReduce = calculateDiscount(originalProduct.price, state.discount);
 
     const lastState = {
         ...state,
         productsCount: state.productsCount + action.payload.count,
-        totalPrice: state.totalPrice + action.payload.count * originalProduct.price,
+        totalPrice: state.totalPrice + action.payload.count * (originalProduct.price - priceToReduce),
     };
 
     if (productIndex !== -1) {
@@ -126,19 +128,21 @@ const changeProductCountReducer = (state: TShoppingCartState, action: TActionCha
         products: copyOfProducts,
     };
 
+    const priceToReduce = calculateDiscount(originalProduct.price, state.discount);
+
     if (productIndex !== -1) {
         if (action.payload.type === "increase") {
             copyOfProducts[productIndex].count += 1;
             return {
                 ...lastState,
-                totalPrice: state.totalPrice + originalProduct.price,
+                totalPrice: state.totalPrice + originalProduct.price - priceToReduce,
                 productsCount: state.productsCount + 1,
             };
         } else {
             copyOfProducts[productIndex].count -= 1;
             return {
                 ...lastState,
-                totalPrice: state.totalPrice - originalProduct.price,
+                totalPrice: state.totalPrice - originalProduct.price + priceToReduce,
                 productsCount: state.productsCount - 1,
             };
         }
@@ -171,8 +175,8 @@ const changeProductInstructionsReducer = (state: TShoppingCartState, action: TAc
  */
 
 const setDiscountReducer = (state: TShoppingCartState, action: TActionSetDiscount) => {
-    const priceToReduce = Number(((state.totalPrice / 100) * action.payload).toFixed(1));
-    return { ...state, discount: priceToReduce, totalPrice: state.totalPrice - priceToReduce };
+    const priceToReduce = calculateDiscount(state.totalPrice, action.payload);
+    return { ...state, discount: action.payload, totalPrice: state.totalPrice - priceToReduce };
 };
 
 /**
@@ -180,5 +184,6 @@ const setDiscountReducer = (state: TShoppingCartState, action: TActionSetDiscoun
  */
 
 const removeDiscountReducer = (state: TShoppingCartState) => {
-    return { ...state, discount: 0, totalPrice: state.totalPrice + state.discount };
+    const discount = calculateDiscount((state.totalPrice / (100 - state.discount)) * 100, state.discount);
+    return { ...state, discount: 0, totalPrice: state.totalPrice + discount };
 };

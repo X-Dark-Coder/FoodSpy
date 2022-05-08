@@ -1,5 +1,5 @@
 import { SearchInput } from "components/shared";
-import { PageContainer } from "layouts"; 
+import { PageContainer } from "layouts";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -105,6 +105,7 @@ const SearchPage: React.FC = () => {
                         </motion.div>
                     ) : (
                         <motion.div
+                        layout
                             key={2}
                             variants={searchSectionsVariants}
                             initial="hide"

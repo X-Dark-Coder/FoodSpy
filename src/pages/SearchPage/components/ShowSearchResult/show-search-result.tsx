@@ -47,6 +47,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         {result.restaurants.map((restaurant) => {
                             return (
                                 <Restaurant
+                                    id={restaurant.id}
                                     categories={restaurant.categories}
                                     distance={restaurant.distance}
                                     name={restaurant.name}

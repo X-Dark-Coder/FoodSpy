@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
 
     return (
         <PageContainer>
-            <main className="w-full h-full">
+            <main className="w-full pb-[100px] md:pb-20">
                 <MediaQuery maxWidth={1024}>
                     <TopNavbar />
                 </MediaQuery>

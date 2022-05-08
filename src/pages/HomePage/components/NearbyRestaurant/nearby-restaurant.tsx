@@ -4,7 +4,7 @@ import { Restaurant } from "components";
 import { SeeAll } from "components/shared";
 import classNames from "classnames";
 
-const NearbyRestaurant: React.FC = () => {    
+const NearbyRestaurant: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 400px)" });
 
     const restaurants = [
@@ -76,6 +76,7 @@ const NearbyRestaurant: React.FC = () => {
             <div className={restaurantsContainerClasses}>
                 {restaurants.map((restaurant) => (
                     <Restaurant
+                        id={restaurant.id}
                         categories={restaurant.categories}
                         distance={restaurant.distance}
                         name={restaurant.name}

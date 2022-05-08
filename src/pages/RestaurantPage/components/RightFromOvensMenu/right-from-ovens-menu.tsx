@@ -8,15 +8,15 @@ import { foods } from "api/fakeApi";
 
 const RightFromOvensMenu: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width : 500px)" });
-    const [activeTab, setActiveTab] = useState(0);
+    const [activeTab, setActiveTab] = useState(1);
 
     const tabs: TTabMenuItem[] = [
-        { id: 34, name: "All Menu" },
-        { id: 1, name: "Breakfast" },
-        { id: 2, name: "Lunch" },
-        { id: 3, name: "Beverage" },
-        { id: 4, name: "Lunch" },
-        { id: 5, name: "Beverage" },
+        { id: 1, name: "All Menu" },
+        { id: 2, name: "Breakfast" },
+        { id: 3, name: "Lunch" },
+        { id: 4, name: "Beverage" },
+        { id: 5, name: "Lunch" },
+        { id: 6, name: "Beverage" },
     ];
 
     const tabMenusContainerClasses = classNames("mt-6 px-5 w-full flex justify-start items-center gap-5", {

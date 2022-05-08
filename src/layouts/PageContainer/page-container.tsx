@@ -4,8 +4,6 @@ import classNames from "classnames";
 import { useMediaQuery } from "react-responsive";
 
 const PageContainer: React.FC<TPageContainerProps> = ({ children }) => {
-    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-
     const containerVariants: Variants = {
         initial: {
             y: 10,
@@ -23,9 +21,7 @@ const PageContainer: React.FC<TPageContainerProps> = ({ children }) => {
         },
     };
 
-    const containerClasses = classNames("w-full h-full", {
-        "pb-[110px]": isMobile,
-    });
+    const containerClasses = classNames("w-full h-full");
 
     return (
         <motion.div

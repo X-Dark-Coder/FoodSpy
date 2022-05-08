@@ -23,7 +23,7 @@ const Food: React.FC<TFoodProps> = ({
     };
 
     const additionalInfoContainerClasses = classNames("flex flex-col justify-between", {
-        "p-3": variant === "column",
+        "p-3 h-[140px]": variant === "column",
         "h-full py-[10px] pr-4 pl-2": variant === "row",
         "w-[calc(100%_-_120px)]": fullWidth
     });
@@ -54,7 +54,7 @@ const Food: React.FC<TFoodProps> = ({
 
     const columnVariantTemplate = (
         <div className="min-w-[160px] max-w-[160px] h-[270px] bg-white rounded-md shadow-main">
-            <div className="h-[129px] w-full relative cursor-pointer" onClick={onContainerClicked}>
+            <div className="h-[130px] w-full relative cursor-pointer" onClick={onContainerClicked}>
                 <img src={picture} alt="salad" className="w-full h-full rounded-t-md" />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-4 bg-accent-redd rounded-r-[2px] flex justify-center items-center">

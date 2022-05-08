@@ -61,9 +61,10 @@ const NearbyRestaurantSubPage: React.FC = () => {
 
     return (
         <SubPage backLink="/home" title="Nearby Restaurant">
-            <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 justify-evenly px-4 py-2">
+            <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 pb-10 justify-evenly px-4 pt-2">
                 {restaurants.map((restaurant) => (
                     <Restaurant
+                        id={restaurant.id}
                         categories={restaurant.categories}
                         distance={restaurant.distance}
                         name={restaurant.name}

@@ -22,10 +22,10 @@ const Discount: React.FC = () => {
         dispatch(removeDiscount());
     };
 
-    return (        
-    <motion.section layout className="mt-6 w-full max-w-[500px]">
+    return (
+        <motion.section layout className="mt-6 w-full max-w-[500px]">
             <h3 className="text-mono-ink text-title-3 font-bold px-5">Discount</h3>
-            <div className="flex justify-between items-center w-full h-[52px] rounded-md shadow-main md:shadow-none gap-3 mt-5 px-5">
+            <div className="flex justify-between items-center w-full h-[52px] rounded-md gap-3 mt-5 px-5">
                 <Input
                     variant="simple"
                     type="text"

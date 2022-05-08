@@ -17,7 +17,7 @@ const RestaurantPage: React.FC = () => {
         <PageContainer>
             <main className="w-full">
                 <Header />
-                <div className="bg-white md:bg-transparent w-full pb-5 pt-6 md:pb-0 rounded-t-2xl -translate-y-5 md:translate-y-0 md:rounded-none">
+                <div className="bg-white md:bg-transparent w-full pb-[80px] pt-6 rounded-t-2xl -translate-y-5 md:translate-y-0 md:rounded-none">
                     <PopularMenu />
                     <RightFromOvensMenu />
                 </div>

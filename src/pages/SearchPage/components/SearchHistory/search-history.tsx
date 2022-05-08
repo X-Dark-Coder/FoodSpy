@@ -4,6 +4,7 @@ import HistoryItem from "./history-item";
 import { removeHistory } from "./historyStorage";
 import { TSearchHistoryProps } from "./types";
 import { foods, restaurants } from "api/fakeApi";
+import { motion } from "framer-motion";
 
 const SearchHistory: React.FC<TSearchHistoryProps> = ({ history, setHistory, setSearchResult }) => {
     const navigate = useNavigate();
@@ -34,13 +35,13 @@ const SearchHistory: React.FC<TSearchHistoryProps> = ({ history, setHistory, set
     };
 
     return (
-        <section className="w-full">
-            <div className="flex justify-between items-center mt-6 w-full">
+        <motion.section layout className="w-full">
+            <motion.div layout className="flex justify-between items-center mt-6 w-full">
                 <h3 className="text-mono-ink text-title-3 font-semibold">Search History</h3>
                 <button className="text-primary text-medium-16 font-semibold" onClick={clearHistory}>
                     Clear
                 </button>
-            </div>
+            </motion.div>
             <div className="w-full flex justify-start items-start flex-col mt-5 gap-4">
                 {history.map(({ id, searchText }) => (
                     <HistoryItem
@@ -52,7 +53,7 @@ const SearchHistory: React.FC<TSearchHistoryProps> = ({ history, setHistory, set
                     />
                 ))}
             </div>
-        </section>
+        </motion.section>
     );
 };
 

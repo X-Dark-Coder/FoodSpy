@@ -1,11 +1,19 @@
 import { motion, Variants } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { TSubPageProps } from "./types";
 import { ReactComponent as BackIcon } from "assets/icons/Back.svg";
 import { ReactComponent as SearchIcon } from "assets/icons/Search.svg";
+import { toggleBottomNavbar } from "store/actions/app.actions";
+import { useDispatch } from "react-redux";
 
-const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink,title}) => {
+const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink, title }) => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+         dispatch(toggleBottomNavbar(false));
+     }, []);
+
     let subPageVariants: Variants = {
         hide: {
             y: 10,
@@ -23,29 +31,22 @@ const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink,title
         },
     };
 
-    const container = useRef<HTMLDivElement>(null);
-
-    // useEffect(() => {
-    //     requestAnimationFrame(() => container.current?.scrollTo(0, 0));
-    // }, []);
-
     return (
         <motion.div
             variants={subPageVariants}
             initial="hide"
             animate="show"
             exit="hide"
-            className="w-full h-screen bg-mono-sky-lightest z-[800] relative overflow-y-scroll"
-            ref={container}
+            className="w-full h-full bg-mono-sky-lightest z-[800] relative"
         >
-            <div className="w-full px-4 py-3 flex justify-between items-center">
+            <div className="w-full px-4 pt-6 sm:py-6 flex justify-between items-center">
                 <NavLink to={backLink}>
-                    <BackIcon style={{ width: 24 }} />
+                    <BackIcon className="w-6 sm:w-7 h-6 sm:h-7" />
                 </NavLink>
-                <h3 className="text-large font-semibold text-mono-ink">{title}</h3>
+                <h3 className="text-large sm:text-title-3 font-semibold text-mono-ink">{title}</h3>
                 {searchLink ? (
                     <NavLink to={searchLink}>
-                        <SearchIcon style={{ width: 24 }} />
+                        <SearchIcon className="w-6 sm:w-7 h-6 sm:h-7" />
                     </NavLink>
                 ) : (
                     <div className="w-1"></div>

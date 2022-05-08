@@ -3,6 +3,7 @@ import PopularSearchItem from "./popular-search-item";
 import { TPopularSearchItem, TPopularSearchProps } from "./types";
 import { foods, restaurants } from "api/fakeApi";
 import { addHistory } from "../SearchHistory/historyStorage";
+import { motion } from "framer-motion";
 
 const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistory}) => {
     const navigate = useNavigate();
@@ -68,7 +69,7 @@ const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistor
     };
 
     return (
-        <section className="w-full">
+        <motion.section layout className="w-full">
             <div className="flex justify-start items-center mt-6 w-full">
                 <h3 className="text-mono-ink text-title-3 font-semibold">Popular Search</h3>
             </div>
@@ -77,7 +78,7 @@ const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistor
                     <PopularSearchItem key={id} text={text} onClick={() => onPopularSearchItemClicked(text)}/>
                 ))}
             </div>
-        </section>
+        </motion.section>
     );
 };
 

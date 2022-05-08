@@ -124,7 +124,7 @@ const AllCategoriesSubPage: React.FC = () => {
 
     return (
         <SubPage backLink="/home" title="All Categories">
-            <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_157px)] gap-5 px-4 py-2 justify-evenly">
+            <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_157px)] gap-5 px-4 pt-2 pb-10 justify-evenly">
                 {categories.map((category) => (
                     <FoodCategory
                         key={category.id}

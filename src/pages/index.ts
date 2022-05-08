@@ -6,6 +6,7 @@ import NearbyRestaurantSubPage from "./NearbyRestaurantSubPage/nearby-restaurant
 import SearchPage from "./SearchPage/search-page";
 import RestaurantPage from "./RestaurantPage/restaurant-page";
 import CheckoutSubPage from "./CheckoutSubPage/checkout-sub-page";
+import ProfilePage from "./ProfilePage/profile-page";
 
 export {
     OnboardingPage,
@@ -15,5 +16,6 @@ export {
     NearbyRestaurantSubPage,
     SearchPage,
     RestaurantPage,
-    CheckoutSubPage
+    CheckoutSubPage,
+    ProfilePage
 }

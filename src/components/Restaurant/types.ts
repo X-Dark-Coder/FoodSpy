@@ -9,4 +9,4 @@ export type TRestaurant = {
     picture: any;
 };
 
-export type TRestaurantProps = Omit<TRestaurant, "id">;
+export type TRestaurantProps = TRestaurant;

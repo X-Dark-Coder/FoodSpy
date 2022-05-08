@@ -1,6 +1,7 @@
 import { foods } from "api/fakeApi";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { motion } from "framer-motion";
+import { calculateDiscount } from "store/reducers/utils";
 
 const OrderReview: React.FC = () => {
     const products = useTypedSelector((state) => state.cart.products);
@@ -26,7 +27,9 @@ const OrderReview: React.FC = () => {
                 {discount !== 0 && (
                     <div className="w-full text-mono-ink text-medium font-semibold flex justify-between items-center">
                         <span>Discount</span>
-                        <span className="text-accent-green">${discount}</span>
+                        <span className="text-accent-green">
+                            ${calculateDiscount((totalPrice / (100 - discount)) * 100, discount)}
+                        </span>
                     </div>
                 )}
 

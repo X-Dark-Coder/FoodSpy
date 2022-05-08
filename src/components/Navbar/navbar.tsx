@@ -17,17 +17,17 @@ const Navbar: React.FC = () => {
                 <NavbarItem to="/home" activeIcon={HomeIconActive} disableIcon={HomeIconPasive} className="mt-2">
                     Home
                 </NavbarItem>
-                <NavbarItem to="/order" activeIcon={OrderIconActive} disableIcon={OrderIconPasive} className="mt-2">
-                    Order
-                </NavbarItem>
-                <NavbarItem to="/profile" activeIcon={ProfileIconActive} disableIcon={ProfileIconPasive} className="mt-2">
-                    Profile
-                </NavbarItem>
                 <NavbarItem to="/search" activeIcon={SearchIconActive} disableIcon={SearchIconPasive} className="mt-2">
                     Search
                 </NavbarItem>
+                <NavbarItem to="/order" activeIcon={OrderIconActive} disableIcon={OrderIconPasive} className="mt-2">
+                    Order
+                </NavbarItem>
                 <NavbarItem to="/updates" activeIcon={UpdatesIconActive} disableIcon={UpdatesIconPasive} className="mt-2">
                     Updates
+                </NavbarItem>
+                <NavbarItem to="/profile" activeIcon={ProfileIconActive} disableIcon={ProfileIconPasive} className="mt-2">
+                    Profile
                 </NavbarItem>
             </ul>
         </nav>
