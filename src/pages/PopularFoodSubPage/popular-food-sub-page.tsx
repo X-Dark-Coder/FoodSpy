@@ -1,5 +1,5 @@
 import { SubPage } from "layouts";
-import { foods as popularFoods } from "api/fakeApi";
+import { fakeFoods as popularFoods } from "api/foods";
 import { Food } from "components";
 
 const PopularFoodSubPage: React.FC = () => {

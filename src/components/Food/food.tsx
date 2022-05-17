@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { TFoodProps } from "./types";
 import { OrderTime, Rate } from "components/shared";
 import { useNavigate } from "react-router-dom";
+import { calculateDiscount } from "store/reducers/utils";
 
 const Food: React.FC<TFoodProps> = ({
     id,
@@ -14,18 +15,14 @@ const Food: React.FC<TFoodProps> = ({
     picture,
     fullWidth,
     restaurant,
-    onClick
+    onClick,
 }) => {
     const navigate = useNavigate();
-
-    const calculateDiscount = () => {
-        return price - (price / 100) * discount!;
-    };
 
     const additionalInfoContainerClasses = classNames("flex flex-col justify-between", {
         "p-3 h-[140px]": variant === "column",
         "h-full py-[10px] pr-4 pl-2": variant === "row",
-        "w-[calc(100%_-_120px)]": fullWidth
+        "w-[calc(100%_-_120px)]": fullWidth,
     });
 
     const additionalInfoWrapperClasses = classNames("flex", {
@@ -48,17 +45,19 @@ const Food: React.FC<TFoodProps> = ({
     );
 
     const onContainerClicked = () => {
-        if(onClick) onClick();
-        navigate(`/restaurant/${restaurant}/product/${id}`)
-    }
+        if (onClick) onClick();
+        navigate(`/restaurant/${restaurant}/product/${id}`);
+    };
 
     const columnVariantTemplate = (
         <div className="min-w-[160px] max-w-[160px] h-[270px] bg-white rounded-md shadow-main">
             <div className="h-[130px] w-full relative cursor-pointer" onClick={onContainerClicked}>
-                <img src={picture} alt="salad" className="w-full h-full rounded-t-md" />
+                <img src={picture} alt="salad" className="w-full h-full rounded-t-md object-cover absolute top-0" />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-4 bg-accent-redd rounded-r-[2px] flex justify-center items-center">
-                        <span className="text-accent-redd-tint-40 font-semibold text-[12px]">-{discount}%</span>
+                        <span className="text-accent-redd-tint-40 font-semibold text-[12px]">
+                            -{discount}%
+                        </span>
                     </div>
                 )}
             </div>
@@ -72,14 +71,16 @@ const Food: React.FC<TFoodProps> = ({
                 </div>
                 <div className={additionalInfoWrapperClasses}>
                     <div className="flex justify-center items-end">
-                        <span className="text-title-4 text-primary font-bold mr-1">${price}</span>
+                        <span className="text-title-4 text-primary font-bold mr-1">
+                            ${price - calculateDiscount(price, discount)}
+                        </span>
                         {discount && (
                             <span className="line-through text-mono-ink-lightest text-[14px] translate-y-px">
-                                ${calculateDiscount()}
+                                ${price}
                             </span>
                         )}
                     </div>
-                    <span className={foodCountInCartClasses}>x 1 in cart</span>
+                    {/* <span className={foodCountInCartClasses}>x 1 in cart</span> */}
                 </div>
             </div>
         </div>
@@ -91,7 +92,7 @@ const Food: React.FC<TFoodProps> = ({
                 <img
                     src={picture}
                     alt="salad"
-                    className="w-full h-full rounded-md object-cover absolute top-0 left-0"
+                    className="w-full h-full rounded-md object-cover absolute top-0"
                 />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-[6px] bg-accent-redd rounded-r-[2px] flex justify-center items-center">
@@ -103,10 +104,12 @@ const Food: React.FC<TFoodProps> = ({
                 <div className={additionalInfoWrapperClasses}>
                     <div className="flex items-start justify-between w-full">
                         <div className="flex justify-center items-start">
-                            <span className="text-title-4 text-primary font-bold mr-1">${price}</span>
+                            <span className="text-title-4 text-primary font-bold mr-1">
+                                ${price - calculateDiscount(price, discount)}
+                            </span>
                             {discount && (
                                 <span className="line-through text-mono-ink-lightest text-[14px] translate-y-px">
-                                    ${calculateDiscount()}
+                                    ${price}
                                 </span>
                             )}
                         </div>

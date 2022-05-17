@@ -6,10 +6,11 @@ import { ReactComponent as MinusIcon } from "assets/icons/Minus.svg";
 import { useDispatch } from "react-redux";
 import { changeProductCount, changeProductInstructions, removeProduct } from "store/actions/shopping-cart.actions";
 import { useMediaQuery } from "react-responsive";
-import { motion, AnimatePresence, Variants, useAnimation } from "framer-motion";
+import { motion, Variants, useAnimation } from "framer-motion";
 import classNames from "classnames";
+import { calculateDiscount } from "store/reducers/utils";
 
-const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instruction }) => {
+const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instruction, discount }) => {
     const dispatch = useDispatch();
     const isMobile = useMediaQuery({ query: "(max-width : 500px)" });
     const animationControls = useAnimation();
@@ -114,7 +115,7 @@ const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instru
                         animate={animationControls}
                         className="text-mono-ink font-semibold text-large"
                     >
-                        ${count * price}
+                        ${count * (discount ? price - calculateDiscount(price, discount) : price)}
                     </motion.span>
                     <div className="flex justify-center items-center gap-4">
                         <button

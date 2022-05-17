@@ -1,4 +1,4 @@
-import { foods } from "api/fakeApi";
+import { fakeFoods as foods } from "api/foods";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { motion } from "framer-motion";
 import { calculateDiscount } from "store/reducers/utils";
@@ -7,6 +7,14 @@ const OrderReview: React.FC = () => {
     const products = useTypedSelector((state) => state.cart.products);
     const totalPrice = useTypedSelector((state) => state.cart.totalPrice);
     const discount = useTypedSelector((state) => state.cart.discount);
+
+    const productFinalPrice = (count: number, target: any) => {
+        if (target.discount) {
+            return count * (target.price - calculateDiscount(target.price, target.discount));
+        }
+
+        return count * target.price;
+    };
 
     return (
         <motion.section layout className="mt-6 lg:mt-0 w-full">
@@ -19,7 +27,7 @@ const OrderReview: React.FC = () => {
                             <span>
                                 {targetProduct.name} ({count} items)
                             </span>
-                            <span>${count * targetProduct.price}</span>
+                            <span>${productFinalPrice(count, targetProduct)}</span>
                         </div>
                     );
                 })}

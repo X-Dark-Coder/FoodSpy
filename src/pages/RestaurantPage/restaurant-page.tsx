@@ -1,4 +1,4 @@
-import { PageContainer } from "layouts"; 
+import { PageContainer } from "layouts";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -8,8 +8,10 @@ import { CheckoutButton, FoodDetail, Header, PopularMenu, RightFromOvensMenu } f
 const RestaurantPage: React.FC = () => {
     const dispatch = useDispatch();
     const { restaurantId, productId } = useParams<{ restaurantId: string; productId: string }>();
-    
+
     useEffect(() => {
+        const container = document.getElementById("app-scrollable-container")!;
+        container.scrollTo(0, 0);
         dispatch(toggleBottomNavbar(false));
     }, []);
 

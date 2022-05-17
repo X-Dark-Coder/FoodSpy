@@ -1,6 +1,6 @@
 import { Food } from "components";
 import { SeeAll } from "components/shared";
-import { foods as popularFoods } from "api/fakeApi";
+import { fakeFoods as popularFoods } from "api/foods";
 
 const PopularFood: React.FC = () => {
     return (

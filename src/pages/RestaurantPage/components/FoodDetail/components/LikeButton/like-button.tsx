@@ -1,9 +1,30 @@
-import { TLikeButtonProps } from "./types";
-import { motion, Variants, AnimatePresence } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ReactComponent as HeartIcon } from "assets/icons/Heart.svg";
 import { ReactComponent as HeartFillIcon } from "assets/icons/Heart-fill.svg";
+import { useTypedSelector } from "hooks/useTypedSelector";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addFoodToWishlist, removeFoodFromWishlist } from "store/actions/user.actions";
+import { useState } from "react";
 
-const LikeButton: React.FC<TLikeButtonProps> = ({ isLiked, setIsLiked }) => {
+const LikeButton: React.FC = () => {
+    const { productId } = useParams<{ productId: string }>();
+    const dispatch = useDispatch();
+    const isFoodInWishlist = useTypedSelector((state) =>
+        state.user.wishlist.find((itemId) => itemId === Number(productId))
+    );
+    const [isLiked, setIsLiked] = useState(!!isFoodInWishlist);
+
+    const removeFoodFromWishlistHandler = () => {
+        setIsLiked(false);
+        dispatch(removeFoodFromWishlist(Number(productId)));
+    };
+
+    const addFoodToWishlistHandler = () => {
+        setIsLiked(true);
+        dispatch(addFoodToWishlist(Number(productId)));
+    };
+
     const likeIconVariants: Variants = {
         unliked: {
             scale: 1,
@@ -24,7 +45,7 @@ const LikeButton: React.FC<TLikeButtonProps> = ({ isLiked, setIsLiked }) => {
     return (
         <button
             className="flex justify-center items-center absolute top-2 right-2 z-50 w-9 h-9 rounded-full bg-[rgba(0,0,0,0.6)]"
-            onClick={() => setIsLiked(!isLiked)}
+            onClick={isLiked ? removeFoodFromWishlistHandler : addFoodToWishlistHandler}
         >
             {isLiked ? (
                 <motion.div variants={likeIconVariants} animate="liked">

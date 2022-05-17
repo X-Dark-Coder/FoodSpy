@@ -26,4 +26,5 @@ export const changeProductInstructions = ({ id, instructions }: { id: number; in
 
 export const setDiscount = (percent: number) => ({ type: ActionType.SET_DISCOUNT, payload: percent });
 
-export const removeDiscount = () => ({ type: ActionType.REMOVE_DISCOUNT});
+export const removeDiscount = () => ({ type: ActionType.REMOVE_DISCOUNT });
+

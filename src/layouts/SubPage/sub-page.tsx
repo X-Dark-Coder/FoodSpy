@@ -11,8 +11,10 @@ const SubPage: React.FC<TSubPageProps> = ({ children, backLink, searchLink, titl
     const dispatch = useDispatch();
 
     useEffect(() => {
-         dispatch(toggleBottomNavbar(false));
-     }, []);
+        const container = document.getElementById("app-scrollable-container")!;
+        container.scrollTo(0, 0);
+        dispatch(toggleBottomNavbar(false));
+    }, []);
 
     let subPageVariants: Variants = {
         hide: {

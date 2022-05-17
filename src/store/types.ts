@@ -1,3 +1,5 @@
+import { THistoryItem } from "pages/SearchPage/components/SearchHistory/types";
+
 export type TShoppingCartFoodItem = {
     id: number;
     count: number;
@@ -13,10 +15,29 @@ export type TShoppingCartState = {
 };
 
 export type TAppState = {
-    showBottomNavbar : boolean;
+    showBottomNavbar: boolean;
+};
+
+type TUpdate = {
+    type: "Order" | "Topup";
+    title: string;
+    description: string;
+    date: string;
+};
+
+export type TUserState = {
+    name?: string;
+    email?: string;
+    phone?: number;
+    walletCredit: number;
+    wishlist: number[];
+    updates?: TUpdate[];
+    searchHistory: THistoryItem[];
+    orderHistory?: any[];
 };
 
 export type TRootState = {
     cart: TShoppingCartState;
     app: TAppState;
+    user: TUserState;
 };

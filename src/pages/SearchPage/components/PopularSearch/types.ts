@@ -12,5 +12,4 @@ export type TPopularSearchItemProps = {
 
 export type TPopularSearchProps = {
     setSearchResult: (search : TSearchResult) => void;
-    setHistory: (history: THistoryItem[]) => void;
 }

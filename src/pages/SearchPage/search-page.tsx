@@ -7,17 +7,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Filter, PopularSearch, ResultTabs, SearchHistory, ShowSearchResult } from "./components";
 import { TSearchFilter } from "./components/Filter/types";
 import { TTabs } from "./components/ResultTabs/types";
-import { addHistory, getHistory } from "./components/SearchHistory/historyStorage";
 import { TSearchResult } from "./components/ShowSearchResult/types";
 import { searchSectionsVariants } from "./search-page.constants";
-import { restaurants, foods } from "api/fakeApi";
+import { fakeFoods as foods } from "api/foods";
+import { fakeRestaurants as restaurants } from "api/restaurants";
+import { useTypedSelector } from "hooks/useTypedSelector";
+import { useDispatch } from "react-redux";
+import { addSearchHistory } from "store/actions/user.actions";
 
 const SearchPage: React.FC = () => {
+    const dispatch = useDispatch();
     const isMobile = useMediaQuery({ query: "(max-width: 639px)" });
     const { search } = useParams<{ search: string }>();
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState<TTabs>("restaurant");
-    const [history, setHistory] = useState(getHistory());
+    const history = useTypedSelector((state) => state.user.searchHistory);
     const [searchResult, setSearchResult] = useState<TSearchResult>(null);
     const [searchFilter, setSearchFilter] = useState<TSearchFilter>({
         calorieRange: [undefined, undefined],
@@ -32,8 +36,7 @@ const SearchPage: React.FC = () => {
             } else {
                 if (searchText !== search) {
                     setSearchResult(null);
-                    const newHistoryList = addHistory(searchText);
-                    setHistory(newHistoryList);
+                    dispatch(addSearchHistory(searchText));
                     navigate("/search/" + searchText);
                     fakeSearchApi();
                 }
@@ -58,8 +61,7 @@ const SearchPage: React.FC = () => {
 
     useEffect(() => {
         if (search && search.length !== 0) {
-            const newHistoryList = addHistory(search);
-            setHistory(newHistoryList);
+            dispatch(addSearchHistory(search));
             fakeSearchApi();
         }
     }, []);
@@ -105,7 +107,7 @@ const SearchPage: React.FC = () => {
                         </motion.div>
                     ) : (
                         <motion.div
-                        layout
+                            layout
                             key={2}
                             variants={searchSectionsVariants}
                             initial="hide"
@@ -113,15 +115,9 @@ const SearchPage: React.FC = () => {
                             exit="exit"
                             className="max-w-[500px]"
                         >
-                            {history.length !== 0 && (
-                                <SearchHistory
-                                    history={history}
-                                    setHistory={setHistory}
-                                    setSearchResult={setSearchResult}
-                                />
-                            )}
+                            {history.length !== 0 && <SearchHistory setSearchResult={setSearchResult} />}
 
-                            <PopularSearch setSearchResult={setSearchResult} setHistory={setHistory} />
+                            <PopularSearch setSearchResult={setSearchResult}/>
                         </motion.div>
                     )}
                 </AnimatePresence>

@@ -29,6 +29,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                                     discount={food.discount}
                                     variant="row"
                                     restaurant={food.restaurant}
+                                    
                                 />
                             );
                         })}

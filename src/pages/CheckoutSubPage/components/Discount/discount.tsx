@@ -20,6 +20,7 @@ const Discount: React.FC = () => {
 
     const removeDiscountHandler = () => {
         dispatch(removeDiscount());
+        setDiscountCode("");
     };
 
     return (
@@ -34,6 +35,7 @@ const Discount: React.FC = () => {
                     onChange={onInputChanged}
                     value={discountCode}
                     fullWidth
+                    disabled={discount !== 0}
                 />
                 <div className="w-[120px] h-full">
                     <Button

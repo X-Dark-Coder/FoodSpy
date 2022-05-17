@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import PopularSearchItem from "./popular-search-item";
 import { TPopularSearchItem, TPopularSearchProps } from "./types";
-import { foods, restaurants } from "api/fakeApi";
-import { addHistory } from "../SearchHistory/historyStorage";
+import { fakeRestaurants as restaurants } from "api/restaurants";
+import { fakeFoods as foods } from "api/foods";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { addSearchHistory } from "store/actions/user.actions";
 
-const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistory}) => {
+const PopularSearch: React.FC<TPopularSearchProps> = ({ setSearchResult }) => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const popularSearches: TPopularSearchItem[] = [
@@ -62,8 +65,7 @@ const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistor
 
     const onPopularSearchItemClicked = (searchText: string) => {
         setSearchResult(null);
-        const newHistoryList = addHistory(searchText);
-        setHistory(newHistoryList);
+        dispatch(addSearchHistory(searchText));
         navigate("/search/" + searchText);
         fakeSearchApi();
     };
@@ -75,7 +77,7 @@ const PopularSearch: React.FC<TPopularSearchProps> = ({setSearchResult,setHistor
             </div>
             <div className="w-full flex justify-start items-center gap-3 mt-5 flex-wrap">
                 {popularSearches.map(({ id, text }) => (
-                    <PopularSearchItem key={id} text={text} onClick={() => onPopularSearchItemClicked(text)}/>
+                    <PopularSearchItem key={id} text={text} onClick={() => onPopularSearchItemClicked(text)} />
                 ))}
             </div>
         </motion.section>

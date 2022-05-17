@@ -11,7 +11,5 @@ export type THistoryItemProps = THistoryItem & {
 };
 
 export type TSearchHistoryProps = {
-    history: THistoryItem[];
-    setHistory: (history: THistoryItem[]) => void;
     setSearchResult: (search : TSearchResult) => void;
 };

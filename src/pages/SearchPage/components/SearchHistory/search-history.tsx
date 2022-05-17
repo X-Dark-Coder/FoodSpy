@@ -1,22 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import HistoryItem from "./history-item";
-import { removeHistory } from "./historyStorage";
 import { TSearchHistoryProps } from "./types";
-import { foods, restaurants } from "api/fakeApi";
+import { fakeRestaurants as restaurants } from "api/restaurants";
+import { fakeFoods as foods } from "api/foods";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { clearSearchHistory, removeSearchHistory } from "store/actions/user.actions";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
-const SearchHistory: React.FC<TSearchHistoryProps> = ({ history, setHistory, setSearchResult }) => {
+const SearchHistory: React.FC<TSearchHistoryProps> = ({ setSearchResult }) => {
+    const dispatch = useDispatch();
+    const history = useTypedSelector(state => state.user.searchHistory);
     const navigate = useNavigate();
 
     const deleteHistoryItem = (id: number) => {
-        const newHistoryList = removeHistory(id);
-        setHistory(newHistoryList);
+        dispatch(removeSearchHistory(id));
     };
 
     const clearHistory = () => {
-        localStorage.setItem("SEARCH_HISTORY", "[]");
-        setHistory([]);
+        dispatch(clearSearchHistory());
     };
 
     const fakeSearchApi = () => {

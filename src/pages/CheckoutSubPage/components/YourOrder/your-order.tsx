@@ -1,7 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import classNames from "classnames";
-import { foods } from "api/fakeApi";
+import { fakeFoods as foods } from "api/foods";
 import CartFood from "components/CartFood/cart-food";
 import { AnimatePresence } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
@@ -41,6 +41,7 @@ const YourOrder: React.FC = () => {
                                 name={targetProduct.name}
                                 picture={targetProduct.picture}
                                 price={targetProduct.price}
+                                discount={targetProduct.discount}
                             />
                         );
                     })}

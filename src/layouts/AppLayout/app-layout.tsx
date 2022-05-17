@@ -28,14 +28,6 @@ const AppLayout: React.FC<TAppLayoutProps> = ({ children }) => {
         },
     };
 
-    const container = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        setTimeout(() => {
-            container.current?.scrollTo(0, 0);
-        }, 200);
-    }, [pathname]);
-
     return (
         <main className="w-full h-screen bg-mono-sky-lightest flex justify-start items-start">
             <SideMenu />
@@ -43,7 +35,7 @@ const AppLayout: React.FC<TAppLayoutProps> = ({ children }) => {
                 <MediaQuery minWidth={1024}>
                     <TopNavbar />
                 </MediaQuery>
-                <div className="h-full md:h-[calc(100vh_-_58px)] overflow-y-scroll hide-scrollbar" ref={container}>
+                <div className="h-full md:h-[calc(100vh_-_58px)] overflow-y-scroll hide-scrollbar" id="app-scrollable-container">
                     {children}
                 </div>
             </div>

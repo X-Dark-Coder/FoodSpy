@@ -2,7 +2,7 @@ import { Food } from "components";
 import classNames from "classnames";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
-import { foods as popularFoods } from "api/fakeApi";
+import { fakeFoods as popularFoods } from "api/foods";
 
 const PopularMenu: React.FC = () => {
     const navigate = useNavigate();

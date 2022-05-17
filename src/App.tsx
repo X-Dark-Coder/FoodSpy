@@ -14,13 +14,15 @@ import {
     RestaurantPage,
     SearchPage,
 } from "pages";
+import { useTypedSelector } from "hooks/useTypedSelector";
+import WishlistSubPage from "pages/WishlistSubPage/wishlist-sub-page";
 
 const App = () => {
     const location = useLocation();
     const [isAppLoaded, setIsAppLoaded] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => setIsAppLoaded(true), 1000);
+        setTimeout(() => setIsAppLoaded(true), 3000);
     }, []);
 
     const routes = (
@@ -39,6 +41,7 @@ const App = () => {
             </Route>
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
+            <Route path="/wishlist" element={<WishlistSubPage />} />
             <Route path="/welcome" element={<OnboardingPage />} />
             <Route path="/*" element={<NotFoundPage />} />
         </Routes>

@@ -16,8 +16,8 @@ const OnboardingPage: React.FC = () => {
 
     let containerVariants: Variants = {
         exit: {
-            opacity : 0
-        }
+            opacity: 0,
+        },
     };
 
     let leftSideWallpaperVariants: Variants = {
@@ -76,14 +76,15 @@ const OnboardingPage: React.FC = () => {
     const redirectToHomePage = () => navigate("/");
 
     const registerModalContent = (
-        <div className="pt-[35px] mx-5 pb-[30px]">
+        <div className="pt-[35px] mx-5 pb-[30px] min-w-[350px]">
             <h2 className="text-title-2 text-mono-ink font-bold">Register</h2>
-            <p className="text-medium-16 text-mono-ink-light mt-3">
+            <p className="text-medium-16 text-mono-ink-light mt-3 max-w-[350px]">
                 We use this information to facilitate transactions on this application
             </p>
             <div className="mt-7">
-                <Input variant="simple" type="text" placeholder="Name" fullWidth showLabel/>
-                <Input variant="simple" type="text" placeholder="Name" className="mt-3" fullWidth />
+                <Input variant="simple" type="text" placeholder="Full Name" fullWidth showLabel />
+                <Input variant="simple" type="email" placeholder="Email Address" containerClassName="mt-3" fullWidth showLabel />
+                <Input variant="simple" type="text" placeholder="Phone Number" containerClassName="mt-3" fullWidth showLabel />
                 <Button variant="wide-primary" onClick={() => {}} className="mt-16" fullWidth>
                     Register
                 </Button>
@@ -92,7 +93,11 @@ const OnboardingPage: React.FC = () => {
     );
 
     return (
-        <motion.main variants={containerVariants} exit="exit" className="h-screen w-full flex justify-center items-center overflow-hidden fixed top-0 left-0 z-[999]">
+        <motion.main
+            variants={containerVariants}
+            exit="exit"
+            className="h-screen w-full flex justify-center items-center overflow-hidden fixed top-0 left-0 z-[999]"
+        >
             {isMobile ? (
                 <SlidingModal show={isOpen} onClose={() => setIsOpen(false)}>
                     {registerModalContent}

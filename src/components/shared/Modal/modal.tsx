@@ -70,7 +70,7 @@ const Modal: React.FC<TModalProps> = ({ show, onClose, children, containerClassN
                         initial="hide"
                         animate="show"
                         exit="hide"
-                        className="z-[999] bg-modal-overlay w-full h-full backdrop-blur-[3px] cursor-pointer absolute"
+                        className="z-[999] bg-modal-overlay w-full h-full cursor-pointer absolute"
                         onClick={onClose}
                         title="Click To Close"
                     ></motion.div>

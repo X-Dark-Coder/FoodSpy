@@ -1,65 +1,11 @@
 import MediaQuery, { useMediaQuery } from "react-responsive";
-import RestaurantImage from "assets/img/restaurant1.jpg";
 import { Restaurant } from "components";
 import { SeeAll } from "components/shared";
 import classNames from "classnames";
+import { fakeRestaurants as restaurants } from "api/restaurants";
 
 const NearbyRestaurant: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 400px)" });
-
-    const restaurants = [
-        {
-            id: 0,
-            name: "Fast Food X",
-            categories: ["Cake", "Bread"],
-            distance: 1.8,
-            openAt: "10:00 AM",
-            rate: 4.3,
-            picture: RestaurantImage,
-            closed: false,
-        },
-        {
-            id: 1,
-            name: "Fast Food X",
-            categories: ["Cake", "Bread"],
-            distance: 1.8,
-            openAt: "10:00 AM",
-            rate: 4.3,
-            picture: RestaurantImage,
-            closed: true,
-        },
-        {
-            id: 2,
-            name: "Fast Food X",
-            categories: ["Cake", "Bread"],
-            distance: 1.8,
-            openAt: "10:00 AM",
-            rate: 4.3,
-            picture: RestaurantImage,
-            closed: true,
-        },
-        {
-            id: 3,
-            name: "Fast Food X",
-            categories: ["Cake", "Bread"],
-            distance: 1.8,
-            openAt: "10:00 AM",
-            rate: 4.3,
-            picture: RestaurantImage,
-            closed: false,
-        },
-        {
-            id: 4,
-            name: "Fast Food X",
-            categories: ["Cake", "Bread"],
-            distance: 1.8,
-            openAt: "10:00 AM",
-            rate: 4.3,
-            picture: RestaurantImage,
-            closed: false,
-        },
-    ];
-
     const restaurantsContainerClasses = classNames("w-full px-5 py-3 mt-3", {
         "flex justify-start items-center overflow-x-scroll hide-scrollbar gap-5": !isMobile,
         "grid grid-cols-[repeat(auto-fill,_335px)] justify-evenly gap-5": isMobile,

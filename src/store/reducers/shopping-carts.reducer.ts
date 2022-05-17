@@ -1,5 +1,5 @@
 import { TShoppingCartState } from "store/types";
-import { foods } from "api/fakeApi";
+import { fakeFoods as foods } from "api/foods";
 import {
     TAction,
     ActionType,
@@ -8,7 +8,7 @@ import {
     TActionChangeProductCount,
     TActionChangeProductInstructions,
     TActionRemoveProduct,
-    TActionSetDiscount,
+    TActionSetDiscount
 } from "store/actions/shopping-cart.types";
 import { calculateDiscount } from "./utils";
 
@@ -29,7 +29,7 @@ export const shoppingCartReducer = (state: TShoppingCartState = init, action: TA
         case ActionType.REMOVE_PRODUCT:
             return removeProductReducer(state, action);
         case ActionType.CLEAR_SHOPPING_CART:
-            return clearShoppingCartReducer();
+            return clearShoppingCartReducer(state);
         case ActionType.CHANGE_PRODUCT_COUNT:
             return changeProductCountReducer(state, action);
         case ActionType.CHANGE_PRODUCT_INSTRUCTIONS:
@@ -50,7 +50,14 @@ export const shoppingCartReducer = (state: TShoppingCartState = init, action: TA
 const addProductReducer = (state: TShoppingCartState, action: TActionAddProduct) => {
     const originalProduct = foods.find((product) => product.id === action.payload.id)!;
     const productIndex = state.products.findIndex((product) => product.id === action.payload.id);
-    const priceToReduce = calculateDiscount(originalProduct.price, state.discount);
+
+    let priceToReduce = 0;
+
+    priceToReduce = calculateDiscount(originalProduct.price, state.discount);
+
+    if (originalProduct.discount) {
+        priceToReduce = calculateDiscount(originalProduct.price, originalProduct.discount);
+    }
 
     const lastState = {
         ...state,
@@ -104,13 +111,13 @@ const setShoppingCartRestaurantReducer = (state: TShoppingCartState, action: TAc
  * Clear all added products and set current restaurant to null
  */
 
-const clearShoppingCartReducer = () => {
+const clearShoppingCartReducer = (state: TShoppingCartState) => {
     return {
         restaurant: null,
         products: [],
         totalPrice: 0,
         productsCount: 0,
-        discount: 0,
+        discount: 0
     };
 };
 
@@ -128,7 +135,13 @@ const changeProductCountReducer = (state: TShoppingCartState, action: TActionCha
         products: copyOfProducts,
     };
 
-    const priceToReduce = calculateDiscount(originalProduct.price, state.discount);
+    let priceToReduce = 0;
+
+    priceToReduce = calculateDiscount(originalProduct.price, state.discount);
+
+    if (originalProduct.discount) {
+        priceToReduce = calculateDiscount(originalProduct.price, originalProduct.discount);
+    }
 
     if (productIndex !== -1) {
         if (action.payload.type === "increase") {
