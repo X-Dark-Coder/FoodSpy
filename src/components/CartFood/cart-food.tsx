@@ -47,7 +47,7 @@ const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instru
         " min-w-[335px] max-w-[335px]": !isMobile,
     });
 
-    const constCartContainerVariants: Variants = {
+    const cartContainerVariants: Variants = {
         hide: {
             scale: 0.1,
             opacity: 0,
@@ -81,7 +81,7 @@ const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instru
 
     return (
         <motion.div
-            variants={constCartContainerVariants}
+            variants={cartContainerVariants}
             initial="hide"
             animate="show"
             exit="hide"
@@ -93,6 +93,7 @@ const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instru
                     src={picture}
                     alt="salad"
                     className="w-full h-full rounded-md object-cover absolute top-0 left-0"
+                    loading="lazy"
                 />
             </div>
             <div className="w-[calc(100%_-_120px)] pl-3 py-[8px] pr-[18px] flex justify-between items-start flex-col h-full">

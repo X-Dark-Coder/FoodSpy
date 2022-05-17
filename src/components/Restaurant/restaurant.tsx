@@ -24,7 +24,7 @@ const Restaurant: React.FC<TRestaurantProps> = ({ id, categories, closed, distan
     return (
         <div className="min-w-[335px] max-w-[335px] h-[170px] shadow-main rounded-lg bg-white">
             <div className="w-full h-[100px] relative rounded-t-lg cursor-pointer" onClick={onContainerClicked}>
-                <img src={picture} alt="restaurant" className={pictureClasses} />
+                <img src={picture} alt="restaurant" className={pictureClasses} loading="lazy"/>
                 <div className="bg-mono-sky-lightest w-[50px] h-[20px] rounded-[4px] absolute bottom-[9px] left-[9px] flex justify-center items-center">
                     <span className="text-mono-ink-light text-[12px] translate-y-px">{distance} km</span>
                 </div>

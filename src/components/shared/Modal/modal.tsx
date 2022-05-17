@@ -33,19 +33,7 @@ const Modal: React.FC<TModalProps> = ({ show, onClose, children, containerClassN
             scale: 1,
             y: 0,
             transition: {
-                opacity: {
-                    duration: 0.25,
-                },
-                scale: {
-                    duration: 0.08,
-                    type: "spring",
-                    damping: 10,
-                },
-                y: {
-                    duration: 0.08,
-                    type: "spring",
-                    damping: 10,
-                },
+                duration: 0.2,
             },
         },
     };

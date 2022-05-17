@@ -1,11 +1,19 @@
 import classNames from "classnames";
 import { Profile } from "components";
 import { PageContainer } from "layouts";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
+import { toggleBottomNavbar } from "store/actions/app.actions";
 import { Balance, SettingsList } from "./components";
 
 const ProfilePage: React.FC = () => {
+    const dispatch = useDispatch();
     const isMobile = useMediaQuery({ query: "(max-width: 820px)" });
+
+    useEffect(() => {
+        dispatch(toggleBottomNavbar(true));
+    }, []);
 
     const profileContainerClasses = classNames("mt-6 flex", {
         "justify-start items-start flex-col gap-7": isMobile,

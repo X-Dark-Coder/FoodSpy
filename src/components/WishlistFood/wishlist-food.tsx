@@ -51,10 +51,41 @@ const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price,
 
     const navigateToFoodPage = () => navigate(`/restaurant/${restaurant}/product/${id}`);
 
+    const foodContainerVariants: Variants = {
+        hide: {
+            scale: 0.1,
+            opacity: 0,
+            transition: {
+                opacity: {
+                    duration: 0.15,
+                },
+                scale: {
+                    duration: 0.25,
+                },
+            },
+        },
+        show: {
+            scale: 1,
+            opacity: 1,
+        },
+    };
+
     return (
-        <div className={rowTemplateContainerClasses}>
+        <motion.div
+            layout
+            initial="hide"
+            animate="show"
+            exit="hide"
+            variants={foodContainerVariants}
+            className={rowTemplateContainerClasses}
+        >
             <div className="h-full w-[120px] relative cursor-pointer" onClick={navigateToFoodPage}>
-                <img src={picture} alt="salad" className="w-full h-full rounded-md object-cover absolute top-0" />
+                <img
+                    src={picture}
+                    alt="salad"
+                    className="w-full h-full rounded-md object-cover absolute top-0"
+                    loading="lazy"
+                />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-[6px] bg-accent-redd rounded-r-[2px] flex justify-center items-center">
                         <span className="text-accent-redd-tint-40 font-semibold text-[12px]">-{discount}%</span>
@@ -113,7 +144,7 @@ const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price,
                     </Button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
