@@ -16,7 +16,7 @@ const TopNavbar = () => {
                 </MediaQuery>
                 <MediaQuery minWidth={500}>
                     <button className="ml-1 flex justify-start items-center" onClick={() => navigate("/search")}>
-                        <SearchIcon />
+                        <SearchIcon className="w-5 h-5 cursor-pointer"/>
                     </button>
                 </MediaQuery>
             </div>

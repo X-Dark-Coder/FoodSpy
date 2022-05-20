@@ -2,6 +2,7 @@ import { motion, Variants } from "framer-motion";
 import { TPageContainerProps } from "./types";
 import classNames from "classnames";
 import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
 
 const PageContainer: React.FC<TPageContainerProps> = ({ children }) => {
     const containerVariants: Variants = {
@@ -22,6 +23,11 @@ const PageContainer: React.FC<TPageContainerProps> = ({ children }) => {
     };
 
     const containerClasses = classNames("w-full h-full");
+
+    useEffect(() => {
+        const container = document.getElementById("app-scrollable-container")!;
+        container.scrollTo(0, 0);
+    }, []);
 
     return (
         <motion.div

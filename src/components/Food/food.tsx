@@ -94,6 +94,7 @@ const Food: React.FC<TFoodProps> = ({
                     alt="salad"
                     className="w-full h-full rounded-md object-cover absolute top-0"
                     loading="lazy"
+                    onClick={onContainerClicked}
                 />
                 {discount && (
                     <div className="w-[40px] h-[20px] absolute top-[6px] bg-accent-redd rounded-r-[2px] flex justify-center items-center">

@@ -1,6 +1,7 @@
 import RestaurantImage from "assets/img/restaurant1.jpg";
 import { TRestaurant } from "components/Restaurant/types";
-import { drinksMenu, friedMenu, humberMenu, tacoMenu } from "./foods";
+import { drinksMenu, fakeFoods, friedMenu, humberMenu, tacoMenu } from "./foods";
+import { shuffleArray } from "./utils";
 
 const menuTitles = ["Breakfast", "Lunch", "Beverage", "Fast Food", "Dinner", "Dessert"];
 
@@ -32,7 +33,7 @@ export const fakeRestaurants: TRestaurant[] = [
                 title: "Drinks",
             },
         ],
-        popularFoods: [...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu],
+        popularFoods: shuffleArray(fakeFoods).slice(0, 10),
     },
     {
         id: 2,
@@ -61,7 +62,7 @@ export const fakeRestaurants: TRestaurant[] = [
                 title: "Drinks",
             },
         ],
-        popularFoods: [...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu],
+        popularFoods: shuffleArray(fakeFoods).slice(0, 10),
     },
     {
         id: 3,
@@ -90,7 +91,7 @@ export const fakeRestaurants: TRestaurant[] = [
                 title: "Drinks",
             },
         ],
-        popularFoods: [...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu],
+        popularFoods: shuffleArray(fakeFoods).slice(0, 10),
     },
     {
         id: 4,
@@ -119,7 +120,7 @@ export const fakeRestaurants: TRestaurant[] = [
                 title: "Drinks",
             },
         ],
-        popularFoods: [...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu],
+        popularFoods: shuffleArray(fakeFoods).slice(0, 10),
     },
     {
         id: 5,
@@ -148,6 +149,6 @@ export const fakeRestaurants: TRestaurant[] = [
                 title: "Drinks",
             },
         ],
-        popularFoods: [...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu],
+        popularFoods: shuffleArray(fakeFoods).slice(0, 10),
     },
 ];

@@ -8,7 +8,7 @@ const WalletBalance: React.FC = () => {
 
     return (
         <div
-            className="rounded-[30px] bg-accent-cyan-tint-40 flex justify-center items-center py-[5px] px-3 h-[32px]"
+            className="rounded-[30px] bg-accent-cyan-tint-40 flex justify-center items-center py-[5px] px-3 h-[32px] cursor-pointer"
             onClick={() => navigate("/profile")}
         >
             <WalletIcon />

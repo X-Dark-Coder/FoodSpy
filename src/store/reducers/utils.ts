@@ -13,3 +13,8 @@ export const getWishlist = () => {
     const history = localStorage.getItem("WISHLIST");
     return history ? (JSON.parse(history) as number[]) : [];
 };
+
+export const getUserInfo = () => {
+    const userInfo = localStorage.getItem("USER_INFO");
+    return userInfo ? (JSON.parse(userInfo) as { name: string; email: string; phone: string }) : null;
+};

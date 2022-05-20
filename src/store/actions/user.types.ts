@@ -5,6 +5,7 @@ export enum ActionType {
     CLEAR_SEARCH_HISTORY = "CLEAR_SEARCH_HISTORY",
     ADD_FOOD_TO_WISHLIST = "ADD_FOOD_TO_WISHLIST",
     REMOVE_FOOD_FROM_WISHLIST = "REMOVE_FOOD_FROM_WISHLIST",
+    SET_USER_INFORMATION = "SET_USER_INFORMATION",
 }
 
 export type TActionSetWalletCredit = {
@@ -36,10 +37,20 @@ export type TActionRemoveFoodFromWishlist = {
     payload: number;
 };
 
+export type TActionSetUserInformation = {
+    type: ActionType.SET_USER_INFORMATION;
+    payload: {
+        name: string;
+        email: string;
+        phone: string;
+    };
+};
+
 export type TAction =
     | TActionSetWalletCredit
     | TActionAddSearchHistory
     | TActionRemoveSearchHistory
     | TActionClearSearchHistory
     | TActionAddFoodToWishlist
-    | TActionRemoveFoodFromWishlist;
+    | TActionRemoveFoodFromWishlist
+    | TActionSetUserInformation;

@@ -9,6 +9,8 @@ import Rate from "./Rate/rate";
 import OrderTime from "./OrderTime/order-time";
 import FoodType from "./FoodType/food-type";
 import Badge from "./Badge/badge";
+import AlertModal from "./AlertModal/alert-modal";
+import EmptyStatus from "./EmptyStatus/empty-status";
 
 export {
     Button,
@@ -21,5 +23,7 @@ export {
     Rate,
     OrderTime,
     FoodType,
-    Badge
-}
+    Badge,
+    AlertModal,
+    EmptyStatus,
+};

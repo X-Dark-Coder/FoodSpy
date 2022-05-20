@@ -6,16 +6,17 @@ import {
     TActionRemoveSearchHistory,
     TActionAddFoodToWishlist,
     TActionRemoveFoodFromWishlist,
+    TActionSetUserInformation,
 } from "store/actions/user.types";
 import { TUserState } from "store/types";
 import { THistoryItem } from "pages/SearchPage/components/SearchHistory/types";
-import { getSearchHistory, getWishlist } from "./utils";
+import { getSearchHistory, getUserInfo, getWishlist } from "./utils";
 
 const init: TUserState = {
     walletCredit: 0,
     searchHistory: getSearchHistory(),
     wishlist: getWishlist(),
-    name: localStorage.getItem("USER_NAME") ? localStorage.getItem("USER_NAME")! : "Please Login",
+    account: getUserInfo(),
 };
 
 export const userReducer = (state: TUserState = init, action: TAction): TUserState => {
@@ -32,6 +33,8 @@ export const userReducer = (state: TUserState = init, action: TAction): TUserSta
             return addFoodToWishlistReducer(state, action);
         case ActionType.REMOVE_FOOD_FROM_WISHLIST:
             return removeFoodFromWishlistReducer(state, action);
+        case ActionType.SET_USER_INFORMATION:
+            return setUserInformationReducer(state, action);
         default:
             return state;
     }
@@ -119,7 +122,7 @@ const addFoodToWishlistReducer = (state: TUserState, action: TActionAddFoodToWis
         localStorage.setItem("WISHLIST", JSON.stringify(newWishlist));
         return { ...state, wishlist: newWishlist };
     }
-    
+
     return state;
 };
 
@@ -131,4 +134,23 @@ const removeFoodFromWishlistReducer = (state: TUserState, action: TActionRemoveF
     const newWishlist = state.wishlist.filter((itemId) => itemId !== action.payload);
     localStorage.setItem("WISHLIST", JSON.stringify(newWishlist));
     return { ...state, wishlist: newWishlist };
+};
+
+/**
+ * Change user information
+ */
+
+const setUserInformationReducer = (state: TUserState, action: TActionSetUserInformation) => {
+    const newUserInfo = {
+        name: action.payload.name,
+        email: action.payload.email,
+        phone: action.payload.phone,
+    };
+
+    localStorage.setItem("USER_INFO", JSON.stringify(newUserInfo));
+
+    return {
+        ...state,
+        account: newUserInfo,
+    };
 };

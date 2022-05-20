@@ -13,20 +13,45 @@ import { ReactComponent as UpdatesIconPasive } from "assets/icons/Bottom Nav Bar
 const Navbar: React.FC = () => {
     return (
         <nav>
-            <ul className="h-[86px] px-3 flex justify-center items-center bg-white md:block shadow-[0_-8px_24px_0_#00000008] rounded-t-2xl">
-                <NavbarItem to="/home" activeIcon={HomeIconActive} disableIcon={HomeIconPasive} className="mt-2">
+            <ul className="h-[86px] px-3 flex justify-center items-center bg-white md:justify-start md:flex-col shadow-[0_-8px_24px_0_#00000008] rounded-t-2xl gap-[14px]">
+                <NavbarItem
+                    to="/home"
+                    activeWhen={["/home", "/all-categories", "/popular-food", "/nearby-restaurant"]}
+                    activeIcon={HomeIconActive}
+                    disableIcon={HomeIconPasive}
+                >
                     Home
                 </NavbarItem>
-                <NavbarItem to="/search" activeIcon={SearchIconActive} disableIcon={SearchIconPasive} className="mt-2">
+                <NavbarItem
+                    to="/search"
+                    activeWhen={["/search"]}
+                    activeIcon={SearchIconActive}
+                    disableIcon={SearchIconPasive}
+                >
                     Search
                 </NavbarItem>
-                <NavbarItem to="/order" activeIcon={OrderIconActive} disableIcon={OrderIconPasive} className="mt-2">
+                <NavbarItem
+                    to="/order"
+                    activeWhen={["/order"]}
+                    activeIcon={OrderIconActive}
+                    disableIcon={OrderIconPasive}
+                >
                     Order
                 </NavbarItem>
-                <NavbarItem to="/updates" activeIcon={UpdatesIconActive} disableIcon={UpdatesIconPasive} className="mt-2">
+                <NavbarItem
+                    to="/updates"
+                    activeWhen={["/updates"]}
+                    activeIcon={UpdatesIconActive}
+                    disableIcon={UpdatesIconPasive}
+                >
                     Updates
                 </NavbarItem>
-                <NavbarItem to="/profile" activeIcon={ProfileIconActive} disableIcon={ProfileIconPasive} className="mt-2">
+                <NavbarItem
+                    to="/profile"
+                    activeWhen={["/profile", "/wishlist", "/account"]}
+                    activeIcon={ProfileIconActive}
+                    disableIcon={ProfileIconPasive}
+                >
                     Profile
                 </NavbarItem>
             </ul>

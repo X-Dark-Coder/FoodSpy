@@ -1,8 +1,9 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AppLayout, SplashScreen } from "layouts";
 import {
+    AccountSettingSubPage,
     AllCategoriesSubPage,
     CheckoutSubPage,
     HomePage,
@@ -13,17 +14,26 @@ import {
     ProfilePage,
     RestaurantPage,
     SearchPage,
+    WishlistSubPage,
 } from "pages";
 import { useTypedSelector } from "hooks/useTypedSelector";
-import WishlistSubPage from "pages/WishlistSubPage/wishlist-sub-page";
 
 const App = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [isAppLoaded, setIsAppLoaded] = useState(false);
+    const userAccount = useTypedSelector((state) => state.user.account);
 
     useEffect(() => {
-        setTimeout(() => setIsAppLoaded(true), 3000);
+        setTimeout(() => {
+            if (!userAccount) navigate("/welcome");
+            setIsAppLoaded(true);
+        }, 3000);
     }, []);
+
+    useEffect(() => {
+        console.log(location.pathname);
+    }, [location.pathname]);
 
     const routes = (
         <Routes location={location} key={location.pathname.split("/")[1]}>
@@ -42,6 +52,7 @@ const App = () => {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
             <Route path="/wishlist" element={<WishlistSubPage />} />
+            <Route path="/account" element={<AccountSettingSubPage />} />
             <Route path="/welcome" element={<OnboardingPage />} />
             <Route path="/*" element={<NotFoundPage />} />
         </Routes>

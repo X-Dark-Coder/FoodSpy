@@ -22,7 +22,7 @@ const FoodDetail: React.FC<TFoodDetail> = ({ restaurantId, id }) => {
             <div className="w-[350px]">
                 <div className="w-full h-[290px] relative rounded-2xl overflow-hidden flex justify-center items-center">
                     <LikeButton />
-                    <img className="w-full absolute object-cover rounded-2xl" src={food?.picture} alt="food" />
+                    <img className="w-full h-full absolute object-cover rounded-2xl" src={food?.picture} alt="food" />
                 </div>
                 <div className="w-full mt-9">
                     <div className="flex justify-between items-start">

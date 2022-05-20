@@ -8,10 +8,11 @@ const NavbarItem: React.FC<TNavbarItemProps> = ({
     children,
     className,
     to,
+    activeWhen,
     ...rest
 }) => {
     const location = useLocation();
-    const isActive = location.pathname.includes(to as string);
+    const isActive = activeWhen.some((activeState) => location.pathname.includes(activeState));
 
     const containerClasses = classNames(
         "w-full py-2 md:pl-3 flex flex-col md:flex-row justify-center md:justify-start items-center w-full rounded-lg text-medium",
@@ -26,7 +27,7 @@ const NavbarItem: React.FC<TNavbarItemProps> = ({
 
     return (
         <NavLink to={to} className={containerClasses} {...rest}>
-            {isActive ? <ActiveIcon className="md:navbar-desktop-item-icon-active" /> : <DisabledIcon />}
+            {isActive ? <ActiveIcon className="md:navbar-desktop-item-icon-active w-7 h-7" /> : <DisabledIcon className="w-7 h-7"/>}
             <span className={spanClasses}>{children}</span>
         </NavLink>
     );

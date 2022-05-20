@@ -1,18 +1,19 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { Swiper } from "swiper";
 import { motion, Variants } from "framer-motion";
-import { Button, Modal, SlidingModal } from "components/shared";
-import { OnboardingSlider, SlidesContent } from "./components";
+import { AlertModal, Button } from "components/shared";
+import { OnboardingSlider, RegisterModal, SlidesContent } from "./components";
 import LeftSideWallpaper from "assets/img/dopolnitelnye-ingridenty.jpg";
 import { useMediaQuery } from "react-responsive";
-import { Input } from "components/shared";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as SuccessPicture } from "assets/img/order-success.svg";
 
 const OnboardingPage: React.FC = () => {
     const navigate = useNavigate();
     const [currentActiveSlide, setCurrentActiveSlide] = useState(0);
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
     const [isOpen, setIsOpen] = useState(false);
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
     let containerVariants: Variants = {
         exit: {
@@ -73,72 +74,57 @@ const OnboardingPage: React.FC = () => {
         setCurrentActiveSlide(swiper.activeIndex);
     }, []);
 
-    const redirectToHomePage = () => navigate("/");
-
-    const registerModalContent = (
-        <div className="pt-[35px] mx-5 pb-[30px] min-w-[350px]">
-            <h2 className="text-title-2 text-mono-ink font-bold">Register</h2>
-            <p className="text-medium-16 text-mono-ink-light mt-3 max-w-[350px]">
-                We use this information to facilitate transactions on this application
-            </p>
-            <div className="mt-7">
-                <Input variant="simple" type="text" placeholder="Full Name" fullWidth showLabel />
-                <Input variant="simple" type="email" placeholder="Email Address" containerClassName="mt-3" fullWidth showLabel />
-                <Input variant="simple" type="text" placeholder="Phone Number" containerClassName="mt-3" fullWidth showLabel />
-                <Button variant="wide-primary" onClick={() => {}} className="mt-16" fullWidth>
-                    Register
-                </Button>
-            </div>
-        </div>
-    );
+    const onGoShoppingClicked = () => {
+        setIsSuccessModalOpen(false);
+        navigate("/home");
+    };
 
     return (
-        <motion.main
-            variants={containerVariants}
-            exit="exit"
-            className="h-screen w-full flex justify-center items-center overflow-hidden fixed top-0 left-0 z-[999]"
-        >
-            {isMobile ? (
-                <SlidingModal show={isOpen} onClose={() => setIsOpen(false)}>
-                    {registerModalContent}
-                </SlidingModal>
-            ) : (
-                <Modal show={isOpen} onClose={() => setIsOpen(false)}>
-                    {registerModalContent}
-                </Modal>
-            )}
-
-            <motion.div
-                className="w-2/5 h-full hidden bg-white lg:flex justify-center items-center"
-                variants={leftSideWallpaperVariants}
-                initial="hide"
-                animate="show"
+        <React.Fragment>
+            <motion.main
+                variants={containerVariants}
+                exit="exit"
+                className="h-screen w-full flex justify-center items-center overflow-hidden fixed top-0 left-0 z-[999]"
             >
-                <img src={LeftSideWallpaper} alt="left-wallpaper" />
-            </motion.div>
-
-            <motion.div
-                className="w-full lg:w-3/5 bg-white lg:bg-primary h-screen flex justify-center items-center flex-col"
-                variants={onboardingVariants}
-                initial="hide"
-                animate="show"
-            >
-                <OnboardingSlider onSlideChange={onSlideChange} onSwiperInit={onSwiperInit} />
-                <motion.div variants={childVariants} className="flex justify-center items-center flex-col mt-8">
-                    <SlidesContent activeSlideIndex={currentActiveSlide} />
-                    <Button variant={isMobile ? "wide-primary" : "wide-primary-white"} onClick={redirectToHomePage}>
-                        Get Started
-                    </Button>
-                    <Button
-                        onClick={() => setIsOpen(!isOpen)}
-                        variant={isMobile ? "wide-secondary" : "wide-secondary-white"}
-                        className="mt-4"
-                    >
-                        Login
-                    </Button>
+                <motion.div
+                    className="w-2/5 h-full hidden bg-white lg:flex justify-center items-center"
+                    variants={leftSideWallpaperVariants}
+                    initial="hide"
+                    animate="show"
+                >
+                    <img src={LeftSideWallpaper} alt="left-wallpaper" />
                 </motion.div>
-            </motion.div>
-        </motion.main>
+
+                <motion.div
+                    className="w-full lg:w-3/5 bg-white lg:bg-primary h-screen flex justify-center items-center flex-col"
+                    variants={onboardingVariants}
+                    initial="hide"
+                    animate="show"
+                >
+                    <OnboardingSlider onSlideChange={onSlideChange} onSwiperInit={onSwiperInit} />
+                    <motion.div variants={childVariants} className="flex justify-center items-center flex-col mt-8">
+                        <SlidesContent activeSlideIndex={currentActiveSlide} />
+                        <Button
+                            onClick={() => setIsOpen(!isOpen)}
+                            variant={isMobile ? "wide-secondary" : "wide-secondary-white"}
+                            className="mt-4"
+                        >
+                            Register
+                        </Button>
+                    </motion.div>
+                </motion.div>
+            </motion.main>
+            <RegisterModal isOpen={isOpen} setIsOpen={setIsOpen} setIsSuccessModalOpen={setIsSuccessModalOpen} />
+            <AlertModal
+                picture={SuccessPicture}
+                title="Success"
+                description="You are registered successfully"
+                onClose={() => setIsSuccessModalOpen(false)}
+                show={isSuccessModalOpen}
+                buttonText="Go Shopping"
+                onButtonClick={onGoShoppingClicked}
+            />
+        </React.Fragment>
     );
 };
 

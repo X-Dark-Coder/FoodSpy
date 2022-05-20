@@ -26,9 +26,11 @@ type TUpdate = {
 };
 
 export type TUserState = {
-    name?: string;
-    email?: string;
-    phone?: number;
+    account: {
+        name: string;
+        email: string;
+        phone: string;
+    } | null;
     walletCredit: number;
     wishlist: number[];
     updates?: TUpdate[];

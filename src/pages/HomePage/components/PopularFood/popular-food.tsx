@@ -10,7 +10,7 @@ const PopularFood: React.FC = () => {
                 <SeeAll link="/popular-food" />
             </div>
             <div className="w-full flex gap-4 justify-start items-center px-5 py-3 mt-3 overflow-x-scroll hide-scrollbar">
-                {popularFoods.map((food) => (
+                {popularFoods.sort((a,b) => b.rate - a.rate).map((food) => (
                     <Food
                         id={food.id}
                         variant="column"

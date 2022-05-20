@@ -8,6 +8,8 @@ import RestaurantPage from "./RestaurantPage/restaurant-page";
 import CheckoutSubPage from "./CheckoutSubPage/checkout-sub-page";
 import ProfilePage from "./ProfilePage/profile-page";
 import NotFoundPage from "./NotFoundPage/not-found-page";
+import WishlistSubPage from "./WishlistSubPage/wishlist-sub-page";
+import AccountSettingSubPage from "./AccountSettingSubPage/account-setting-sub-page";
 
 export {
     OnboardingPage,
@@ -20,4 +22,6 @@ export {
     CheckoutSubPage,
     ProfilePage,
     NotFoundPage,
+    WishlistSubPage,
+    AccountSettingSubPage,
 };
