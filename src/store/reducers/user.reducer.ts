@@ -7,16 +7,19 @@ import {
     TActionAddFoodToWishlist,
     TActionRemoveFoodFromWishlist,
     TActionSetUserInformation,
+    TActionAddOrderHistory,
 } from "store/actions/user.types";
 import { TUserState } from "store/types";
 import { THistoryItem } from "pages/SearchPage/components/SearchHistory/types";
-import { getSearchHistory, getUserInfo, getWishlist } from "./utils";
+import { getOrderHistory, getSearchHistory, getUserInfo, getWishlist, getWalletCredit } from "./utils";
+import { TOrder } from "components/Order/types";
 
 const init: TUserState = {
-    walletCredit: 0,
+    walletCredit: getWalletCredit(),
     searchHistory: getSearchHistory(),
     wishlist: getWishlist(),
     account: getUserInfo(),
+    orderHistory: getOrderHistory(),
 };
 
 export const userReducer = (state: TUserState = init, action: TAction): TUserState => {
@@ -35,6 +38,8 @@ export const userReducer = (state: TUserState = init, action: TAction): TUserSta
             return removeFoodFromWishlistReducer(state, action);
         case ActionType.SET_USER_INFORMATION:
             return setUserInformationReducer(state, action);
+        case ActionType.ADD_ORDER_HISTORY:
+            return addOrderHistoryReducer(state, action);
         default:
             return state;
     }
@@ -45,6 +50,21 @@ export const userReducer = (state: TUserState = init, action: TAction): TUserSta
  */
 
 const setWalletCreditReducer = (state: TUserState, action: TActionSetWalletCredit) => {
+    const userInfo = JSON.parse(localStorage.getItem("USER_INFO")!) as {
+        name: string;
+        email: string;
+        phone: string;
+        walletCredit: Number;
+    };
+
+    localStorage.setItem(
+        "USER_INFO",
+        JSON.stringify({
+            ...userInfo,
+            walletCredit: state.walletCredit + action.payload,
+        })
+    );
+
     return { ...state, walletCredit: state.walletCredit + action.payload };
 };
 
@@ -145,6 +165,7 @@ const setUserInformationReducer = (state: TUserState, action: TActionSetUserInfo
         name: action.payload.name,
         email: action.payload.email,
         phone: action.payload.phone,
+        walletCredit: 0,
     };
 
     localStorage.setItem("USER_INFO", JSON.stringify(newUserInfo));
@@ -153,4 +174,22 @@ const setUserInformationReducer = (state: TUserState, action: TActionSetUserInfo
         ...state,
         account: newUserInfo,
     };
+};
+
+const addOrderHistoryReducer = (state: TUserState, action: TActionAddOrderHistory) => {
+    const history = localStorage.getItem("ORDER_HISTORY");
+
+    let newHistoryList: TOrder[] = history ? (JSON.parse(history) as TOrder[]) : [];
+
+    newHistoryList.unshift({
+        date: action.payload.date,
+        id: Math.random() * 1000,
+        payment: action.payload.payment,
+        products: action.payload.products,
+        restaurant: action.payload.restaurant,
+    });
+
+    localStorage.setItem("ORDER_HISTORY", JSON.stringify(newHistoryList));
+
+    return { ...state, orderHistory: newHistoryList };
 };

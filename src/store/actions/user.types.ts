@@ -1,3 +1,5 @@
+import { TShoppingCartFoodItem } from "store/types";
+
 export enum ActionType {
     SET_WALLET_CREDIT = "SET_WALLET_CREDIT",
     ADD_SEARCH_HISTORY = "ADD_SEARCH_HISTORY",
@@ -6,6 +8,7 @@ export enum ActionType {
     ADD_FOOD_TO_WISHLIST = "ADD_FOOD_TO_WISHLIST",
     REMOVE_FOOD_FROM_WISHLIST = "REMOVE_FOOD_FROM_WISHLIST",
     SET_USER_INFORMATION = "SET_USER_INFORMATION",
+    ADD_ORDER_HISTORY = "ADD_ORDER_HISTORY",
 }
 
 export type TActionSetWalletCredit = {
@@ -46,6 +49,16 @@ export type TActionSetUserInformation = {
     };
 };
 
+export type TActionAddOrderHistory = {
+    type: ActionType.ADD_ORDER_HISTORY;
+    payload: {
+        payment: number;
+        products: TShoppingCartFoodItem[];
+        date: Date;
+        restaurant: number;
+    };
+};
+
 export type TAction =
     | TActionSetWalletCredit
     | TActionAddSearchHistory
@@ -53,4 +66,5 @@ export type TAction =
     | TActionClearSearchHistory
     | TActionAddFoodToWishlist
     | TActionRemoveFoodFromWishlist
-    | TActionSetUserInformation;
+    | TActionSetUserInformation
+    | TActionAddOrderHistory;

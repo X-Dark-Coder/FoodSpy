@@ -1,3 +1,4 @@
+import { TOrder } from "components/Order/types";
 import { THistoryItem } from "pages/SearchPage/components/SearchHistory/types";
 
 export type TShoppingCartFoodItem = {
@@ -35,7 +36,7 @@ export type TUserState = {
     wishlist: number[];
     updates?: TUpdate[];
     searchHistory: THistoryItem[];
-    orderHistory?: any[];
+    orderHistory: TOrder[];
 };
 
 export type TRootState = {

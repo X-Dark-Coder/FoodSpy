@@ -19,17 +19,16 @@ const Food: React.FC<TFoodProps> = ({
 }) => {
     const navigate = useNavigate();
 
-    const additionalInfoContainerClasses = classNames("flex flex-col justify-between", {
+    const additionalInfoContainerClasses = classNames("flex flex-col justify-between w-[calc(100%_-_120px)]", {
         "p-3 h-[140px]": variant === "column",
         "h-full py-[10px] pr-4 pl-2": variant === "row",
-        "w-[calc(100%_-_120px)]": fullWidth,
     });
 
     const additionalInfoWrapperClasses = classNames("flex", {
         "justify-start": !discount,
         "justify-between": discount,
         "mt-5 items-end": variant === "column",
-        "flex-col items-start": variant === "row",
+        "flex-col items-start w-full": variant === "row",
     });
 
     const foodCountInCartClasses = classNames("text-mono-ink-lighter text-small font-semibold whitespace-nowrap", {
@@ -88,7 +87,7 @@ const Food: React.FC<TFoodProps> = ({
 
     const rowVariantTemplate = (
         <div className={rowTemplateContainerClasses}>
-            <div className="h-full w-[120px] relative">
+            <div className="h-full w-[120px] relative cursor-pointer">
                 <img
                     src={picture}
                     alt="salad"

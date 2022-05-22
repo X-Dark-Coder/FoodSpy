@@ -52,11 +52,11 @@ const ResultTabs: React.FC<TResultTabsProps> = ({ activeTab, setActiveTab, disab
             animate="show"
             exit="hide"
         >
-            <button className={restaurantTabClasses} onClick={!disable ? () => setActiveTab("restaurant") : undefined}>
-                Restaurant
-            </button>
             <button className={foodTabClasses} onClick={!disable ? () => setActiveTab("food") : undefined}>
                 Food
+            </button>
+            <button className={restaurantTabClasses} onClick={!disable ? () => setActiveTab("restaurant") : undefined}>
+                Restaurant
             </button>
         </motion.div>
     );

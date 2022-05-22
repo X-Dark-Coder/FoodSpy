@@ -14,7 +14,28 @@ export const getWishlist = () => {
     return history ? (JSON.parse(history) as number[]) : [];
 };
 
+export const getOrderHistory = () => {
+    const history = localStorage.getItem("ORDER_HISTORY");
+    return history ? (JSON.parse(history) as any[]) : [];
+};
+
 export const getUserInfo = () => {
     const userInfo = localStorage.getItem("USER_INFO");
-    return userInfo ? (JSON.parse(userInfo) as { name: string; email: string; phone: string }) : null;
+    return userInfo
+        ? (JSON.parse(userInfo) as { name: string; email: string; phone: string; walletCredit: number })
+        : null;
+};
+
+export const getWalletCredit = () => {
+    const localStorageUserInfo = localStorage.getItem("USER_INFO")
+        ? JSON.parse(localStorage.getItem("USER_INFO")!)
+        : null;
+    const userInfo = localStorageUserInfo as {
+        name: string;
+        email: string;
+        phone: string;
+        walletCredit: number;
+    } | null;
+
+    return userInfo ? userInfo.walletCredit : 0;
 };

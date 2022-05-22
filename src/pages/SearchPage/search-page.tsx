@@ -20,7 +20,7 @@ const SearchPage: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 639px)" });
     const { search } = useParams<{ search: string }>();
     const navigate = useNavigate();
-    const [activeTab, setActiveTab] = useState<TTabs>("restaurant");
+    const [activeTab, setActiveTab] = useState<TTabs>("food");
     const history = useTypedSelector((state) => state.user.searchHistory);
     const [searchResult, setSearchResult] = useState<TSearchResult>(null);
     const [searchFilter, setSearchFilter] = useState<TSearchFilter>({

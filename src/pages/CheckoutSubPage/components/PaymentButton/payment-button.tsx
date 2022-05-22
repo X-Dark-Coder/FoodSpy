@@ -1,20 +1,22 @@
 import { Button } from "components/shared";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { motion, Variants } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { clearShoppingCart, removeDiscount } from "store/actions/shopping-cart.actions";
 import AlertModal from "components/shared/AlertModal/alert-modal";
 import { ReactComponent as OrderSuccess } from "assets/img/order-success.svg";
-import { setWalletCredit } from "store/actions/user.actions";
+import { addOrderHistory, setWalletCredit } from "store/actions/user.actions";
 
 const CheckoutButton: React.FC = () => {
     const { pathname } = useLocation();
+    const { restaurantId } = useParams<{ restaurantId: string }>();
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const dispatch = useDispatch();
     const totalPrice = useTypedSelector((state) => state.cart.totalPrice);
     const walletCredit = useTypedSelector((state) => state.user.walletCredit);
+    const products = useTypedSelector((state) => state.cart.products);
 
     const rightSideTotalPrice = (
         <div className="flex justify-center items-center px-2 bg-primary-tint-10 h-[32px] rounded-md">
@@ -38,6 +40,14 @@ const CheckoutButton: React.FC = () => {
     const calculatePayment = () => {
         if (walletCredit >= totalPrice) {
             dispatch(setWalletCredit(-totalPrice));
+            dispatch(
+                addOrderHistory({
+                    date: new Date(),
+                    payment: totalPrice,
+                    products,
+                    restaurant: Number(restaurantId),
+                })
+            );
             dispatch(removeDiscount());
             setIsSuccessModalOpen(true);
         }
@@ -67,7 +77,7 @@ const CheckoutButton: React.FC = () => {
                 title="Success"
                 description="Payment successfully completed"
                 picture={OrderSuccess}
-                onButtonClick={() => {}}
+                onButtonClick={navigateToRestaurantPage}
                 buttonText="Ok"
                 show={isSuccessModalOpen}
                 onClose={navigateToRestaurantPage}
