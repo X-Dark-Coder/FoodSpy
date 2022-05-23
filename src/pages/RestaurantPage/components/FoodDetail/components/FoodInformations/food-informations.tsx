@@ -6,7 +6,7 @@ import { TFoodInformationsProps } from "./types";
 
 const FoodInformations: React.FC<TFoodInformationsProps> = ({ informations }) => {
     return (
-        <div>
+        <div className="w-full">
             <h4 className="text-mono-ink-light font-semibold text-medium-16">Information</h4>
             <div className="flex justify-start items-center flex-wrap gap-3 mt-3">
                 <Badge icon={CaloriesIcon} text={informations.kal + " Kal"} />

@@ -10,7 +10,7 @@ const FoodInstructions: React.FC<TFoodInstructionsProps> = ({ foodInstructions, 
     };
 
     return (
-        <div>
+        <div className="w-full">
             <div className="w-full h-px rounded-sm bg-[rgba(0,0,0,0.1)]"></div>
             <Input
                 value={foodInstructions}
