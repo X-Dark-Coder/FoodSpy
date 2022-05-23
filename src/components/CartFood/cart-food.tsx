@@ -17,7 +17,7 @@ const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instru
     const [foodInstruction, setFoodInstruction] = useState(instruction ? instruction : "");
     const [foodCount, setFoodCount] = useState(count);
 
-    const timerInstance = useRef<NodeJS.Timeout | null>(null);
+    const timerInstance = useRef<number| null>(null);
 
     const onInstructionChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFoodInstruction(e.target.value);
