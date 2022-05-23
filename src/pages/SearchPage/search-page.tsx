@@ -14,6 +14,7 @@ import { fakeRestaurants as restaurants } from "api/restaurants";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { addSearchHistory } from "store/actions/user.actions";
+import { toggleBottomNavbar } from "store/actions/app.actions";
 
 const SearchPage: React.FC = () => {
     const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const SearchPage: React.FC = () => {
             dispatch(addSearchHistory(search));
             fakeSearchApi();
         }
+        dispatch(toggleBottomNavbar(true));
     }, []);
 
     return (
