@@ -19,9 +19,9 @@ const Food: React.FC<TFoodProps> = ({
 }) => {
     const navigate = useNavigate();
 
-    const additionalInfoContainerClasses = classNames("flex flex-col justify-between w-[calc(100%_-_120px)]", {
-        "p-3 h-[140px]": variant === "column",
-        "h-full py-[10px] pr-4 pl-2": variant === "row",
+    const additionalInfoContainerClasses = classNames("flex flex-col justify-between", {
+        "p-3 h-[140px] w-full": variant === "column",
+        "h-full py-[10px] pr-4 pl-2 w-[calc(100%_-_120px)]": variant === "row",
     });
 
     const additionalInfoWrapperClasses = classNames("flex", {
