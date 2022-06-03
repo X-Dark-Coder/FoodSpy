@@ -20,6 +20,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         {result.foods.map((food) => {
                             return (
                                 <Food
+                                    key={food.id}
                                     id={food.id}
                                     name={food.name}
                                     orderTime={food.orderTime}
@@ -29,7 +30,6 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                                     discount={food.discount}
                                     variant="row"
                                     restaurant={food.restaurant}
-                                    
                                 />
                             );
                         })}
@@ -48,6 +48,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         {result.restaurants.map((restaurant) => {
                             return (
                                 <Restaurant
+                                    key={restaurant.id}
                                     id={restaurant.id}
                                     categories={restaurant.categories}
                                     distance={restaurant.distance}

@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
                         />
                     </div>
                 </MediaQuery>
-                <PromoSlider />
+                <PromoSlider desktop/>
                 <AllCategories />
                 <PopularFood />
                 <NearbyRestaurant />

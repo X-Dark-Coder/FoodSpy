@@ -10,19 +10,22 @@ const PopularFood: React.FC = () => {
                 <SeeAll link="/popular-food" />
             </div>
             <div className="w-full flex gap-4 justify-start items-center px-5 py-3 mt-3 overflow-x-scroll hide-scrollbar">
-                {popularFoods.sort((a,b) => b.rate - a.rate).map((food) => (
-                    <Food
-                        id={food.id}
-                        variant="column"
-                        name={food.name}
-                        orderTime={food.orderTime}
-                        price={food.price}
-                        rate={food.rate}
-                        discount={food.discount}
-                        picture={food.picture}
-                        restaurant={food.restaurant}
-                    />
-                ))}
+                {popularFoods
+                    .sort((a, b) => b.rate - a.rate)
+                    .map((food) => (
+                        <Food
+                            key={food.id}
+                            id={food.id}
+                            variant="column"
+                            name={food.name}
+                            orderTime={food.orderTime}
+                            price={food.price}
+                            rate={food.rate}
+                            discount={food.discount}
+                            picture={food.picture}
+                            restaurant={food.restaurant}
+                        />
+                    ))}
             </div>
         </section>
     );

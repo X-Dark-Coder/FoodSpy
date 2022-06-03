@@ -25,9 +25,18 @@ const NavbarItem: React.FC<TNavbarItemProps> = ({
         isActive ? "text-primary md:text-white" : "text-mono-ink-lighter"
     );
 
+    const disableIconClasses = classNames("w-7 h-7", {
+        "stroke-mono-ink-light": to === "/search",
+        "fill-mono-ink-light": to !== "/search",
+    });
+
     return (
         <NavLink to={to} className={containerClasses} {...rest}>
-            {isActive ? <ActiveIcon className="md:navbar-desktop-item-icon-active w-7 h-7" /> : <DisabledIcon className="w-7 h-7"/>}
+            {isActive ? (
+                <ActiveIcon className="fill-primary md:fill-white w-7 h-7" />
+            ) : (
+                <DisabledIcon className={disableIconClasses} />
+            )}
             <span className={spanClasses}>{children}</span>
         </NavLink>
     );

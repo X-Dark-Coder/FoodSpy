@@ -25,8 +25,8 @@ const SearchPage: React.FC = () => {
     const history = useTypedSelector((state) => state.user.searchHistory);
     const [searchResult, setSearchResult] = useState<TSearchResult>(null);
     const [searchFilter, setSearchFilter] = useState<TSearchFilter>({
-        calorieRange: [undefined, undefined],
-        priceRange: [undefined, undefined],
+        calorieRange: [100, 0],
+        priceRange: [5, 0],
         selectedTypes: [],
     });
 

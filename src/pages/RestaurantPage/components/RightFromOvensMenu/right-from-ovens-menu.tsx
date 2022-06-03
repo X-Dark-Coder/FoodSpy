@@ -4,9 +4,9 @@ import { TTabMenuItem } from "./components/TabMenu/types";
 import { Food } from "components";
 import { useMediaQuery } from "react-responsive";
 import classNames from "classnames";
-import { fakeFoods, fakeFoods as foods } from "api/foods";
 import { useParams } from "react-router-dom";
 import { fakeRestaurants } from "api/restaurants";
+import { AnimatePresence, motion, Variant, Variants } from "framer-motion";
 
 const RightFromOvensMenu: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width : 500px)" });
@@ -25,29 +25,55 @@ const RightFromOvensMenu: React.FC = () => {
         "flex-col": isMobile,
     });
 
+    const menuFoodsVariants: Variants = {
+        hide: {
+            scale: 0.9,
+            opacity: 0,
+            transition: {
+                opacity: {
+                    duration: 0.15,
+                },
+                scale: {
+                    duration: 0.25,
+                },
+            },
+        },
+        show: {
+            scale: 1,
+            opacity: 1,
+        },
+    };
+
+    const renderMenus = () => {
+        return restaurant.menu.map(({ foods }, index) => {
+            if (index + 1 === activeTab) {
+                return foods.map((food) => (
+                    <motion.div variants={menuFoodsVariants} initial="hide" animate="show" exit="hide" key={food.id}>
+                        <Food
+                            id={food.id}
+                            name={food.name}
+                            orderTime={food.orderTime}
+                            picture={food.picture}
+                            price={food.price}
+                            rate={food.rate}
+                            discount={food.discount}
+                            variant={isMobile ? "row" : "column"}
+                            fullWidth={isMobile}
+                            restaurant={food.restaurant}
+                        />
+                    </motion.div>
+                ));
+            }
+        });
+    };
+
     return (
         <section className="w-full mt-5">
             <h3 className="text-mono-ink text-title-3 font-bold px-5">Right From Oven's Menu</h3>
             <div className="mt-5">
                 <TabMenu tabs={tabs} active={activeTab} setActive={setActiveTab} />
                 <div className={tabMenusContainerClasses}>
-                    {restaurant.menu
-                        .find((m, indx) => indx + 1 === activeTab)
-                        ?.foods.map((food) => (
-                            <Food
-                                id={food.id}
-                                name={food.name}
-                                orderTime={food.orderTime}
-                                picture={food.picture}
-                                price={food.price}
-                                rate={food.rate}
-                                discount={food.discount}
-                                variant={isMobile ? "row" : "column"}
-                                fullWidth={isMobile}
-                                key={food.id}
-                                restaurant={food.restaurant}
-                            />
-                        ))}
+                    <AnimatePresence exitBeforeEnter>{renderMenus()}</AnimatePresence>
                 </div>
             </div>
         </section>

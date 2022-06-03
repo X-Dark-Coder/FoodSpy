@@ -21,8 +21,6 @@ const Input: React.FC<TInputProps> = ({
     const [inputHasValue, setIsInputHasValue] = useState(false);
     const inputElement = useRef<HTMLInputElement>(null);
 
-    console.log('re rendered')
-
     useLayoutEffect(() => {
         setIsInputHasValue(inputElement.current?.value.length !== 0)
     },[inputElement.current?.value]);

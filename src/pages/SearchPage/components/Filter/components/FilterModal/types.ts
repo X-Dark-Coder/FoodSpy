@@ -8,7 +8,7 @@ export type TFilterModalProps = {
     setSearchFilter: (filter: TSearchFilter) => void;
 };
 
-export type TFilterRange = [number | undefined, number | undefined];
+export type TFilterRange = [number, number];
 
 export type TSelectFoodTypeProps = {
     selectedTypes: number[];

@@ -1,12 +1,11 @@
 import { Modal, SlidingModal } from "components/shared";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { TFilterModalProps, TFilterRange } from "./types";
 import SelectFoodType from "./select-food-type";
 import SelectRangeCalories from "./select-range-calories";
 import SelectRangePrice from "./select-range-price";
 import { Button } from "components/shared";
-import { useNavigate, useParams } from "react-router-dom";
 
 const FilterModal: React.FC<TFilterModalProps> = ({ isOpen, setIsOpen, searchFilter, setSearchFilter }) => {
     const isMobile = useMediaQuery({ query: "(max-width: 600px)" });

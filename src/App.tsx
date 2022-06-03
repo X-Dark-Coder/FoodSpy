@@ -27,13 +27,14 @@ const App = () => {
     useEffect(() => {
         setTimeout(() => {
             if (!userAccount) navigate("/welcome");
+            else {
+                if (location.pathname.split("/")[1].length === 0) {
+                    navigate("/home");
+                }
+            }
             setIsAppLoaded(true);
         }, 3000);
     }, []);
-
-    useEffect(() => {
-        console.log(location.pathname);
-    }, [location.pathname]);
 
     const routes = (
         <Routes location={location} key={location.pathname.split("/")[1]}>

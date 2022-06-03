@@ -30,9 +30,7 @@
         "start": "vite",
         "build": "tsc && vite build",
         "test": "vite preview",
-        "watch:css": "tailwindcss -i src/assets/css/tailwind.css -o src/assets/css/main.css --watch",
-        "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
+        "watch:css": "tailwindcss -i src/assets/css/tailwind.css -o src/assets/css/main.css --watch"
     },
     "eslintConfig": {
         "extends": [

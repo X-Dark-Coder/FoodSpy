@@ -1,9 +1,14 @@
 import { TPromoSlideProps } from "./types";
-import PromoSlideImage from "assets/img/promo-slide-img.jpg";
-const PromoSlide: React.FC<TPromoSlideProps> = () => {
+import classNames from "classnames";
+const PromoSlide: React.FC<TPromoSlideProps> = ({desktop,picture}) => {
+
+    const containerClasses = classNames("flex justify-center overflow-hidden relative rounded-lg aspect-video w-full" ,{
+        "mx-6" : desktop
+    });
+
     return (
-        <div className="rounded-lg">
-            <img src={PromoSlideImage} alt="promo-slide" />
+        <div className={containerClasses}>
+            <img src={picture} alt="promo-slide" className="w-full rounded-lg absolute"/>
         </div>
     );
 };

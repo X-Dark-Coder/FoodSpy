@@ -1,4 +1,8 @@
-import { ReactComponent as Icon } from "assets/icons/Clock.svg";
+import { ReactComponent as GluttenFreeIcon } from "assets/icons/Glutten Free.svg";
+import { ReactComponent as ChildrenIcon } from "assets/icons/Children.svg";
+import { ReactComponent as NoPorkIcon } from "assets/icons/No Pork.svg";
+import { ReactComponent as OrganicIcon } from "assets/icons/Organic.svg";
+import { ReactComponent as VeganIcon } from "assets/icons/Vegan.svg";
 import { FoodType } from "components/shared";
 import { TFoodType } from "components/shared/FoodType/types";
 import React, { useCallback } from "react";
@@ -6,14 +10,12 @@ import { TSelectFoodTypeProps } from "./types";
 
 const SelectFoodType: React.FC<TSelectFoodTypeProps> = ({ selectedTypes, setSelectedTypes }) => {
     const foodTypes: TFoodType[] = [
-        { id: 0, text: "Vegan", icon: Icon },
-        { id: 1, text: "Organic", icon: Icon },
-        { id: 2, text: "No Pork", icon: Icon },
-        { id: 3, text: "Glutten Free", icon: Icon },
-        { id: 4, text: "Safe For Children", icon: Icon },
+        { id: 0, text: "Vegan", icon: VeganIcon },
+        { id: 1, text: "Organic", icon: OrganicIcon },
+        { id: 2, text: "No Pork", icon: NoPorkIcon },
+        { id: 3, text: "Glutten Free", icon: GluttenFreeIcon },
+        { id: 4, text: "Safe For Children", icon: ChildrenIcon },
     ];
-
-    console.log("Select Food Re Rendered")
 
     const toggleFoodType = useCallback(
         (id: number) => {

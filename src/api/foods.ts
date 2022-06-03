@@ -213,7 +213,44 @@ export const drinksMenu: TFood[] = [
         ingredients: [],
     },
 ];
-export const tacoMenu: TFood[] = [];
+export const tacoMenu: TFood[] = [
+    {
+        id: 15,
+        description:
+            "Lorem ipsum et dolor sit amet, and consectetur eadipiscing elit. Ametmo magna the cursus yum dolor praesenta the pulvinar tristique the food.",
+        name: "Taco Chicken",
+        rate: 4.7,
+        orderTime: 15,
+        price: 32,
+        picture: TacoChickenImage,
+        restaurant: 2,
+        informations: {
+            freeGluten: false,
+            kal: 4400,
+            organic: true,
+        },
+        ingredients: ingredients,
+        discount: 30,
+    },
+    {
+        id: 16,
+        description:
+            "Lorem ipsum et dolor sit amet, and consectetur eadipiscing elit. Ametmo magna the cursus yum dolor praesenta the pulvinar tristique the food.",
+        name: "Taco Meat",
+        rate: 4.8,
+        orderTime: 20,
+        price: 36,
+        picture: TacoMeatImage,
+        restaurant: 2,
+        informations: {
+            freeGluten: false,
+            kal: 5200,
+            organic: true,
+        },
+        ingredients: ingredients,
+        discount: 15,
+    },
+];
 export const friedMenu: TFood[] = [
     {
         id: 13,

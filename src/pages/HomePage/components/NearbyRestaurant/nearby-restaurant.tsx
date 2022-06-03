@@ -22,6 +22,7 @@ const NearbyRestaurant: React.FC = () => {
             <div className={restaurantsContainerClasses}>
                 {restaurants.map((restaurant) => (
                     <Restaurant
+                        key={restaurant.id}
                         id={restaurant.id}
                         categories={restaurant.categories}
                         distance={restaurant.distance}

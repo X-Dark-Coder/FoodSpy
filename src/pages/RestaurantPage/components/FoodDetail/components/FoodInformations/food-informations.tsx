@@ -10,8 +10,8 @@ const FoodInformations: React.FC<TFoodInformationsProps> = ({ informations }) =>
             <h4 className="text-mono-ink-light font-semibold text-medium-16">Information</h4>
             <div className="flex justify-start items-center flex-wrap gap-3 mt-3">
                 <Badge icon={CaloriesIcon} text={informations.kal + " Kal"} />
-                {informations.organic && <Badge icon={OrganicIcon} text="Organic" />}
-                {informations.freeGluten && <Badge icon={GluttenFreeIcon} text="Free Gluten" />}
+                {informations.organic && <Badge icon={OrganicIcon} iconColor="#00B167" text="Organic" />}
+                {informations.freeGluten && <Badge icon={GluttenFreeIcon} iconColor="#F26333" text="Free Gluten" />}
             </div>
         </div>
     );

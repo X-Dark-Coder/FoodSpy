@@ -11,8 +11,6 @@ const SelectRangeCalories: React.FC<TSelectRangeCaloriesProps> = ({ calorieRange
         setCalorieRange([calorieRange[0], Number(e.target.value)]);
     };
 
-    console.log("Select Calorie Re Rendered");
-
     return (
         <div className="w-full sm:w-[500px] mt-[24px]">
             <h3 className="mb-4 text-large font-semibold text-mono-ink">Range Calorie</h3>
