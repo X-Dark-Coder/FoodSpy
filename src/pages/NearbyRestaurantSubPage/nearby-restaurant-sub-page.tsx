@@ -4,8 +4,12 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as BackIcon } from "assets/icons/Back.svg";
 import { ReactComponent as SearchIcon } from "assets/icons/Search.svg";
 import { Restaurant } from "components";
+import { useMediaQuery } from "react-responsive";
+import classNames from "classnames";
 
 const NearbyRestaurantSubPage: React.FC = () => {
+    const isTablet = useMediaQuery({ query: "(max-width : 1300px)" });
+
     const restaurants = [
         {
             id: 0,
@@ -61,7 +65,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
 
     return (
         <SubPage backLink="/home" title="Nearby Restaurant">
-            <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 pb-10 justify-evenly px-4 pt-2">
+            <div className="mt-6 w-full grid gap-5 grid-cols-[repeat(auto-fill,_335px)] pb-10 justify-evenly px-4 pt-2">
                 {restaurants.map((restaurant) => (
                     <Restaurant
                         id={restaurant.id}

@@ -48,7 +48,14 @@ const RightFromOvensMenu: React.FC = () => {
         return restaurant.menu.map(({ foods }, index) => {
             if (index + 1 === activeTab) {
                 return foods.map((food) => (
-                    <motion.div variants={menuFoodsVariants} initial="hide" animate="show" exit="hide" key={food.id}>
+                    <motion.div
+                        variants={menuFoodsVariants}
+                        initial="hide"
+                        animate="show"
+                        exit="hide"
+                        key={food.id}
+                        className={isMobile ? "w-full" : ""}
+                    >
                         <Food
                             id={food.id}
                             name={food.name}

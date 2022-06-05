@@ -44,7 +44,7 @@ const CartFood: React.FC<TCartFood> = ({ id, name, price, picture, count, instru
 
     const containerClasses = classNames("h-[120px] bg-white rounded-md shadow-main flex justify-start items-center ", {
         "w-full": isMobile,
-        " min-w-[335px] max-w-[335px]": !isMobile,
+        "min-w-[335px] max-w-[335px]": !isMobile,
     });
 
     const cartContainerVariants: Variants = {

@@ -27,7 +27,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
-        "start": "vite",
+        "start": "vite --host",
         "build": "tsc && vite build",
         "test": "vite preview",
         "watch:css": "tailwindcss -i src/assets/css/tailwind.css -o src/assets/css/main.css --watch"

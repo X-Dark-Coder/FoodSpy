@@ -18,7 +18,7 @@ const PromoSlider: React.FC<TPromoSliderProps> = ({desktop}) => {
                 modules={[EffectFade, Pagination, Navigation, Keyboard]}
                 effect="slide"
                 slidesPerView={1}
-                className="mb-4 pb-8 lg:pb-10 rounded-lg"
+                className="mb-4 pb-11 lg:pb-16 rounded-lg"
                 pagination={{
                     clickable: true,
                     bulletClass: "promo-pagination-bullet",

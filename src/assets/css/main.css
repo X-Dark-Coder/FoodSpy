@@ -585,6 +585,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 50;
 }
 
+.mx-6 {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
 .mx-5 {
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -598,11 +603,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-.mx-6 {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
 }
 
 .mt-1 {
@@ -771,6 +771,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .aspect-video {
   aspect-ratio: 16 / 9;
+}
+
+.aspect-\[\] {
+  aspect-ratio: ;
+}
+
+.aspect-\[6\/2\] {
+  aspect-ratio: 6 / 2;
 }
 
 .h-\[120px\] {
@@ -953,32 +961,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 2.25rem;
 }
 
-.h-\[350px\] {
-  height: 350px;
-}
-
-.h-\[380px\] {
-  height: 380px;
-}
-
-.max-h-\[350px\] {
-  max-height: 350px;
-}
-
 .max-h-\[80vh\] {
   max-height: 80vh;
-}
-
-.max-h-\[380px\] {
-  max-height: 380px;
-}
-
-.min-h-\[\] {
-  min-height: ;
-}
-
-.min-h-\[100px\] {
-  min-height: 100px;
 }
 
 .w-full {
@@ -1129,6 +1113,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }
 
+.w-\[\] {
+  width: ;
+}
+
 .min-w-\[335px\] {
   min-width: 335px;
 }
@@ -1246,6 +1234,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .grid-cols-\[repeat\(auto-fill\2c _160px\)\] {
   grid-template-columns: repeat(auto-fill, 160px);
+}
+
+.grid-cols-\[repeat\(auto-fill\2c _334px\)\] {
+  grid-template-columns: repeat(auto-fill, 334px);
+}
+
+.grid-cols-\[repeat\(auto-fill\2c _34px\)\] {
+  grid-template-columns: repeat(auto-fill, 34px);
+}
+
+.grid-cols-\[repeat\(auto-fill\2c _300px\)\] {
+  grid-template-columns: repeat(auto-fill, 300px);
 }
 
 .flex-col {
@@ -1586,14 +1586,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.5rem;
 }
 
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .px-5 {
@@ -1727,6 +1727,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pl-\[11px\] {
   padding-left: 11px;
+}
+
+.pb-12 {
+  padding-bottom: 3rem;
+}
+
+.pb-11 {
+  padding-bottom: 2.75rem;
 }
 
 .text-center {
@@ -2293,6 +2301,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:pb-8 {
     padding-bottom: 2rem;
+  }
+
+  .lg\:pb-12 {
+    padding-bottom: 3rem;
+  }
+
+  .lg\:pb-14 {
+    padding-bottom: 3.5rem;
+  }
+
+  .lg\:pb-16 {
+    padding-bottom: 4rem;
   }
 
   .lg\:text-white {

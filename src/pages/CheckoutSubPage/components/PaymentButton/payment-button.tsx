@@ -1,18 +1,21 @@
 import { Button } from "components/shared";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { motion, Variants } from "framer-motion";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { clearShoppingCart, removeDiscount } from "store/actions/shopping-cart.actions";
 import AlertModal from "components/shared/AlertModal/alert-modal";
 import { ReactComponent as OrderSuccess } from "assets/img/order-success.svg";
+import { ReactComponent as OrderError } from "assets/img/error-picture.svg";
 import { addOrderHistory, setWalletCredit } from "store/actions/user.actions";
 
 const CheckoutButton: React.FC = () => {
     const { pathname } = useLocation();
+    const navigate = useNavigate();
     const { restaurantId } = useParams<{ restaurantId: string }>();
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const dispatch = useDispatch();
     const totalPrice = useTypedSelector((state) => state.cart.totalPrice);
     const walletCredit = useTypedSelector((state) => state.user.walletCredit);
@@ -50,6 +53,8 @@ const CheckoutButton: React.FC = () => {
             );
             dispatch(removeDiscount());
             setIsSuccessModalOpen(true);
+        } else {
+            setIsErrorModalOpen(true);
         }
     };
 
@@ -57,6 +62,11 @@ const CheckoutButton: React.FC = () => {
         setIsSuccessModalOpen(false);
         dispatch(clearShoppingCart());
     };
+
+    const navigateToProfilePage = () => {
+        setIsErrorModalOpen(false);
+        navigate("/profile");
+    }
 
     return (
         <React.Fragment>
@@ -81,6 +91,16 @@ const CheckoutButton: React.FC = () => {
                 buttonText="Ok"
                 show={isSuccessModalOpen}
                 onClose={navigateToRestaurantPage}
+            />
+
+            <AlertModal
+                title="Lack Of Money"
+                description="Please topup your wallet"
+                picture={OrderError}
+                onButtonClick={navigateToProfilePage}
+                buttonText="Go To Profile"
+                show={isErrorModalOpen}
+                onClose={() => setIsErrorModalOpen(false)}
             />
         </React.Fragment>
     );

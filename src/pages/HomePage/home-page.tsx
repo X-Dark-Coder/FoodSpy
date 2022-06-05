@@ -1,6 +1,6 @@
-import {useNavigate} from "react-router-dom"
-import PromoSlider from "components/PromoSlider/promo-slider";
-import { PageContainer } from "layouts"; 
+import { useNavigate } from "react-router-dom";
+import { PromoSlider } from "components";
+import { PageContainer } from "layouts";
 import MediaQuery from "react-responsive";
 import { TopNavbar } from "layouts/AppLayout/components";
 import { AllCategories, NearbyRestaurant, PopularFood } from "./components";
@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
                         />
                     </div>
                 </MediaQuery>
-                <PromoSlider desktop/>
+                <PromoSlider desktop />
                 <AllCategories />
                 <PopularFood />
                 <NearbyRestaurant />
