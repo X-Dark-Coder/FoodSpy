@@ -14,7 +14,7 @@ import {
     ProfilePage,
     RestaurantPage,
     SearchPage,
-    WishlistSubPage,
+    WishlistSubPage
 } from "pages";
 import { useTypedSelector } from "hooks/useTypedSelector";
 

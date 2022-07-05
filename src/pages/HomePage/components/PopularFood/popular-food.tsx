@@ -9,7 +9,7 @@ const PopularFood: React.FC = () => {
                 <h3 className="text-mono-ink text-title-3 font-bold">Popular Food</h3>
                 <SeeAll link="/popular-food" />
             </div>
-            <div className="w-full flex gap-4 justify-start items-center px-5 py-3 mt-3 overflow-x-scroll hide-scrollbar">
+            <div className="w-full flex gap-4 justify-start items-center px-5 py-3 mt-3 overflow-x-scroll pb-3 scrollbar-custom">
                 {popularFoods
                     .sort((a, b) => b.rate - a.rate)
                     .map((food) => (

@@ -3,9 +3,10 @@ import { fakeFoods as popularFoods } from "api/foods";
 import { Food } from "components";
 import { useMediaQuery } from "react-responsive";
 import classNames from "classnames";
+import React from "react";
 
 const PopularFoodSubPage: React.FC = () => {
-    const isMobile = useMediaQuery({ query: "(max-width : 500px)" });
+    const isMobile = useMediaQuery({ query : "(max-width: 568px)" })
 
     const foodsContainerClasses = classNames("mt-6 w-full gap-5 px-4 pb-10 pt-2",{
         "grid grid-cols-[repeat(auto-fill,_160px)] justify-evenly" : !isMobile,

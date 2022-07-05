@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -185,6 +185,8 @@ textarea {
   /* 1 */
   font-size: 100%;
   /* 1 */
+  font-weight: inherit;
+  /* 1 */
   line-height: inherit;
   /* 1 */
   color: inherit;
@@ -351,13 +353,6 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   /* 2 */
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
@@ -413,15 +408,103 @@ video {
   height: auto;
 }
 
-/*
-Ensure the default browser behavior of the `hidden` attribute.
-*/
-
-[hidden] {
-  display: none;
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
 }
 
-*, ::before, ::after {
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
   --tw-translate-y: 0;
   --tw-rotate: 0;
@@ -470,9 +553,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+@media (min-width: 620px) {
+  .container {
+    max-width: 620px;
+  }
+}
+
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
+  }
+}
+
+@media (min-width: 680px) {
+  .container {
+    max-width: 680px;
   }
 }
 
@@ -482,9 +577,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+@media (min-width: 830px) {
+  .container {
+    max-width: 830px;
+  }
+}
+
+@media (min-width: 960px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
 @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
+  }
+}
+
+@media (min-width: 1070px) {
+  .container {
+    max-width: 1070px;
   }
 }
 
@@ -499,6 +612,54 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 1536px;
   }
 }
+
+/* global scrollbar style */
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bebebe;
+  border-radius: 8px;
+  border: 4px solid #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8aab2;
+}
+
+/* containers scrollbar style */
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #F6F7F8;
+}
+
+.scrollbar-custom-white::-webkit-scrollbar-track {
+  background: white;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #e1e3e8;
+  border-radius: 8px;
+  border: 6px solid #F6F7F8;
+}
+
+.scrollbar-custom-white::-webkit-scrollbar-thumb {
+  background: #e1e3e8;
+  border-radius: 8px;
+  border: 6px solid white;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover,.scrollbar-custom-white::-webkit-scrollbar-thumb:hover {
+  background: #b2b5bc;
+}
+
+/* custom scrollbar classes */
 
 .hide-scrollbar {
   -ms-overflow-style: none;
@@ -741,6 +902,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mt-\[46px\] {
   margin-top: 46px;
 }
@@ -769,16 +934,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-.aspect-video {
-  aspect-ratio: 16 / 9;
-}
-
-.aspect-\[\] {
-  aspect-ratio: ;
-}
-
 .aspect-\[6\/2\] {
-  aspect-ratio: 6 / 2;
+  aspect-ratio: 6/2;
 }
 
 .h-\[120px\] {
@@ -919,10 +1076,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[5px\] {
   height: 5px;
-}
-
-.h-12 {
-  height: 3rem;
 }
 
 .h-\[100\%_\!important\] {
@@ -1073,10 +1226,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 230px;
 }
 
-.w-12 {
-  width: 3rem;
-}
-
 .w-\[400px\] {
   width: 400px;
 }
@@ -1111,10 +1260,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-1\/2 {
   width: 50%;
-}
-
-.w-\[\] {
-  width: ;
 }
 
 .min-w-\[335px\] {
@@ -1228,24 +1373,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-template-columns: repeat(auto-fill, 157px);
 }
 
-.grid-cols-\[repeat\(auto-fill\2c _335px\)\] {
-  grid-template-columns: repeat(auto-fill, 335px);
+.grid-cols-\[1fr_minmax\(auto\2c 720px\)_1fr\] {
+  grid-template-columns: 1fr minmax(auto,720px) 1fr;
+}
+
+.grid-cols-\[1fr\] {
+  grid-template-columns: 1fr;
 }
 
 .grid-cols-\[repeat\(auto-fill\2c _160px\)\] {
   grid-template-columns: repeat(auto-fill, 160px);
 }
 
-.grid-cols-\[repeat\(auto-fill\2c _334px\)\] {
-  grid-template-columns: repeat(auto-fill, 334px);
+.grid-cols-\[repeat\(auto-fill\2c _335px\)\] {
+  grid-template-columns: repeat(auto-fill, 335px);
 }
 
-.grid-cols-\[repeat\(auto-fill\2c _34px\)\] {
-  grid-template-columns: repeat(auto-fill, 34px);
-}
-
-.grid-cols-\[repeat\(auto-fill\2c _300px\)\] {
-  grid-template-columns: repeat(auto-fill, 300px);
+.grid-cols-\[repeat\(2\2c _160px\)\] {
+  grid-template-columns: repeat(2, 160px);
 }
 
 .flex-col {
@@ -1266,6 +1411,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .items-center {
   align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
 }
 
 .justify-start {
@@ -1349,8 +1498,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .overscroll-contain {
-  -ms-scroll-chaining: none;
-      overscroll-behavior: contain;
+  overscroll-behavior: contain;
 }
 
 .whitespace-nowrap {
@@ -1665,8 +1813,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 1.5rem;
 }
 
-.pb-8 {
-  padding-bottom: 2rem;
+.pb-11 {
+  padding-bottom: 2.75rem;
 }
 
 .pt-2 {
@@ -1713,6 +1861,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 3.5rem;
 }
 
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
 .pt-\[35px\] {
   padding-top: 35px;
 }
@@ -1725,16 +1877,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 0.75rem;
 }
 
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
 .pl-\[11px\] {
   padding-left: 11px;
-}
-
-.pb-12 {
-  padding-bottom: 3rem;
-}
-
-.pb-11 {
-  padding-bottom: 2.75rem;
 }
 
 .text-center {
@@ -1956,11 +2104,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(167 170 178 / var(--tw-text-opacity));
 }
 
-.placeholder\:text-mono-ink-lightest:-ms-input-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(167 170 178 / var(--tw-text-opacity));
-}
-
 .placeholder\:text-mono-ink-lightest::placeholder {
   --tw-text-opacity: 1;
   color: rgb(167 170 178 / var(--tw-text-opacity));
@@ -2024,6 +2167,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   outline-offset: 2px;
 }
 
+@media (min-width: 620px) {
+  .bp620\:grid-cols-\[repeat\(2\2c 1fr\)\] {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:block {
     display: block;
@@ -2069,6 +2218,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   .sm\:text-title-3 {
     font-size: 20px;
     line-height: 24px;
+  }
+}
+
+@media (min-width: 680px) {
+  .bp680\:grid-cols-\[repeat\(2\2c 1fr\)\] {
+    grid-template-columns: repeat(2,1fr);
   }
 }
 
@@ -2145,6 +2300,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     --tw-translate-y: 0px;
     -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
             transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .md\:grid-cols-\[1fr\] {
+    grid-template-columns: 1fr;
   }
 
   .md\:flex-row {
@@ -2260,6 +2419,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+@media (min-width: 830px) {
+  .bp830\:grid-cols-\[repeat\(2\2c 1fr\)\] {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .bp960\:grid-cols-\[repeat\(2\2c 1fr\)\] {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
 @media (min-width: 1024px) {
   .lg\:mt-0 {
     margin-top: 0px;
@@ -2295,24 +2466,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-right: 2rem;
   }
 
-  .lg\:pb-10 {
-    padding-bottom: 2.5rem;
+  .lg\:pb-16 {
+    padding-bottom: 4rem;
   }
 
   .lg\:pb-8 {
     padding-bottom: 2rem;
-  }
-
-  .lg\:pb-12 {
-    padding-bottom: 3rem;
-  }
-
-  .lg\:pb-14 {
-    padding-bottom: 3.5rem;
-  }
-
-  .lg\:pb-16 {
-    padding-bottom: 4rem;
   }
 
   .lg\:text-white {
@@ -2323,5 +2482,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:text-mono-sky-lightest {
     --tw-text-opacity: 1;
     color: rgb(246 247 248 / var(--tw-text-opacity));
+  }
+}
+
+@media (min-width: 1070px) {
+  .bp1070\:grid-cols-\[repeat\(2\2c 1fr\)\] {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid-cols-\[repeat\(3\2c 1fr\)\] {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:grid-cols-\[repeat\(auto-fill\2c _335px\)\] {
+    grid-template-columns: repeat(auto-fill, 335px);
+  }
+
+  .\32xl\:grid-cols-\[repeat\(auto-fill\2c 335px\)\] {
+    grid-template-columns: repeat(auto-fill,335px);
   }
 }

@@ -16,6 +16,7 @@ export type TRestaurant = {
     picture: any;
     popularFoods: TFood[];
     menu: TMenu[];
+    fullWidth?: boolean;
 };
 
 export type TRestaurantProps = Omit<TRestaurant, "popularFoods" | "menu">;

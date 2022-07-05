@@ -3,8 +3,10 @@ import { ReactComponent as LoadingSpinner } from "assets/img/loading-spinner.svg
 import { Food, Restaurant } from "components";
 import { motion, AnimatePresence } from "framer-motion";
 import { searchResultVariants } from "pages/SearchPage/search-page.constants";
+import { useMediaQuery } from "react-responsive";
 
 const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) => {
+    const isBigScreen = useMediaQuery({ query: "(min-width : 1440px)" });
     const renderResultByType = () => {
         if (result) {
             if (type === "food") {
@@ -15,7 +17,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         initial="hide"
                         animate="show"
                         exit="hide"
-                        className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 justify-evenly px-4 pb-[100px] pt-2 md:pb-2"
+                        className="mt-6 w-full grid grid-cols-[1fr] bp680:grid-cols-[repeat(2,1fr)] md:grid-cols-[1fr] bp960:grid-cols-[repeat(2,1fr)] bp1070:grid-cols-[repeat(2,1fr)] xl:grid-cols-[repeat(3,1fr)] 2xl:grid-cols-[repeat(auto-fill,335px)] gap-5 justify-evenly px-4 pb-[100px] pt-2 md:pb-2"
                     >
                         {result.foods.map((food) => {
                             return (
@@ -30,6 +32,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                                     discount={food.discount}
                                     variant="row"
                                     restaurant={food.restaurant}
+                                    fullWidth={!isBigScreen}
                                 />
                             );
                         })}
@@ -43,7 +46,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                         initial="hide"
                         animate="show"
                         exit="hide"
-                        className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 px-4 pb-[100px] pt-2 md:pb-2 justify-evenly"
+                        className="mt-6 w-full grid grid-cols-[1fr] bp620:grid-cols-[repeat(2,1fr)] md:grid-cols-[1fr] bp830:grid-cols-[repeat(2,1fr)] bp1070:grid-cols-[repeat(2,1fr)] xl:grid-cols-[repeat(3,1fr)] 2xl:grid-cols-[repeat(auto-fill,_335px)] gap-5 px-4 pb-[100px] pt-2 md:pb-2 justify-evenly"
                     >
                         {result.restaurants.map((restaurant) => {
                             return (
@@ -57,6 +60,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                                     picture={restaurant.picture}
                                     rate={restaurant.rate}
                                     closed={restaurant.closed}
+                                    fullWidth={!isBigScreen}
                                 />
                             );
                         })}

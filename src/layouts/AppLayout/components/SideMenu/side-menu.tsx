@@ -7,9 +7,7 @@ const SideMenu: React.FC = () => {
                 <h1 className="text-title-1 pb-14">Logo</h1>
                 <Navbar />
             </div>
-            <div className="w-full flex justify-center items-center">
-                <div className="bg-mono-ink-lighter w-12 h-12 rounded-full"></div>
-            </div>
+
         </menu>
     );
 };

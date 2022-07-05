@@ -21,7 +21,7 @@ const RightFromOvensMenu: React.FC = () => {
     }));
 
     const tabMenusContainerClasses = classNames("mt-6 px-5 w-full flex justify-start items-center gap-5", {
-        "overflow-x-scroll hide-scrollbar": !isMobile,
+        "overflow-x-scroll pb-3 scrollbar-custom-white": !isMobile,
         "flex-col": isMobile,
     });
 

@@ -7,8 +7,8 @@ import { fakeRestaurants as restaurants } from "api/restaurants";
 const NearbyRestaurant: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 400px)" });
     const restaurantsContainerClasses = classNames("w-full px-5 py-3 mt-3", {
-        "flex justify-start items-center overflow-x-scroll hide-scrollbar gap-5": !isMobile,
-        "grid grid-cols-[repeat(auto-fill,_335px)] justify-evenly gap-5": isMobile,
+        "flex justify-start items-center overflow-x-scroll pb-3 scrollbar-custom gap-5": !isMobile,
+        "grid justify-evenly gap-5 grid-cols-[1fr]": isMobile,
     });
 
     return (
@@ -31,6 +31,7 @@ const NearbyRestaurant: React.FC = () => {
                         rate={restaurant.rate}
                         picture={restaurant.picture}
                         closed={restaurant.closed}
+                        fullWidth={isMobile}
                     />
                 ))}
             </div>

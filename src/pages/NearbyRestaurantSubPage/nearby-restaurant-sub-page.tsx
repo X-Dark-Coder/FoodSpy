@@ -9,6 +9,7 @@ import classNames from "classnames";
 
 const NearbyRestaurantSubPage: React.FC = () => {
     const isTablet = useMediaQuery({ query: "(max-width : 1300px)" });
+    const isBigScreen = useMediaQuery({ query: "(min-width : 1440px)" });
 
     const restaurants = [
         {
@@ -19,7 +20,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
             openAt: "10:00 AM",
             rate: 4.3,
             picture: RestaurantImage,
-            closed: false,
+            closed: false
         },
         {
             id: 1,
@@ -29,7 +30,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
             openAt: "10:00 AM",
             rate: 4.3,
             picture: RestaurantImage,
-            closed: true,
+            closed: true
         },
         {
             id: 2,
@@ -39,7 +40,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
             openAt: "10:00 AM",
             rate: 4.3,
             picture: RestaurantImage,
-            closed: true,
+            closed: true
         },
         {
             id: 3,
@@ -49,7 +50,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
             openAt: "10:00 AM",
             rate: 4.3,
             picture: RestaurantImage,
-            closed: false,
+            closed: false
         },
         {
             id: 4,
@@ -59,13 +60,30 @@ const NearbyRestaurantSubPage: React.FC = () => {
             openAt: "10:00 AM",
             rate: 4.3,
             picture: RestaurantImage,
-            closed: false,
-        },
+            closed: false
+        }
     ];
+    // grid grid-cols-[1fr_minmax(auto,720px)_1fr] items-stretch
+
+    //     'sm': '640px',
+    //     // => @media (min-width: 640px) { ... }
+    //
+    //     'md': '768px',
+    //     // => @media (min-width: 768px) { ... }
+    //
+    //     'lg': '1024px',
+    //     // => @media (min-width: 1024px) { ... }
+    //
+    //     'xl': '1280px',
+    //     // => @media (min-width: 1280px) { ... }
+    //
+    //     '2xl': '1536px',
+    //     // => @media (min-width: 1536px) { ... }
 
     return (
         <SubPage backLink="/home" title="Nearby Restaurant">
-            <div className="mt-6 w-full grid gap-5 grid-cols-[repeat(auto-fill,_335px)] pb-10 justify-evenly px-4 pt-2">
+            <div
+                className="mt-6 w-full grid gap-5 grid-cols-[1fr] bp620:grid-cols-[repeat(2,1fr)] md:grid-cols-[1fr] bp830:grid-cols-[repeat(2,1fr)] bp1070:grid-cols-[repeat(2,1fr)] xl:grid-cols-[repeat(3,1fr)] 2xl:grid-cols-[repeat(auto-fill,_335px)] pb-10 justify-evenly px-4 pt-2">
                 {restaurants.map((restaurant) => (
                     <Restaurant
                         id={restaurant.id}
@@ -76,6 +94,7 @@ const NearbyRestaurantSubPage: React.FC = () => {
                         rate={restaurant.rate}
                         picture={restaurant.picture}
                         closed={restaurant.closed}
+                        fullWidth={!isBigScreen}
                     />
                 ))}
             </div>
