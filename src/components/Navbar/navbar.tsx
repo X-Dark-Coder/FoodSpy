@@ -9,11 +9,19 @@ import { ReactComponent as SearchIconActive } from "assets/icons/Bottom Nav Bar/
 import { ReactComponent as SearchIconPasive } from "assets/icons/Bottom Nav Bar/Pasive/Search.svg";
 import { ReactComponent as UpdatesIconActive } from "assets/icons/Bottom Nav Bar/Active/Updates.svg";
 import { ReactComponent as UpdatesIconPasive } from "assets/icons/Bottom Nav Bar/Pasive/Updates.svg";
+import { useMediaQuery } from "react-responsive";
+import classNames from "classnames";
 
 const Navbar: React.FC = () => {
+    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+    const containerClasses = classNames("h-[86px] px-3 flex justify-center items-center bg-white md:justify-start md:flex-col rounded-t-2xl gap-[14px]", {
+        "shadow-[0_-8px_24px_0_#00000008]": isMobile,
+    });
+
     return (
         <nav>
-            <ul className="h-[86px] px-3 flex justify-center items-center bg-white md:justify-start md:flex-col shadow-[0_-8px_24px_0_#00000008] rounded-t-2xl gap-[14px]">
+            <ul className={containerClasses}>
                 <NavbarItem
                     to="/home"
                     activeWhen={["/home", "/all-categories", "/popular-food", "/nearby-restaurant"]}
@@ -31,8 +39,8 @@ const Navbar: React.FC = () => {
                     Search
                 </NavbarItem>
                 <NavbarItem
-                    to="/order"
-                    activeWhen={["/order"]}
+                    to="/order-history"
+                    activeWhen={["/order-history"]}
                     activeIcon={OrderIconActive}
                     disableIcon={OrderIconPasive}
                 >

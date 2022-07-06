@@ -15,7 +15,7 @@ const Header: React.FC = () => {
     const categories = ["Hotdog", "Berger"];
     const labels = [
         { icon: "test", name: "Test" },
-        { icon: "test", name: "Test2" },
+        { icon: "test", name: "Test2" }
     ];
 
     const renderCategories = () => {
@@ -32,9 +32,14 @@ const Header: React.FC = () => {
                 <button onClick={() => navigate("/home")}>
                     <BackIcon className="w-6 h-6" />
                 </button>
-                <button className="flex justify-end items-center gap-3" onClick={() => navigate("/search")}>
-                    <SearchIcon className="w-6 h-6" /> <InfoIcon className="w-6 h-6" />
-                </button>
+                <div className="flex justify-end items-center gap-3">
+                    <button onClick={() => navigate("/search")}>
+                        <SearchIcon className="w-6 h-6" />
+                    </button>
+                    <button>
+                        <InfoIcon className="w-6 h-6" />
+                    </button>
+                </div>
             </div>
             <div className="absolute bottom-0 p-4 pb-8 md:pb-4">
                 <h1 className="text-title-2 font-bold text-white md:text-[32px]">Express Ramen Shop</h1>

@@ -17,6 +17,7 @@ import {
     WishlistSubPage
 } from "pages";
 import { useTypedSelector } from "hooks/useTypedSelector";
+import OrderHistoryPage from "./pages/OrderHistoryPage/order-history-page";
 
 const App = () => {
     const location = useLocation();
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
             <Route path="/wishlist" element={<WishlistSubPage />} />
             <Route path="/account" element={<AccountSettingSubPage />} />
+            <Route path="/order-history" element={<OrderHistoryPage />} />
             <Route path="/welcome" element={<OnboardingPage />} />
             <Route path="/*" element={<NotFoundPage />} />
         </Routes>

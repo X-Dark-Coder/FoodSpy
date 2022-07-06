@@ -30,7 +30,7 @@ const AppLayout: React.FC<TAppLayoutProps> = ({ children }) => {
         }
     };
 
-    const mainContainerClasses = classNames("h-full md:h-[calc(100vh_-_58px)] overflow-y-scroll", {
+    const mainContainerClasses = classNames("h-full h-[calc(100vh_-_58px)] md:h-screen overflow-y-scroll", {
         "hide-scrollbar": isMobile
     });
 

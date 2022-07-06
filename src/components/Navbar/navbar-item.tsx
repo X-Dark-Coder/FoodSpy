@@ -15,7 +15,7 @@ const NavbarItem: React.FC<TNavbarItemProps> = ({
     const isActive = activeWhen.some((activeState) => location.pathname.includes(activeState));
 
     const containerClasses = classNames(
-        "w-full py-2 md:pl-3 flex flex-col md:flex-row justify-center md:justify-start items-center w-full rounded-lg text-medium",
+        "w-full py-2 md:pl-3 flex flex-col md:flex-row justify-center md:justify-start items-center w-full rounded-lg text-medium transition-colors",
         isActive ? "md:bg-primary" : "md:bg-transparent",
         className
     );

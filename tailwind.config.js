@@ -13,6 +13,7 @@ module.exports = {
             "lg": "1024px",
             "bp1070": "1070px",
             "xl": "1280px",
+            "bp1390" : "1390px",
             "2xl": "1536px"
         },
         extend: {

@@ -1,4 +1,4 @@
-import { AnimateSharedLayout } from "framer-motion";
+import { AnimateSharedLayout, LayoutGroup } from "framer-motion";
 import { SubPage } from "layouts";
 import { useParams } from "react-router-dom";
 import { AddressDetails, Discount, OrderReview, PaymentButton, YourOrder } from "./components";
@@ -8,7 +8,7 @@ const CheckoutSubPage: React.FC = () => {
 
     return (
         <SubPage backLink={"/restaurant/" + restaurantId} title="Checkout">
-            <AnimateSharedLayout>
+            <LayoutGroup>
                 <div className="pb-[90px]">
                     <YourOrder />
                     <div className="flex justify-start items-start flex-col lg:flex-row mt-7">
@@ -22,7 +22,7 @@ const CheckoutSubPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </AnimateSharedLayout>
+            </LayoutGroup>
         </SubPage>
     );
 };

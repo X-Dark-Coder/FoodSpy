@@ -5,6 +5,7 @@ import Restaurant from "./Restaurant/restaurant";
 import Profile from "./Profile/profile";
 import CartFood from "./CartFood/cart-food";
 import PromoSlider from "./PromoSlider/promo-slider";
+import Order from "./Order/order";
 
 export {
     Navbar,
@@ -13,5 +14,6 @@ export {
     Restaurant,
     Profile,
     CartFood,
-    PromoSlider
+    PromoSlider,
+    Order
 };
