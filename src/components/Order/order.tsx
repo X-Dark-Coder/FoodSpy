@@ -1,5 +1,5 @@
 import { TOrderProps } from "./types";
-import { ReactComponent as SuccessIcon } from "assets/icons/Order Success.svg";
+import { ReactComponent as SuccessIcon } from "/assets/icons/Order Success.svg";
 import RestaurantImage from "assets/img/restaurant2.jpg";
 
 const Order: React.FC<TOrderProps> = ({ date, products, restaurant, payment }) => {
