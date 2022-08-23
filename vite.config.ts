@@ -7,6 +7,9 @@ import path from "path";
 export default defineConfig({
     build: {
         outDir: "build",
+        rollupOptions: {
+            external: [/^node:.*/],
+        },
     },
     plugins: [
         react(),
