@@ -44,15 +44,15 @@ const LikeButton: React.FC = () => {
 
     return (
         <button
-            className="flex justify-center items-center absolute top-2 right-2 z-50 w-9 h-9 rounded-full bg-[rgba(0,0,0,0.6)]"
+            className="flex justify-center items-center absolute top-2 right-2 z-50 w-9 h-9 rounded-full bg-white"
             onClick={isLiked ? removeFoodFromWishlistHandler : addFoodToWishlistHandler}
         >
             {isLiked ? (
-                <motion.div variants={likeIconVariants} animate="liked">
+                <motion.div initial={false} variants={likeIconVariants} animate="liked">
                     <HeartFillIcon className="w-5 h-5 mt-px" />
                 </motion.div>
             ) : (
-                <motion.div variants={likeIconVariants} animate="unliked" className="origin-bottom">
+                <motion.div initial={false} variants={likeIconVariants} animate="unliked" className="origin-bottom">
                     <HeartIcon className="w-5 h-5 mt-px" />
                 </motion.div>
             )}

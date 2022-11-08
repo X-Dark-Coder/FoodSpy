@@ -24,6 +24,7 @@
     }
 
     .onboarding-pagination-bullet {
+        background-color: #d0d0d0;
         width: 6px;
         height: 6px;
     }

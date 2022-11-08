@@ -25,12 +25,17 @@
 
     /* containers scrollbar style */
 
+    .scrollbar-custom-hide::-webkit-scrollbar-thumb,.scrollbar-custom-hide::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0);
+        border: none;
+    }
+
     .scrollbar-custom::-webkit-scrollbar-track {
         background: #F6F7F8;
     }
 
     .scrollbar-custom-white::-webkit-scrollbar-track {
-        background: white;
+        background: #F6F7F8;
     }
 
     .scrollbar-custom::-webkit-scrollbar-thumb {
@@ -42,12 +47,12 @@
     .scrollbar-custom-white::-webkit-scrollbar-thumb {
         background: #e1e3e8;
         border-radius: 8px;
-        border: 6px solid white;
+        border: 6px solid #F6F7F8;
     }
 
-    .scrollbar-custom::-webkit-scrollbar-thumb:hover,.scrollbar-custom-white::-webkit-scrollbar-thumb:hover {
-        background: #b2b5bc;
-    }
+    /*.scrollbar-custom::-webkit-scrollbar-thumb:hover, .scrollbar-custom-white::-webkit-scrollbar-thumb:hover {*/
+    /*    background: #b2b5bc;*/
+    /*}*/
 
     /* custom scrollbar classes */
     .hide-scrollbar {

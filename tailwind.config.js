@@ -9,11 +9,11 @@ module.exports = {
             "bp680": "680px",
             "md": "768px",
             "bp830": "830px",
-            "bp960" : "960px",
+            "bp960": "960px",
             "lg": "1024px",
             "bp1070": "1070px",
             "xl": "1280px",
-            "bp1390" : "1390px",
+            "bp1390": "1390px",
             "2xl": "1536px"
         },
         extend: {
@@ -97,6 +97,7 @@ module.exports = {
                 redd: {
                     DEFAULT: "#F55053",
                     shade: {
+                        234 : "#ff3b3e",
                         10: "#DE3A3D",
                         20: "#C62B2E",
                         30: "#A0070A"

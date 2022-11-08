@@ -11,31 +11,40 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const PromoSlider: React.FC<TPromoSliderProps> = ({desktop}) => {
+const PromoSlider: React.FC<TPromoSliderProps> = ({ desktop }) => {
     return (
         <div className="w-full pt-6">
             <Swiper
                 modules={[EffectFade, Pagination, Navigation, Keyboard]}
                 effect="slide"
-                slidesPerView={1}
+                slidesPerView={desktop ? 2 : 1}
                 className="mb-4 pb-11 lg:pb-16 rounded-lg"
                 pagination={{
                     clickable: true,
                     bulletClass: "promo-pagination-bullet",
-                    bulletActiveClass: "promo-pagination-bullet-active",
+                    bulletActiveClass: "promo-pagination-bullet-active"
                 }}
                 keyboard={{
-                    enabled: true,
+                    enabled: true
                 }}
             >
                 <SwiperSlide className="flex justify-center items-center">
-                    <PromoSlide desktop={desktop} picture={PromoSlideImage1}/>
+                    <PromoSlide desktop={desktop} picture={PromoSlideImage1} />
                 </SwiperSlide>
                 <SwiperSlide className="flex justify-center items-center">
-                    <PromoSlide desktop={desktop} picture={PromoSlideImage2}/>
+                    <PromoSlide desktop={desktop} picture={PromoSlideImage2} />
                 </SwiperSlide>
-                <SwiperSlide className="flex justify-center items-center" >
-                    <PromoSlide desktop={desktop} picture={PromoSlideImage1}/>
+                <SwiperSlide className="flex justify-center items-center">
+                    <PromoSlide desktop={desktop} picture={PromoSlideImage1} />
+                </SwiperSlide>
+                <SwiperSlide className="flex justify-center items-center">
+                    <PromoSlide desktop={desktop} picture={PromoSlideImage2} />
+                </SwiperSlide>
+                <SwiperSlide className="flex justify-center items-center">
+                    <PromoSlide desktop={desktop} picture={PromoSlideImage1} />
+                </SwiperSlide>
+                <SwiperSlide className="flex justify-center items-center">
+                    <PromoSlide desktop={desktop} picture={PromoSlideImage2} />
                 </SwiperSlide>
             </Swiper>
         </div>

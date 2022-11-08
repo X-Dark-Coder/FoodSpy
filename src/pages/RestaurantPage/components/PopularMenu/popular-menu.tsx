@@ -9,7 +9,7 @@ const PopularMenu: React.FC = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 400px)" });
 
     const popularMenuContainerClasses = classNames("w-full mt-5 px-5 mb-2", {
-        "flex justify-start items-center overflow-x-scroll gap-5 pb-3 scrollbar-custom-white": !isMobile,
+        "flex justify-start items-center overflow-x-scroll gap-5 pb-3 hover:scrollbar-custom-white scrollbar-custom-hide": !isMobile,
         "grid grid-cols-[repeat(2,_160px)] justify-evenly gap-4": isMobile,
     });
 

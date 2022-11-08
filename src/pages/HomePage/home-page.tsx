@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { PromoSlider } from "components";
 import { PageContainer } from "layouts";
-import MediaQuery from "react-responsive";
+import MediaQuery, { useMediaQuery } from "react-responsive";
 import { TopNavbar } from "layouts/AppLayout/components";
 import { AllCategories, NearbyRestaurant, PopularFood } from "./components";
 import { SearchInput } from "components/shared";
@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 const HomePage: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
     useEffect(() => {
         dispatch(toggleBottomNavbar(true));
@@ -34,7 +35,7 @@ const HomePage: React.FC = () => {
                         />
                     </div>
                 </MediaQuery>
-                <PromoSlider desktop />
+                <PromoSlider desktop={!isMobile} />
                 <AllCategories />
                 <PopularFood />
                 <NearbyRestaurant />

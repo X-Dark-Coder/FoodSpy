@@ -1,9 +1,9 @@
 import { Button, Input, Modal, SlidingModal } from "components/shared";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { setUserInformation } from "store/actions/user.actions";
-import { TRegisterModalProps } from "./types";
+import { TFormError, TRegisterModalProps } from "./types";
 
 const RegisterModal: React.FC<TRegisterModalProps> = ({ isOpen, setIsOpen, setIsSuccessModalOpen }) => {
     const dispatch = useDispatch();
@@ -13,16 +13,60 @@ const RegisterModal: React.FC<TRegisterModalProps> = ({ isOpen, setIsOpen, setIs
     const [userPhone, setUserPhone] = useState("");
     const [userEmail, setUserEmail] = useState("");
 
+    const timer = useRef<any>(null);
+    const [errors, setErrors] = useState<TFormError[]>([]);
+
+    useEffect(() => {
+        if (userName !== "" || userPhone !== "" || userEmail !== "") onInputChange();
+    }, [userName, userPhone, userEmail]);
+
     const onUserNameChanged = (e: React.ChangeEvent<HTMLInputElement>) => setUserName(e.target.value);
     const onUserEmailChanged = (e: React.ChangeEvent<HTMLInputElement>) => setUserEmail(e.target.value);
     const onUserPhoneChanged = (e: React.ChangeEvent<HTMLInputElement>) => setUserPhone(e.target.value);
 
+    const checkError = (id: string, msg: string, condition: boolean) => {
+        if (condition) {
+            if (!errors.find(err => err.id === id)) {
+                setErrors(old => ([{ id, msg }, ...old]));
+            }
+        } else {
+            setErrors(old => old.filter(err => err.id !== id));
+        }
+    };
+
+    const renderError = (id: string) => {
+        const err = errors.find(err => err.id === id);
+        if (err) return (
+            <li className="text-[14px] text-accent-redd-shade-10 list-none pl-4 pt-2">
+                {err.msg}
+            </li>
+        );
+        return null;
+    };
+
+    const onInputChange = () => {
+        if (timer.current) clearTimeout(timer.current);
+        timer.current = setTimeout(() => {
+
+            let dotSection: any = userEmail.split("@");
+            if (dotSection.length == 2) dotSection = dotSection[1];
+            else dotSection = false;
+
+            checkError("email", "Email is incorrect", userEmail.length === 0 || !userEmail.includes("@") || !dotSection || !dotSection.includes("."));
+            checkError("phone", "Phone number is incorrect", userPhone.length !== 11 || !userPhone.includes("09"));
+            checkError("username", "User name must bigger than 6 char", userName.length < 6);
+        }, 200);
+    };
+
     const saveChanges = () => {
+
+        if (errors.length !== 0) return;
+
         dispatch(
             setUserInformation({
                 email: userEmail,
                 name: userName,
-                phone: userPhone,
+                phone: userPhone
             })
         );
         setTimeout(() => setIsSuccessModalOpen(true), 200);
@@ -45,6 +89,8 @@ const RegisterModal: React.FC<TRegisterModalProps> = ({ isOpen, setIsOpen, setIs
                     fullWidth
                     showLabel
                 />
+                {renderError("username")}
+
                 <Input
                     variant="simple"
                     type="email"
@@ -55,6 +101,8 @@ const RegisterModal: React.FC<TRegisterModalProps> = ({ isOpen, setIsOpen, setIs
                     fullWidth
                     showLabel
                 />
+                {renderError("email")}
+
                 <Input
                     variant="simple"
                     type="text"
@@ -65,6 +113,8 @@ const RegisterModal: React.FC<TRegisterModalProps> = ({ isOpen, setIsOpen, setIs
                     fullWidth
                     showLabel
                 />
+                {renderError("phone")}
+
                 <Button variant="wide-primary" onClick={saveChanges} className="mt-16" fullWidth>
                     Register
                 </Button>

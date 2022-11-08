@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Pagination, Navigation } from "swiper";
+import { EffectFade, Pagination, Navigation, Keyboard } from "swiper";
 import { TOnboardingSliderProps } from "./types";
 import SafeDeliveryIllustration from "assets/img/Frame 213.svg";
 import FastDeliveryIllustration from "assets/img/Frame 214.svg";
@@ -18,18 +18,18 @@ const OnboardingSlider: React.FC<TOnboardingSliderProps> = ({ onSlideChange, onS
     const childVariants: Variants = {
         hide: {
             y: 40,
-            opacity: 0,
+            opacity: 0
         },
         show: {
             y: 0,
-            opacity: 1,
-        },
+            opacity: 1
+        }
     };
 
     return (
         <motion.div variants={childVariants} className="w-full lg:px-8">
             <Swiper
-                modules={[EffectFade, Pagination, Navigation]}
+                modules={[EffectFade, Pagination, Navigation, Keyboard]}
                 effect={isMobile ? "slide" : "fade"}
                 slidesPerView={1}
                 className="mb-4 lg:pb-8"
@@ -37,8 +37,9 @@ const OnboardingSlider: React.FC<TOnboardingSliderProps> = ({ onSlideChange, onS
                 pagination={{
                     clickable: true,
                     bulletClass: "onboarding-pagination-bullet",
-                    bulletActiveClass: "onboarding-pagination-bullet-active",
+                    bulletActiveClass: "onboarding-pagination-bullet-active"
                 }}
+                keyboard
                 onSlideChange={onSlideChange}
                 onInit={onSwiperInit}
             >
