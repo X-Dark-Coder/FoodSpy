@@ -32,7 +32,10 @@ export type TActionClearSearchHistory = {
 
 export type TActionAddFoodToWishlist = {
     type: ActionType.ADD_FOOD_TO_WISHLIST;
-    payload: number;
+    payload: {
+        food: number,
+        restaurant: number
+    };
 };
 
 export type TActionRemoveFoodFromWishlist = {

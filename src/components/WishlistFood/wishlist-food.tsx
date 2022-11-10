@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price, discount, name, id, restaurant }) => {
     const dispatch = useDispatch();
-    const isFoodInWishlist = useTypedSelector((state) => state.user.wishlist.find((itemId) => itemId === id));
+    const isFoodInWishlist = useTypedSelector((state) => state.user.wishlist.find((item) => item.food === id));
     const [isLiked, setIsLiked] = useState(!!isFoodInWishlist);
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price,
         "h-[120px] bg-white rounded-md shadow-main flex justify-start items-center",
         {
             "min-w-[335px] max-w-[335px]": !fullWidth,
-            "w-full": fullWidth,
+            "w-full": fullWidth
         }
     );
 
@@ -30,16 +30,16 @@ const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price,
             scale: 0.8,
             opacity: 0,
             transition: {
-                duration: 0.1,
-            },
+                duration: 0.1
+            }
         },
         show: {
             scale: 1,
             opacity: 1,
             transition: {
-                duration: 0.1,
-            },
-        },
+                duration: 0.1
+            }
+        }
     };
 
     const removeFoodFromWishlistHandler = () => {
@@ -57,17 +57,17 @@ const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price,
             opacity: 0,
             transition: {
                 opacity: {
-                    duration: 0.15,
+                    duration: 0.15
                 },
                 scale: {
-                    duration: 0.25,
-                },
-            },
+                    duration: 0.25
+                }
+            }
         },
         show: {
             scale: 1,
-            opacity: 1,
-        },
+            opacity: 1
+        }
     };
 
     return (
@@ -87,7 +87,8 @@ const WishListFood: React.FC<TWishlistFoodProps> = ({ fullWidth, picture, price,
                     loading="lazy"
                 />
                 {discount && (
-                    <div className="w-[40px] h-[20px] absolute top-[6px] bg-accent-redd rounded-r-[2px] flex justify-center items-center">
+                    <div
+                        className="w-[40px] h-[20px] absolute top-[6px] bg-accent-redd rounded-r-[2px] flex justify-center items-center">
                         <span className="text-accent-redd-tint-40 font-semibold text-[12px]">-{discount}%</span>
                     </div>
                 )}

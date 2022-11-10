@@ -137,7 +137,7 @@ const clearSearchHistoryReducer = (state: TUserState) => {
  */
 
 const addFoodToWishlistReducer = (state: TUserState, action: TActionAddFoodToWishlist) => {
-    if (!state.wishlist.find((itemId) => itemId === action.payload)) {
+    if (!state.wishlist.find((item) => item.food === action.payload.food)) {
         const newWishlist = [action.payload, ...state.wishlist];
         localStorage.setItem("WISHLIST", JSON.stringify(newWishlist));
         return { ...state, wishlist: newWishlist };
@@ -151,7 +151,7 @@ const addFoodToWishlistReducer = (state: TUserState, action: TActionAddFoodToWis
  */
 
 const removeFoodFromWishlistReducer = (state: TUserState, action: TActionRemoveFoodFromWishlist) => {
-    const newWishlist = state.wishlist.filter((itemId) => itemId !== action.payload);
+    const newWishlist = state.wishlist.filter((item) => item.food !== action.payload);
     localStorage.setItem("WISHLIST", JSON.stringify(newWishlist));
     return { ...state, wishlist: newWishlist };
 };

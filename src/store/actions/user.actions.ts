@@ -9,13 +9,16 @@ export const removeSearchHistory = (payload: number) => ({ type: ActionType.REMO
 
 export const clearSearchHistory = () => ({ type: ActionType.CLEAR_SEARCH_HISTORY });
 
-export const addFoodToWishlist = (payload: number) => ({ type: ActionType.ADD_FOOD_TO_WISHLIST, payload });
+export const addFoodToWishlist = (payload: { food: number, restaurant: number }) => ({
+    type: ActionType.ADD_FOOD_TO_WISHLIST,
+    payload
+});
 
 export const removeFoodFromWishlist = (payload: number) => ({ type: ActionType.REMOVE_FOOD_FROM_WISHLIST, payload });
 
 export const setUserInformation = (payload: { name: string; email: string; phone: string }) => ({
     type: ActionType.SET_USER_INFORMATION,
-    payload,
+    payload
 });
 
 export const addOrderHistory = (payload: {
@@ -25,5 +28,5 @@ export const addOrderHistory = (payload: {
     restaurant: number;
 }) => ({
     type: ActionType.ADD_ORDER_HISTORY,
-    payload,
+    payload
 });

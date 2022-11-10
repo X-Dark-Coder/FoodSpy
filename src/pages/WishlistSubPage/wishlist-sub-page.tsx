@@ -7,12 +7,13 @@ import { AnimatePresence } from "framer-motion";
 
 const WishlistSubPage = () => {
     const wishlist = useTypedSelector((state) => state.user.wishlist);
-    const foods = fakeFoods.filter((food) => wishlist.includes(food.id));
+    const foods = fakeFoods.filter((food) => wishlist.find(item => item.food === food.id));
 
     return (
         <SubPage backLink="/profile" title="Wishlist">
             {foods.length !== 0 && (
-                <div className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 px-4 pb-10 pt-2 justify-evenly">
+                <div
+                    className="mt-6 w-full grid grid-cols-[repeat(auto-fill,_335px)] gap-5 px-4 pb-10 pt-2 justify-evenly">
                     <AnimatePresence>
                         {foods.map((food) => (
                             <WishListFood
@@ -21,7 +22,7 @@ const WishlistSubPage = () => {
                                 picture={food.picture}
                                 price={food.price}
                                 discount={food.discount}
-                                restaurant={food.restaurant}
+                                restaurant={wishlist.find(item => item.food === food.id)!.restaurant}
                                 key={food.id}
                             />
                         ))}

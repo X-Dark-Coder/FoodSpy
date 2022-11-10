@@ -11,7 +11,7 @@ export const getSearchHistory = () => {
 
 export const getWishlist = () => {
     const history = localStorage.getItem("WISHLIST");
-    return history ? (JSON.parse(history) as number[]) : [];
+    return history ? (JSON.parse(history) as { food: number; restaurant: number }[]) : [];
 };
 
 export const getOrderHistory = () => {

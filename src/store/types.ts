@@ -33,7 +33,7 @@ export type TUserState = {
         phone: string;
     } | null;
     walletCredit: number;
-    wishlist: number[];
+    wishlist: { food: number, restaurant: number }[];
     updates?: TUpdate[];
     searchHistory: THistoryItem[];
     orderHistory: TOrder[];

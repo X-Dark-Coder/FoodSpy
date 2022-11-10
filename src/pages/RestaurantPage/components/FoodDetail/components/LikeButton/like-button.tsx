@@ -8,10 +8,10 @@ import { addFoodToWishlist, removeFoodFromWishlist } from "store/actions/user.ac
 import { useState } from "react";
 
 const LikeButton: React.FC = () => {
-    const { productId } = useParams<{ productId: string }>();
+    const { restaurantId, productId } = useParams<{ restaurantId: string; productId: string }>();
     const dispatch = useDispatch();
     const isFoodInWishlist = useTypedSelector((state) =>
-        state.user.wishlist.find((itemId) => itemId === Number(productId))
+        state.user.wishlist.find((item) => item.food === Number(productId))
     );
     const [isLiked, setIsLiked] = useState(!!isFoodInWishlist);
 
@@ -22,7 +22,10 @@ const LikeButton: React.FC = () => {
 
     const addFoodToWishlistHandler = () => {
         setIsLiked(true);
-        dispatch(addFoodToWishlist(Number(productId)));
+        dispatch(addFoodToWishlist({
+            food: Number(productId),
+            restaurant: Number(restaurantId)
+        }));
     };
 
     const likeIconVariants: Variants = {
@@ -31,15 +34,15 @@ const LikeButton: React.FC = () => {
             x: [0, 2, -2, 2, -2, 2, 0],
             rotate: [0, 6, -6, 6, -6, 6, 0],
             transition: {
-                duration: 0.5,
-            },
+                duration: 0.5
+            }
         },
         liked: {
             scale: [0.9, 1.15, 0.9, 1.15, 0.9, 1],
             transition: {
-                duration: 0.6,
-            },
-        },
+                duration: 0.6
+            }
+        }
     };
 
     return (
