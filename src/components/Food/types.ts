@@ -18,7 +18,7 @@ export type TFood = {
     rate: number;
     orderTime: number;
     picture: string;
-    restaurant: number;
+    restaurant: number[];
     ingredients: TFoodIngredient[];
     informations: TFoodInformations;
 };
@@ -27,4 +27,5 @@ export type TFoodProps = {
     fullWidth?: boolean;
     onClick?: () => void;
     variant?: "column" | "row";
+    navigateTo?: string;
 } & Omit<TFood, "ingredients" | "informations" | "description">;

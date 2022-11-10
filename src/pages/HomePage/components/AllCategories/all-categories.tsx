@@ -1,7 +1,11 @@
 import { FoodCategory } from "components";
 import { SeeAll } from "components/shared";
-import FoodImage1 from "assets/img/Salad.png";
-import FoodImage2 from "assets/img/Noodle.png";
+import FoodImage1 from "assets/img/categories/Salad.png";
+import FoodImage2 from "assets/img/categories/Sandwich.png";
+import FoodImage3 from "assets/img/categories/Chicken.png";
+import FoodImage4 from "assets/img/categories/Ramen.png";
+import FoodImage5 from "assets/img/categories/Seafood.png";
+import FoodImage6 from "assets/img/categories/Omelette.png";
 
 const AllCategories: React.FC = () => {
     const categories = [
@@ -14,49 +18,49 @@ const AllCategories: React.FC = () => {
         },
         {
             id: 1,
-            title: "Salad",
+            title: "Sandwich",
             from: 23,
             menuCount: 15,
             picture: FoodImage2,
         },
         {
             id: 2,
-            title: "Salad",
+            title: "Chicken",
             from: 47,
             menuCount: 4,
-            picture: FoodImage1,
+            picture: FoodImage3,
         },
         {
             id: 3,
-            title: "Salad",
+            title: "Ramen",
             from: 30,
             menuCount: 11,
-            picture: FoodImage1,
+            picture: FoodImage4,
         },
         {
             id: 4,
-            title: "Salad",
+            title: "Seafood",
             from: 29,
             menuCount: 23,
-            picture: FoodImage2,
+            picture: FoodImage5,
         },
         {
             id: 5,
-            title: "Salad",
+            title: "Omelette",
             from: 23,
             menuCount: 15,
-            picture: FoodImage1,
+            picture: FoodImage6,
         },
         {
             id: 6,
             title: "Salad",
             from: 47,
             menuCount: 4,
-            picture: FoodImage2,
+            picture: FoodImage1,
         },
         {
             id: 7,
-            title: "Salad",
+            title: "Sandwich",
             from: 30,
             menuCount: 11,
             picture: FoodImage2,

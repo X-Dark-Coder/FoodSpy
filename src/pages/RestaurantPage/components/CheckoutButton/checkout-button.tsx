@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const CheckoutButton: React.FC = () => {
     const { restaurantId } = useParams<{ restaurantId: string }>();
     const navigate = useNavigate();
+    const cartRestaurantId = useTypedSelector((state) => state.cart.restaurant) as number;
     const productsCount = useTypedSelector((state) => state.cart.productsCount);
     const totalPrice = useTypedSelector((state) => state.cart.totalPrice);
 
@@ -19,14 +20,16 @@ const CheckoutButton: React.FC = () => {
         </div>
     );
 
-    const redirectToCheckoutPage = () => navigate("/checkout/" + restaurantId);
+    const redirectToCheckoutPage = () => navigate("/checkout");
 
     const containerVariants: Variants = {
         hide: { y: 25, opacity: 0 },
         show: { y: 0, opacity: 1 },
     };
 
-    if (productsCount !== 0)
+    console.log(cartRestaurantId , Number(restaurantId))
+
+    if (productsCount !== 0 && cartRestaurantId === Number(restaurantId))
         return (
             <AnimatePresence>
                 <motion.div

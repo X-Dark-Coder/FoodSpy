@@ -1,17 +1,23 @@
+import React, { useState } from "react";
 import { Button } from "components/shared";
 import { ReactComponent as PlusIcon } from "assets/icons/Plus.svg";
 import { ReactComponent as MinusIcon } from "assets/icons/Minus.svg";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct } from "store/actions/shopping-cart.actions";
+import { addProduct, setShoppingCartRestaurant } from "store/actions/shopping-cart.actions";
 import { useNavigate, useParams } from "react-router-dom";
 import { TAddToCartProps } from "./types";
+import { useTypedSelector } from "hooks/useTypedSelector";
+import AlertModal from "components/shared/AlertModal/alert-modal";
+import { ReactComponent as OrderSuccess } from "assets/img/order-success.svg";
 
 const AddToCart: React.FC<TAddToCartProps> = ({ foodInstructions }) => {
-    const { restaurantId, productId } = useParams<{ restaurantId: string; productId: string }>();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [foodCount, setFoodCount] = useState(1);
+    const [showInfoModal, setShowInfoModal] = useState(false);
+
+    const { restaurantId, productId } = useParams<{ restaurantId: string; productId: string }>();
+    const cartRestaurantId = useTypedSelector((state) => state.cart.restaurant);
 
     const increaseFoodCount = () => {
         if (foodCount !== 8) setFoodCount(foodCount + 1);
@@ -22,8 +28,13 @@ const AddToCart: React.FC<TAddToCartProps> = ({ foodInstructions }) => {
     };
 
     const addProductToCart = () => {
-        dispatch(addProduct({ id: Number(productId)!, count: foodCount, instructions: foodInstructions }));
-        navigate("/restaurant/" + restaurantId);
+        if (cartRestaurantId === null || cartRestaurantId === Number(restaurantId)) {
+            dispatch(addProduct({ id: Number(productId)!, count: foodCount, instructions: foodInstructions }));
+            if (cartRestaurantId === null) dispatch(setShoppingCartRestaurant(Number(restaurantId)));
+            navigate("/restaurant/" + restaurantId);
+        } else {
+            setShowInfoModal(true);
+        }
     };
 
     return (
@@ -51,6 +62,17 @@ const AddToCart: React.FC<TAddToCartProps> = ({ foodInstructions }) => {
                     </Button>
                 </div>
             </div>
+
+            <AlertModal
+                title="Error"
+                description="You cannot order from two restaurants, please clear or complete your shopping cart."
+                picture={OrderSuccess}
+                onButtonClick={() => setShowInfoModal(false)}
+                buttonText="Ok"
+                show={showInfoModal}
+                onClose={() => setShowInfoModal(false)}
+            />
+
         </div>
     );
 };

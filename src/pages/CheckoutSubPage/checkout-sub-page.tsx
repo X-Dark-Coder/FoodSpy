@@ -1,10 +1,10 @@
-import { AnimateSharedLayout, LayoutGroup } from "framer-motion";
+import { LayoutGroup } from "framer-motion";
 import { SubPage } from "layouts";
-import { useParams } from "react-router-dom";
 import { AddressDetails, Discount, OrderReview, PaymentButton, YourOrder } from "./components";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 const CheckoutSubPage: React.FC = () => {
-    const { restaurantId } = useParams<{ restaurantId: string }>();
+    const restaurantId = useTypedSelector((state) => state.cart.restaurant)!;
 
     return (
         <SubPage backLink={"/restaurant/" + restaurantId} title="Checkout">

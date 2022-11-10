@@ -14,15 +14,16 @@ const RightFromOvensMenu: React.FC = () => {
     const { restaurantId } = useParams<{ restaurantId: string }>();
     const restaurant = fakeRestaurants.find((restaurant) => restaurant.id === Number(restaurantId))!;
 
-    const tabs: TTabMenuItem[] = restaurant.menu.map((menu, index) => ({
-        id: index + 1,
-        name: menu.title,
-        foods: menu.foods,
-    }));
+    const tabs: TTabMenuItem[] = restaurant.menu
+        .filter(menu => menu.foods.filter(food => food.restaurant.includes(Number(restaurantId))).length !== 0)
+        .map((menu, index) => ({
+            id: index + 1,
+            name: menu.title
+        }));
 
     const tabMenusContainerClasses = classNames("mt-6 px-5 w-full flex justify-start items-center gap-5", {
         "overflow-x-scroll pb-3 scrollbar-custom-white": !isMobile,
-        "flex-col": isMobile,
+        "flex-col": isMobile
     });
 
     const menuFoodsVariants: Variants = {
@@ -31,47 +32,50 @@ const RightFromOvensMenu: React.FC = () => {
             opacity: 0,
             transition: {
                 opacity: {
-                    duration: 0.15,
+                    duration: 0.15
                 },
                 scale: {
-                    duration: 0.25,
-                },
-            },
+                    duration: 0.25
+                }
+            }
         },
         show: {
             scale: 1,
-            opacity: 1,
-        },
+            opacity: 1
+        }
     };
 
     const renderMenus = () => {
-        return restaurant.menu.map(({ foods }, index) => {
-            if (index + 1 === activeTab) {
-                return foods.map((food) => (
-                    <motion.div
-                        variants={menuFoodsVariants}
-                        initial="hide"
-                        animate="show"
-                        exit="hide"
-                        key={food.id}
-                        className={isMobile ? "w-full" : ""}
-                    >
-                        <Food
-                            id={food.id}
-                            name={food.name}
-                            orderTime={food.orderTime}
-                            picture={food.picture}
-                            price={food.price}
-                            rate={food.rate}
-                            discount={food.discount}
-                            variant={isMobile ? "row" : "column"}
-                            fullWidth={isMobile}
-                            restaurant={food.restaurant}
-                        />
-                    </motion.div>
-                ));
-            }
-        });
+        return restaurant.menu
+            .filter(menu => tabs.find(tab => tab.name === menu.title))
+            .map(({ foods }, index) => {
+                if (index + 1 === activeTab) {
+                    return foods.filter(food => food.restaurant.includes(Number(restaurantId))).map((food) => (
+                        <motion.div
+                            variants={menuFoodsVariants}
+                            initial="hide"
+                            animate="show"
+                            exit="hide"
+                            key={food.id}
+                            className={isMobile ? "w-full" : ""}
+                        >
+                            <Food
+                                id={food.id}
+                                name={food.name}
+                                orderTime={food.orderTime}
+                                picture={food.picture}
+                                price={food.price}
+                                rate={food.rate}
+                                discount={food.discount}
+                                variant={isMobile ? "row" : "column"}
+                                fullWidth={isMobile}
+                                restaurant={food.restaurant}
+                                navigateTo={`/restaurant/${Number(restaurantId)}/product/${food.id}`}
+                            />
+                        </motion.div>
+                    ));
+                }
+            });
     };
 
     return (

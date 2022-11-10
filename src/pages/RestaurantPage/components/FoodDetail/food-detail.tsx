@@ -63,7 +63,7 @@ const FoodDetail: React.FC<TFoodDetail> = ({ restaurantId, id }) => {
                         />
                     </div>
                 )}
-                <AddToCart foodInstructions={foodInstructions} />
+                <AddToCart foodInstructions={foodInstructions} restaurantId={restaurantId}/>
             </div>
         </div>
     );

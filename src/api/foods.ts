@@ -44,7 +44,7 @@ export const sandwichMenu: TFood[] = [
         orderTime: 15,
         price: 18,
         picture: BolognaSandwichImage,
-        restaurant: 2,
+        restaurant: [1,2],
         informations: {
             freeGluten: true,
             kal: 1850,
@@ -53,6 +53,7 @@ export const sandwichMenu: TFood[] = [
         ingredients: ingredients,
     },
 ];
+
 export const humberMenu: TFood[] = [
     {
         id: 1,
@@ -63,7 +64,7 @@ export const humberMenu: TFood[] = [
         orderTime: 25,
         price: 30,
         picture: BaconBurgerImage,
-        restaurant: 2,
+        restaurant: [2,3],
         informations: {
             freeGluten: false,
             kal: 2400,
@@ -81,7 +82,7 @@ export const humberMenu: TFood[] = [
         orderTime: 30,
         price: 32,
         picture: CheeseburgerImage,
-        restaurant: 2,
+        restaurant: [3,1],
         informations: {
             freeGluten: true,
             kal: 2450,
@@ -98,7 +99,7 @@ export const humberMenu: TFood[] = [
         orderTime: 35,
         price: 29,
         picture: ChickenBurgerImage,
-        restaurant: 2,
+        restaurant: [4,5,3,2,1],
         informations: {
             freeGluten: true,
             kal: 1970,
@@ -115,7 +116,7 @@ export const humberMenu: TFood[] = [
         orderTime: 35,
         price: 23,
         picture: HamburgerImage,
-        restaurant: 2,
+        restaurant: [2,3,5],
         informations: {
             freeGluten: true,
             kal: 1970,
@@ -124,6 +125,7 @@ export const humberMenu: TFood[] = [
         ingredients: ingredients,
     },
 ];
+
 export const hotdogMenu: TFood[] = [
     {
         id: 11,
@@ -134,7 +136,7 @@ export const hotdogMenu: TFood[] = [
         orderTime: 0,
         price: 34,
         picture: HotdogImage,
-        restaurant: 2,
+        restaurant: [4,1,2],
         informations: {
             freeGluten: false,
             kal: 750,
@@ -143,6 +145,7 @@ export const hotdogMenu: TFood[] = [
         ingredients: ingredients,
     },
 ];
+
 export const drinksMenu: TFood[] = [
     {
         id: 5,
@@ -153,7 +156,7 @@ export const drinksMenu: TFood[] = [
         orderTime: 0,
         price: 5,
         picture: CocacolaImage,
-        restaurant: 2,
+        restaurant: [1,2],
         informations: {
             freeGluten: false,
             kal: 750,
@@ -170,7 +173,7 @@ export const drinksMenu: TFood[] = [
         orderTime: 0,
         price: 6,
         picture: PepsiImage,
-        restaurant: 2,
+        restaurant: [5,3,1,2,4],
         informations: {
             freeGluten: false,
             kal: 780,
@@ -187,7 +190,7 @@ export const drinksMenu: TFood[] = [
         orderTime: 0,
         price: 2,
         picture: WaterImage,
-        restaurant: 2,
+        restaurant: [1],
         informations: {
             freeGluten: true,
             kal: 300,
@@ -204,7 +207,7 @@ export const drinksMenu: TFood[] = [
         orderTime: 0,
         price: 1.5,
         picture: FantaImage,
-        restaurant: 2,
+        restaurant: [5,4],
         informations: {
             freeGluten: true,
             kal: 300,
@@ -213,6 +216,7 @@ export const drinksMenu: TFood[] = [
         ingredients: [],
     },
 ];
+
 export const tacoMenu: TFood[] = [
     {
         id: 15,
@@ -223,7 +227,7 @@ export const tacoMenu: TFood[] = [
         orderTime: 15,
         price: 32,
         picture: TacoChickenImage,
-        restaurant: 2,
+        restaurant: [3,4],
         informations: {
             freeGluten: false,
             kal: 4400,
@@ -241,7 +245,7 @@ export const tacoMenu: TFood[] = [
         orderTime: 20,
         price: 36,
         picture: TacoMeatImage,
-        restaurant: 2,
+        restaurant: [3,4],
         informations: {
             freeGluten: false,
             kal: 5200,
@@ -251,6 +255,7 @@ export const tacoMenu: TFood[] = [
         discount: 15,
     },
 ];
+
 export const friedMenu: TFood[] = [
     {
         id: 13,
@@ -261,7 +266,7 @@ export const friedMenu: TFood[] = [
         orderTime: 25,
         price: 15,
         picture: FrenchPotatosImage,
-        restaurant: 2,
+        restaurant: [5,1],
         informations: {
             freeGluten: false,
             kal: 2400,
@@ -279,7 +284,7 @@ export const friedMenu: TFood[] = [
         orderTime: 25,
         price: 38,
         picture: KentacyImage,
-        restaurant: 2,
+        restaurant: [3,5],
         informations: {
             freeGluten: false,
             kal: 2400,
@@ -300,7 +305,7 @@ export const pizzaMenu: TFood[] = [
         orderTime: 0,
         price: 28,
         picture: PizzaPepperoniImage,
-        restaurant: 2,
+        restaurant: [3,2],
         informations: {
             freeGluten: false,
             kal: 750,
@@ -317,7 +322,7 @@ export const pizzaMenu: TFood[] = [
         orderTime: 0,
         price: 25,
         picture: PizzaVegterianImage,
-        restaurant: 2,
+        restaurant: [5,4,3,2,1],
         informations: {
             freeGluten: false,
             kal: 750,
@@ -327,4 +332,4 @@ export const pizzaMenu: TFood[] = [
     },
 ];
 
-export const fakeFoods: TFood[] = shuffleArray([...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu]);
+export const fakeFoods: TFood[] = shuffleArray([...friedMenu, ...tacoMenu, ...humberMenu, ...drinksMenu, ...pizzaMenu, ...hotdogMenu, ...sandwichMenu]);

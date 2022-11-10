@@ -34,7 +34,7 @@ const App = () => {
                 }
             }
             setIsAppLoaded(true);
-        }, 3000);
+        }, 2000);
     }, []);
 
     const routes = (
@@ -52,7 +52,7 @@ const App = () => {
                 <Route path=":restaurantId" element={<RestaurantPage />} />
             </Route>
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/checkout/:restaurantId" element={<CheckoutSubPage />} />
+            <Route path="/checkout" element={<CheckoutSubPage />} />
             <Route path="/wishlist" element={<WishlistSubPage />} />
             <Route path="/account" element={<AccountSettingSubPage />} />
             <Route path="/order-history" element={<OrderHistoryPage />} />

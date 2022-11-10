@@ -22,7 +22,7 @@ const YourOrder: React.FC = () => {
     );
 
     useEffect(() => {
-        if (products.length === 0) navigate("/restaurant/" + restaurantId);
+        if (products.length === 0) navigate("/home");
     }, [products]);
 
     return (

@@ -29,7 +29,7 @@ export const shoppingCartReducer = (state: TShoppingCartState = init, action: TA
         case ActionType.REMOVE_PRODUCT:
             return removeProductReducer(state, action);
         case ActionType.CLEAR_SHOPPING_CART:
-            return clearShoppingCartReducer(state);
+            return clearShoppingCartReducer();
         case ActionType.CHANGE_PRODUCT_COUNT:
             return changeProductCountReducer(state, action);
         case ActionType.CHANGE_PRODUCT_INSTRUCTIONS:
@@ -111,7 +111,7 @@ const setShoppingCartRestaurantReducer = (state: TShoppingCartState, action: TAc
  * Clear all added products and set current restaurant to null
  */
 
-const clearShoppingCartReducer = (state: TShoppingCartState) => {
+const clearShoppingCartReducer = () => {
     return {
         restaurant: null,
         products: [],

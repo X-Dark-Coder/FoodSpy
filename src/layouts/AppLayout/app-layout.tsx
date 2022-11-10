@@ -4,12 +4,10 @@ import { SideMenu, TopNavbar } from "./components";
 import { TAppLayoutProps } from "./types";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useTypedSelector } from "hooks/useTypedSelector";
-import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import classNames from "classnames";
 
 const AppLayout: React.FC<TAppLayoutProps> = ({ children }) => {
-    const { pathname } = useLocation();
     const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
     const showBottomNavbar = useTypedSelector((state) => state.app.showBottomNavbar);
 

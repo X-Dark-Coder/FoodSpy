@@ -16,6 +16,7 @@ const Food: React.FC<TFoodProps> = ({
     fullWidth,
     restaurant,
     onClick,
+    navigateTo
 }) => {
     const navigate = useNavigate();
 
@@ -45,7 +46,9 @@ const Food: React.FC<TFoodProps> = ({
 
     const onContainerClicked = () => {
         if (onClick) onClick();
-        navigate(`/restaurant/${restaurant}/product/${id}`);
+
+        if(navigateTo) navigate(navigateTo);
+        else navigate(`/restaurant/${restaurant}/product/${id}`);
     };
 
     const columnVariantTemplate = (
