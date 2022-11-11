@@ -16,7 +16,11 @@ const CartItems: React.FC = () => {
                 onClick={goToCheckoutPage}
             >
                 <ShoppingBagIcon className="w-[16px]" />
-                <span className="text-small text-primary font-semibold translate-y-px whitespace-nowrap">{productsCount} Items {totalPrice}$</span>
+                <span className="text-small text-primary font-semibold translate-y-px whitespace-nowrap">
+                    {productsCount}
+                    <span className="hidden bp500:inline md:hidden bp870:inline"> Items</span>
+                    <span className="hidden bp500:inline md:hidden bp960:inline"> {totalPrice}$</span>
+                </span>
             </div>
         );
     }
