@@ -33,6 +33,7 @@ const ShowSearchResult: React.FC<TShowSearchResultProps> = ({ result, type }) =>
                                     variant="row"
                                     restaurant={food.restaurant}
                                     fullWidth={!isBigScreen}
+                                    navigateTo={`/restaurant/${food.restaurant[Math.floor(Math.random() * food.restaurant.length)]}/product/${food.id}`}
                                 />
                             );
                         })}

@@ -14,44 +14,32 @@ const PopularSearch: React.FC<TPopularSearchProps> = ({ setSearchResult }) => {
     const popularSearches: TPopularSearchItem[] = [
         {
             id: 0,
-            text: "Test 1",
+            text: "Chicken",
         },
         {
             id: 1,
-            text: "Test 12",
+            text: "Burger",
         },
         {
             id: 2,
-            text: "Test 123",
+            text: "Snack",
         },
         {
             id: 3,
-            text: "Test 1234234",
+            text: "Taco",
         },
         {
             id: 4,
-            text: "Test 12345",
+            text: "Pizza",
         },
         {
             id: 5,
-            text: "Test 12341234214",
+            text: "Sandwich",
         },
         {
             id: 6,
-            text: "Test 12214",
-        },
-        {
-            id: 7,
-            text: "Teasdfst 1sdf23",
-        },
-        {
-            id: 8,
-            text: "Te242st 1234",
-        },
-        {
-            id: 9,
-            text: "Test 12342345",
-        },
+            text: "Steak",
+        }
     ];
 
     const fakeSearchApi = () => {
@@ -65,9 +53,9 @@ const PopularSearch: React.FC<TPopularSearchProps> = ({ setSearchResult }) => {
 
     const onPopularSearchItemClicked = (searchText: string) => {
         setSearchResult(null);
-        dispatch(addSearchHistory(searchText));
         navigate("/search/" + searchText);
         fakeSearchApi();
+        dispatch(addSearchHistory(searchText));
     };
 
     return (
