@@ -31,7 +31,7 @@ const WishlistSubPage = () => {
             )}
             {foods.length === 0 && (
                 <div className="w-full h-[calc(100vh_-_138px)] flex justify-center items-center">
-                    <EmptyStatus title="Empty Wishlist" description="You don't have a food you like." />
+                    <EmptyStatus title="Empty Wishlist" description="You don't have a food you liked." />
                 </div>
             )}
         </SubPage>

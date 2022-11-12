@@ -7,17 +7,17 @@ import { Button } from "components/shared";
 import { useState } from "react";
 
 const SearchInput: React.FC<TSearchInputProps> = ({
-    className,
-    inputClassName,
-    locationSearchButton,
-    variant,
-    initialInputValue,
-    onSearchClicked,
-    onClearButtonClicked,
-    showClearButton,
-    hideSearchButton,
-    ...rest
-}) => {
+                                                      className,
+                                                      inputClassName,
+                                                      locationSearchButton,
+                                                      variant,
+                                                      initialInputValue,
+                                                      onSearchClicked,
+                                                      onClearButtonClicked,
+                                                      showClearButton,
+                                                      hideSearchButton,
+                                                      ...rest
+                                                  }) => {
     const [searchValue, setSearchValue] = useState<string>("");
 
     useEffect(() => {
@@ -30,19 +30,19 @@ const SearchInput: React.FC<TSearchInputProps> = ({
         justify-between items-center p-1`,
         default: "bg-mono-sky-lighter",
         white: "bg-white",
-        focus: `focus-within:border focus-within:border-mono-sky focus-within:bg-white`,
+        focus: `focus-within:border focus-within:border-mono-sky focus-within:bg-white`
     };
 
     const containerClasses = classNames(className, inputContainerClasses.base, {
         [inputContainerClasses.focus]: variant === "default",
         [inputContainerClasses.default]: variant === "default",
-        [inputContainerClasses.white]: variant === "white",
+        [inputContainerClasses.white]: variant === "white"
     });
 
     const inputClasses = classNames(
         "bg-transparent outline-none min-w-[150px] h-full",
         {
-            "pl-3": hideSearchButton,
+            "pl-3": hideSearchButton
         },
         inputClassName
     );
@@ -84,7 +84,13 @@ const SearchInput: React.FC<TSearchInputProps> = ({
                 </button>
             )}
 
-            {locationSearchButton && <Button variant="expand-small" className="mr-[6px]" />}
+            {locationSearchButton && (
+                <Button
+                    variant="expand-small"
+                    className="mr-[6px]"
+                    onClick={() => onSearchClicked(searchValue)}
+                />
+            )}
         </div>
     );
 };
