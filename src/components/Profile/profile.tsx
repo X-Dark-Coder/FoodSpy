@@ -2,8 +2,10 @@ import classNames from "classnames";
 import { Avatar } from "components/shared";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { TProfileProps } from "./types";
+import { useNavigate } from "react-router-dom";
 
 const Profile: React.FC<TProfileProps> = ({ size = "sm" }) => {
+    const navigate = useNavigate();
     const user = useTypedSelector((state) => state.user.account);
 
     const nameClasses = classNames("text-mono-ink font-semibold whitespace-nowrap", {
@@ -17,7 +19,7 @@ const Profile: React.FC<TProfileProps> = ({ size = "sm" }) => {
     });
 
     return (
-        <div className="flex justify-center items-center text-large">
+        <div className="flex justify-center items-center text-large cursor-pointer" onClick={() => navigate("/profile")}>
             <Avatar abbr="MM" name="Cameron Williamson" picture={null} variant={size} />
             <div className="flex flex-col justify-start items-start ml-4 md:ml-3">
                 <span className={nameClasses}>{user && user.name}</span>
