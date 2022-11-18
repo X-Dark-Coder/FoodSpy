@@ -11,6 +11,7 @@ const SettingsList: React.FC = () => {
 
     const onLogout = () => {
         localStorage.clear();
+        navigate("/");
         document.location.reload();
     };
 
