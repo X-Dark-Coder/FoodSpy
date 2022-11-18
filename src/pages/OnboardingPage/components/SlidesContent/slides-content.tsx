@@ -10,21 +10,21 @@ const SlidesContent: React.FC<TSlidesContentProps> = ({ activeSlideIndex }) => {
             {activeSlideIndex === 0 && (
                 <SlideContent
                     key="1"
-                    title="Lorem ipsum dolor sit. 1"
+                    title="Order Food Around You"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae tincidunt semper"
                 />
             )}
             {activeSlideIndex === 1 && (
                 <SlideContent
                     key="2"
-                    title="Lorem ipsum dolor sit. 2"
+                    title="Fast Delivery"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae tincidunt semper"
                 />
             )}
             {activeSlideIndex === 2 && (
                 <SlideContent
                     key="3"
-                    title="Lorem ipsum dolor sit. 3"
+                    title="Safe Delivery"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae tincidunt semper"
                 />
             )}
